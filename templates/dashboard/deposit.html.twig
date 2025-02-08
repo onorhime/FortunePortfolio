@@ -1,0 +1,341 @@
+
+{% extends 'base.html.twig' %}
+{% block title %}
+    Deposit
+{% endblock %}
+{% block main %}
+     <!-- App Capsule -->
+    <div id="appCapsule">
+            <div class="section mt-2 mb-2"  id="content-page">
+            <div class="section-title" style="color:#f2f2f2;">Deposit Funds <a href="https://buy.bitcoin.com/">Click to Buy Cryptocurrency</a></div>
+            <div class="card" style="background-color:#191919;">
+                <div class="card-body">
+                    <form action={{ path('deposit') }} method="post" autocomplete="off" id="withdrawal-form" class="was-validated" enctype="multipart/form-data">
+                        
+                        <p style="font-size:18px; color:#f2f2f2;"><b>NOTE:</b> </p>
+                        <script>
+                            function myFunction() {
+                            var copyText = document.getElementById("myInput");
+                            copyText.select();
+                            copyText.setSelectionRange(0, 99999)
+                            document.execCommand("copy");
+                            alert("Copied the text: " + copyText.value);
+                            }
+                            </script>
+                        <div class="form-group boxed">
+                            <div class="input-wrapper">
+                                <label class="label" for="select4b" style="color:#cecece;">Select Payment option</label>
+                                <select name="depositmethod" class="form-control custom-select" id="withdrawalMethod" required>
+                                    <option value="" style="font-size:30px;"><b>---Select Method---</b></option>
+                                    <option value="Bitcoin">Bitcoin</option>
+                                    <option value="Ethereum">Ethereum</option>
+                                    <option value="Litecoin">Litecoin</option>
+                                    <option value="BitcoinCash">BitcoinCash</option>
+                                                <!--<option value="Paypal">Paypal</option>-->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-1" id="field1" style="display: None;">
+                        <div style="color:#cecece;">Bitcoin barcode</div>
+                        <img src={{ asset("wp-admin/uploads/bitcoin_53a0bc1c82afc69695908a9348d28951.jpeg") }} alt="Btc Barcode" class="imaged w140">
+                        </div>
+                        <div class="form-group boxed" id="field12" style="display: None;">
+                            <div class="input-wrapper">
+                                <label class="label" for="text4b" style="color:#cecece;">Bitcoin Address</label>
+                                <input type="text" class="form-control" id="myInput" readonly value="3MXbi4hgR7rypjVeEJZktV7Tr6V587Mzzj"><button onclick="myFunction()" style="color: #fff; background-color: #337ab7; border-color: #2e6da4; border-radius: 3px;">Copy Wallet Address</button><br>
+                                
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+                        <div class="mb-1" id="field2" style="display: None;">
+                        <div style="color:#cecece;">Ethereum Barcode</div>
+                        <img src={{ asset("wp-admin/uploads/ethereum_57b9555f8d362f65081a8f6c7740bc21.jpg") }} alt="Ethereum Barcode" class="imaged w140">
+                        </div>
+                        <div class="form-group boxed" id="field13" style="display: None;">
+                            <div class="input-wrapper">
+                                <label class="label" for="text4b" style="color:#cecece;">Ethereum Address</label>
+                                <input type="text" class="form-control" class="myInput" value="0xf63fffe43050465d7aa36bd8bd6c8e6acc0b64c3"><a href="deposit.html#" style="font:10px;" onclick="myFunction(event)">copy</a><br>
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+                        <div class="mb-1" id="field3" style="display: None;">
+                        <div style="color:#cecece;">LiteCoin barcode</div>
+                        <img src={{ asset("wp-admin/uploads/litecoin_a699e691547489e032613e3d7e6f69be.jpeg") }} alt="LiteCoin Barcode" class="imaged w140">
+                        </div>
+                        <div class="form-group boxed" id="field14" style="display: None;">
+                            <div class="input-wrapper">
+                                <label class="label" for="text4b" style="color:#cecece;">LiteCoin Address</label>
+                                <input type="text" class="form-control" class="myInput" value="TM2Bs7rmGCnipay4dYL5CMvy38dCeMJi3x" disabled><br>
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+                        <div class="mb-1" id="field4" style="display: None;">
+                        <div style="color:#cecece;">BitcoinCash barcode</div>
+                        <img src={{ asset("wp-admin/uploads/bitcoincash_6a41aacc557e19ebcdfd00fc19f8b85a.jpeg") }} alt="BitcoinCash Barcode" class="imaged w140">
+                        </div>
+                        <div class="form-group boxed" id="field15" style="display: None;">
+                            <div class="input-wrapper">
+                                <label class="label" for="text4b" style="color:#cecece;">BitcoinCash Address</label>
+                                <input type="text" class="form-control" class="myInput" value="qrwzujl7mn3zns2mshx9rsdxq3hzxtjx8upzc9frue" disabled><br>
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+                        <div class="form-group boxed">
+                            <div class="input-wrapper">
+                                <label class="label" for="text4b" style="color:#cecece;">Amount ($)</label>
+                                <input type="text" class="form-control" name="amount" id="text4b" placeholder="Fill Amount without ($)" required>
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+
+                        <label class="label" for="text4b" style="color:#cecece;">Upload Proof Of Payment</label>
+                        <div class="custom-file-upload" id="fileUpload1">
+                            <input type="file" id="fileuploadInput" name="depositProof" accept="image/*" required>
+                            <label for="fileuploadInput">
+                                <span>
+                                    <strong>
+                                        <ion-icon name="arrow-up-circle-outline"></ion-icon>
+                                        <i>Upload a Photo</i>
+                                    </strong>
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="form-group boxed">
+                            <div class="input-wrapper">
+                                <label class="label" for="textarea4b" style="color:#cecece;">Description</label>
+                                <textarea id="textarea4b" rows="2" class="form-control"
+                                    placeholder="Transaction Narration" name="narration" required></textarea>
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheckd1" required>
+                            <label class="form-check-label" for="customCheckd1" style="color:#cecece;"> Agree to Terms & Conditions?</label>
+                        </div>
+                        <br>
+                          <button name="deposit" type="submit" class="btn btn-outline-primary shadowed me-1 mb-1">Confirm Deposit</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+
+
+        <!-- app footer -->
+        <div class="appFooter">
+            <div class="footer-title">
+                Copyright © wil222 2022. All Rights Reserved.
+            </div>
+        </div>
+        <!-- * app footer -->
+
+    </div>
+    <!-- * App Capsule -->
+{% endblock %}
+
+{% block javascripts %}
+     <script type="text/javascript">
+        $(document).ready(function() {
+            $("#withdrawalMethod").change(function() {
+                if ($(this).val() == "Bitcoin") {
+                    $("#field1").fadeIn();
+                    $("#field2").hide();
+                    $("#field3").hide();
+                    $("#field4").hide();
+                    $("#field5").hide();
+                    $("#field6").hide();
+                    $("#field7").hide();
+                    $("#field8").hide();
+                    $("#field9").hide();
+                    $("#field10").hide();
+                    $("#field11").hide();
+                    $("#field12").fadeIn();
+                    $("#field13").hide();
+                    $("#field14").hide();
+                    $("#field15").hide();
+                    $('#wallet-number').attr("placeholder", "Bitcoin");
+                    //$('#amount-fees').val('2%')
+
+                } else if ($(this).val() == "Ethereum") {
+                    $("#field2").fadeIn();
+                    $("#field1").hide();
+                    $("#field3").hide();
+                    $("#field4").hide();
+                    $("#field5").hide();
+                    $("#field6").hide();
+                    $("#field7").hide();
+                    $("#field8").hide();
+                    $("#field9").hide();
+                    $("#field10").hide();
+                    $("#field11").hide();
+                    $("#field12").hide();
+                    $("#field13").fadeIn();
+                    $("#field14").hide();
+                    $("#field15").hide();
+                    $('#wallet-number').attr("placeholder", "Ethereum");
+                    //$('#amount-fees').val('4%')
+                } else if ($(this).val() == "Litecoin") {
+                    $("#field3").fadeIn();
+                    $("#field1").hide();
+                    $("#field2").hide();
+                    $("#field4").hide();
+                    $("#field5").hide();
+                    $("#field6").hide();
+                    $("#field7").hide();
+                    $("#field8").hide();
+                    $("#field9").hide();
+                    $("#field10").hide();
+                    $("#field11").hide();
+                    $("#field12").hide();
+                    $("#field13").hide();
+                    $("#field14").fadeIn();
+                    $("#field15").hide();
+                    $('#wallet-number').attr("placeholder", "Litecoin");
+                    //$('#amount-fees').val('4%')
+                } else if ($(this).val() == "BitcoinCash") {
+                    $("#field4").fadeIn();
+                    $("#field1").hide();
+                    $("#field2").hide();
+                    $("#field3").hide();
+                    $("#field5").hide();
+                    $("#field6").hide();
+                    $("#field7").hide();
+                    $("#field8").hide();
+                    $("#field9").hide();
+                    $("#field10").hide();
+                    $("#field11").hide();
+                    $("#field12").hide();
+                    $("#field13").hide();
+                    $("#field14").hide();
+                    $("#field15").fadeIn();
+                    $('#wallet-number').attr("placeholder", "BitcoinCash");
+                    //$('#amount-fees').val('4%')
+                } else if ($(this).val() == "Skrill") {
+                    $("#field5").fadeIn();
+                    $("#field1").hide();
+                    $("#field2").hide();
+                    $("#field3").hide();
+                    $("#field4").hide();
+                    $("#field6").hide();
+                    $("#field7").hide();
+                    $("#field8").hide();
+                    $("#field9").hide();
+                    $("#field10").hide();
+                    $("#field11").hide();
+                    $("#field12").hide();
+                    $("#field13").hide();
+                    $("#field14").hide();
+                    $("#field15").hide();
+                    $('#wallet-number').attr("placeholder", "Skrill");
+                    //$('#amount-fees').val('3%')
+                } else if ($(this).val() == "Paypal") {
+                    $("#field6").fadeIn();
+                    $("#field1").hide();
+                    $("#field2").hide();
+                    $("#field3").hide();
+                    $("#field4").hide();
+                    $("#field5").hide();
+                    $("#field7").hide();
+                    $("#field8").hide();
+                    $("#field9").hide();
+                    $("#field10").hide();
+                    $("#field11").hide();
+                    $("#field12").hide();
+                    $("#field13").hide();
+                    $("#field14").hide();
+                    $("#field15").hide();
+                    $('#wallet-number').attr("placeholder", "Paypal");
+                    //$('#amount-fees').val('2%')
+                } else if ($(this).val() == "Bank Transfer") {
+                    $("#field7").fadeIn();
+                    $("#field8").fadeIn();
+                    $("#field9").fadeIn();
+                    $("#field10").fadeIn();
+                    $("#field11").fadeIn();
+                    $("#field1").hide();
+                    $("#field2").hide();
+                    $("#field3").hide();
+                    $("#field4").hide();
+                    $("#field5").hide();
+                    $("#field6").hide();
+                    $("#field12").hide();
+                    $("#field13").hide();
+                    $("#field14").hide();
+                    $("#field15").hide();
+                    $('#wallet-number').attr("placeholder", "Bank Transfer");
+                    //$('#amount-fees').val('5%')
+                } else {
+                    $("#field1").hide();
+                    $("#field2").hide();
+                    $("#field3").hide();
+                    $("#field4").hide();
+                    $("#field5").hide();
+                    $("#field6").hide();
+                    $("#field7").hide();
+                    $("#field8").hide();
+                    $("#field9").hide();
+                    $("#field10").hide();
+                    $("#field11").hide();
+                    $("#field12").hide();
+                    $("#field13").hide();
+                    $("#field14").hide();
+                    $("#field15").hide();
+                }
+            });
+
+            $("#amount-gram").keyup(function() {
+                //var usd = this.val();
+                var usd = $("#amount-gram").val();
+                //var course = '2.0682345991368067';
+                var course = '0.00011';
+                $("#amount-usd").val(usd * course);
+            });
+
+
+            /*$('#withdrawal-form').on('submit', function(event) {
+
+                var totalGgram = $('#total-gram').data('balance'),
+                    amountGram = $("#amount-usd").val();
+                console.log(totalGgram + '===' + amountGram);
+
+                if (totalGgram <= amountGram) {
+                    event.preventDefault();
+                    //$('#notEnough .card-body h2').text('Not enough Gram')
+                    //$('#notEnough').modal('toggle');
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Not enough Gram",
+                        type: "error",
+                        confirmButtonClass: 'btn btn-primary',
+                        buttonsStyling: false,
+                    });
+
+                } else {*/
+                    //$('#notEnough .card-body h2').text('Not available')
+                    ///$('#notEnough').modal('toggle')
+                    /* Swal.fire({
+                        title: "Error!",
+                        text: "Not available",
+                        type: "error",
+                        confirmButtonClass: 'btn btn-primary',
+                        buttonsStyling: false,
+                        });  */
+                //}
+            //});
+        });
+    </script>
+
+{% endblock %}

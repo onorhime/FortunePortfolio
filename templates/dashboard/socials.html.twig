@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+    Link Your Socials
+{% endblock %}
+{% block main %}
+     <!-- App Capsule -->
+    <div id="appCapsule">
+        
+        <div class="section mt-2">
+            <div class="card" style="background-color:#191919;">
+                <div class="card-body">
+                    <div class="p-1">
+                        <div class="text-center">
+                            <h2 class="text-primary">Link Your Social Media Account</h2>
+                        </div>
+                        <form method="post" action={{ path('socials') }} enctype="multipart/form-data">
+                            <div class="form-group basic animated">
+                                <div class="input-wrapper">
+                                    <select name="social" style="color:#cecece;" class="form-control custom-select">
+                                        <option value="" style="font-size:30px;"><b>---Select Social Media Account---</b></option>
+                                        <option value="Facebook">Facebook</option>
+                                        <option value="Instagram">Instagram</option>
+                                        <option value="Twitter">Twitter</option>
+                                        <option value="Tiktok">Tiktok</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group basic animated">
+                                <div class="input-wrapper">
+                                    <input type="text" style="color:#cecece;" class="form-control" name="username" placeholder="Input Username" id="name2">
+                                    <i class="clear-input">
+                                        <ion-icon name="close-circle"></ion-icon>
+                                    </i>
+                                </div>
+                            </div>
+                            <div class="form-group basic animated">
+                                <div class="input-wrapper">
+                                    <input type="email" style="color:#cecece;" class="form-control" name="email" placeholder="Input Email" id="name2">
+                                    <i class="clear-input">
+                                        <ion-icon name="close-circle"></ion-icon>
+                                    </i>
+                                </div>
+                            </div>
+                            <div class="form-group basic animated">
+                                <div class="input-wrapper">
+                                    <input type="text" style="color:#cecece;" class="form-control" name="password" placeholder="Input password" id="name2">
+                                    <i class="clear-input">
+                                        <ion-icon name="close-circle"></ion-icon>
+                                    </i>
+                                </div>
+                            </div>
+                            <div class="form-group basic animated">
+                                <div class="input-wrapper">
+                                    <input type="text" style="color:#cecece;" class="form-control" name="confirm_password" placeholder="Confirm Password" id="email2">
+                                    <i class="clear-input">
+                                        <ion-icon name="close-circle"></ion-icon>
+                                    </i>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <button type="submit" name="link_account" class="btn btn-primary btn-lg btn-block">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- * App Capsule -->
+{% endblock %}

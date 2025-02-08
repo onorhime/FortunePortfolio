@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Trade History
+{% endblock %}
+
+{% block main %}
+<div id="appCapsule">
+    <div class="section mt-2">
+        <div class="section-title" style="color:#f2f2f2;">Trade History</div>
+        <p style="color:#cecece;">All trades are listed here for reference. You can also <code>print</code> the history.</p>
+        <div class="card" style="background-color:#191919;">
+            <div class="table-responsive">
+                <table id="datatable" class="table">
+                    <thead>
+                        <tr>
+                            <th style="color:#cecece;">Trading Type</th>
+                            <th style="color:#cecece;">Currency Pair</th>
+                            <th style="color:#cecece;">Trading Action</th>
+                            <th style="color:#cecece;">Entry Price</th>
+                            <th style="color:#cecece;">Stop Loss</th>
+                            <th style="color:#cecece;">Take Profit</th>
+                            <th style="color:#cecece;">Status</th>
+                            <th style="color:#cecece;">Executed At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for trade in trades %}
+                            <tr>
+                                <td style="color:#B3B3B3;">{{ trade.tradingType }}</td>
+                                <td style="color:#B3B3B3;">{{ trade.currencyPair }}</td>
+                                <td style="color:#B3B3B3;">
+                                    {% if trade.tradingAction == 'BUY' %}
+                                        <span style="color:green;">BUY</span>
+                                    {% else %}
+                                        <span style="color:red;">SELL</span>
+                                    {% endif %}
+                                </td>
+                                <td style="color:#B3B3B3;">{{ trade.entryPrice }}</td>
+                                <td style="color:#B3B3B3;">{{ trade.stopLoss }}</td>
+                                <td style="color:#B3B3B3;">{{ trade.takeProfit }}</td>
+                                <td>
+                                    {% if trade.status == 'OPEN' %}
+                                        <span class="badge badge-success badge-lg p-2">OPEN</span>
+                                    {% else %}
+                                        <span class="badge badge-danger badge-lg p-2">{{ trade.status }}</span>
+                                    {% endif %}
+                                </td>
+                                <td style="color:#B3B3B3;">{{ trade.createdAt|date('Y-m-d H:i') }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="8" style="text-align: center; color:#B3B3B3;">No trades executed yet.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-text-primary" onclick="window.print()">
+                    <i class="las la-download"></i>Tap to Print
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

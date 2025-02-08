@@ -1,17 +1,456 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<html lang="en">
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <title>{% block title %}Dashboard!{% endblock %}</title>
+    <meta name="description" content="Fortunes Portfolio">
+    <meta name="keywords"
+        content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive" />
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://fortunesportfolio.com/wp-user/assets/img/icon/192x192.png">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="manifest" href="__manifest.json">
+    
+   <script src="//code.tidio.co/if5sxpmaixaobvzhl4wzuvjpbyoq65br.js" async></script>
+    <script src="../plugins/sweetalerts/promise-polyfill.js"></script>
+    <link href="../plugins/sweetalerts/sweetalert.css" rel="stylesheet" type="text/css" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-5/5T2z5PQ1WiqC1+KcKQpXDvU7aSlHb8VdWDwPN2H1p2fdH0RWvmE3r9djnLrmrxmJXuc68Z81EwRP7hjv8aIw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700" rel="stylesheet" />
+    <style>
+        /*------ Google Font Style ------ */
+        body {font-family:'Roboto'!important;}
+    </style>
+
+    <script>
+        function noticePop( value, type ){
+            swal({
+                html: '<span style="font-size:18px!important;">'+ `${value}` +'</span>',
+                type: `${type}`,
+                timer: 4000,
+                showConfirmButton: false,
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+            }).then(function(){
+                window.location.href = '/';
+            });
+        }
+    </script>
+    {% block stylesheets %}      
+    {% endblock %}
+</head>
+<body style="background-color:#000;">
+  
+    <!-- App Header -->
+    <div class="appHeader bg-primary text-light">
+    
+        <div class="left">
+            <a href="{{ path('dashboard') }}" class="headerButton" data-bs-toggle="modal" data-bs-target="#sidebarPanel">
+                <ion-icon name="menu-outline"></ion-icon>
+            </a>
+        </div>
+        <div class="pageTitle">
+            <p>
+                {{ app.user.username|default('Unknown User') }} 
+                {% if app.user.isVerified is defined and not app.user.isVerified %}
+                    {% if app.user.isVerified is defined and app.user.verificationStatus == 'PENDING' %}
+                    <span style="color:orange;">Verification Pending<i class="las la-exclamation-circle" style="color:red;"></i></span>
+               
+                    {% else %}
+                    <span style="color:red;">Not Verified<i class="las la-exclamation-circle" style="color:red;"></i></span>
+               
+                    {% endif %}
+                     {% endif %}
+            </p>
+        </div>
+        <div class="right">
+            <a href={{ path('profile') }} class="headerButton">
+                <img src="{{ asset('assets/img/sample/avatar/avatar1.jpg') }}" alt="image" class="imaged w32">
+            </a>
+        </div>
+    </div>
+    <!-- * App Header -->
+    
+    {% block main %}
+    {% endblock %} 
+        
+    <!-- App Bottom Menu -->
+    <div class="appBottomMenu">
+        <a href="{{ path('dashboard') }}" class="item active">
+            <div class="col">
+                <ion-icon name="pie-chart-outline"></ion-icon>
+                <strong>Dashboard</strong>
+            </div>
+        </a>
+        <a href={{ path('deposit') }} class="item">
+            <div class="col">
+                <ion-icon name="cash-outline"></ion-icon>
+                <strong>Deposit</strong>
+            </div>
+        </a>
+        <a href={{ path('transactions') }} class="item">
+            <div class="col">
+                <ion-icon name="apps-outline"></ion-icon>
+                <strong>Transaction</strong>
+            </div>
+        </a>
+        <a href={{ path('withdrawal') }} class="item">
+            <div class="col">
+                <ion-icon name="wallet-outline"></ion-icon>
+                <strong>Withdrawal</strong>
+            </div>
+        </a>
+        <a href={{ path('profile') }} class="item">
+            <div class="col">
+                <ion-icon name="person-outline"></ion-icon>
+                <strong>Profile</strong>
+            </div>
+        </a>
+    </div>
+    <!-- * App Bottom Menu -->
+
+    <!-- App Sidebar -->
+    <div class="modal fade panelbox panelbox-left" id="sidebarPanel" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="background-color:#191919; color:#f2f2f2;">
+                <div class="modal-body p-0" style="background-color:#191919; color:#f2f2f2;">
+                    <!-- profile box -->
+                    <div class="profileBox pt-2 pb-2" style="background-color:#191919;">
+                        <div class="image-wrapper">
+                            <img src="{{ asset('assets/img/sample/avatar/avatar1.jpg') }}" alt="image" class="imaged w36">
+                        </div>
+                        <div class="in">
+                            <strong style="color:#f2f2f2;">{{ app.user.fullname|default('User Name') }}</strong>
+                            <div class="text-muted" style="color:#cecece;"> Account Plan: Basic</div>
+                        </div>
+                        <a href="{{ path('dashboard') }}" class="btn btn-link btn-icon sidebar-close" data-bs-dismiss="modal">
+                            <ion-icon name="close-outline"></ion-icon>
+                        </a>
+                    </div>
+                    <!-- * profile box -->
+                    <!-- balance -->
+                    <div class="sidebar-balance">
+                        <div class="listview-title">Balance</div>
+                        <div class="in">
+                            <h1 class="amount">
+                                {{ app.user.currency|default('$') }}{{ app.user.balance|default(0)|number_format(2) }}
+                            </h1>
+                        </div>
+                    </div>
+                    <!-- * balance -->
+
+                    <!-- action group -->
+                    <div class="action-group">
+                        <a href={{ path('deposit') }} class="action-button">
+                            <div class="in">
+                                <div class="iconbox">
+                                    <ion-icon name="add-outline"></ion-icon>
+                                </div>
+                                Deposit
+                            </div>
+                        </a>
+                        <a href={{ path('withdrawal') }} class="action-button">
+                            <div class="in">
+                                <div class="iconbox">
+                                    <ion-icon name="wallet-outline"></ion-icon>
+                                </div>
+                                Withdraw
+                            </div>
+                        </a>
+                        <a href={{ path('earning') }} class="action-button">
+                            <div class="in">
+                                <div class="iconbox">
+                                    <ion-icon name="card-outline"></ion-icon>
+                                </div>
+                                Earning
+                            </div>
+                        </a>
+                        <a href={{ path('transactions') }} class="action-button">
+                            <div class="in">
+                                <div class="iconbox">
+                                    <ion-icon name="swap-vertical"></ion-icon>
+                                </div>
+                                Transaction
+                            </div>
+                        </a>
+                    </div>
+                    <!-- * action group -->
+
+                    <!-- menu -->
+                    <div class="listview-title mt-1" style="background-color:#191919; color:#f2f2f2;">Menu</div>
+                    <ul class="listview flush transparent no-line image-listview" style="background-color:#191919;">
+                        <li>
+                            <a href={{ path('verify') }} class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="document-text-outline" style="color:#cecece;"></ion-icon>
+                                </div>
+                                <div class="in" style="color:#cecece;">
+                                    Verify Your Account (KYC)
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href={{ path('socials') }} class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="link-outline" style="color:#cecece;"></ion-icon>
+                                </div>
+                                <div class="in" style="color:#cecece;">
+                                    Link Social Media Account
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('dashboard') }}" class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="pie-chart-outline" style="color:#cecece;"></ion-icon>
+                                </div>
+                                <div class="in" style="color:#cecece;">
+                                    Dashboard
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href={{ path('deposit') }} class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="cash-outline" style="color:#cecece;"></ion-icon>
+                                </div>
+                                <div class="in" style="color:#cecece;">
+                                    Deposit
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href={{ path('withdrawal') }} class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="wallet-outline" style="color:#cecece;"></ion-icon>
+                                </div>
+                                <div class="in" style="color:#cecece;">
+                                    Withdrawal
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href={{ path('insurancedeposit') }} class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="fitness-outline" style="color:#cecece;"></ion-icon>
+                                </div>
+                                <div class="in" style="color:#cecece;">
+                                    Insurance Deposit
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href={{ path('signal') }} class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="flash-outline" style="color:#cecece;"></ion-icon>
+                                </div>
+                                <div class="in" style="color:#cecece;">
+                                    Signal Activation
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href={{ path('upgrade') }} class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="trending-up-outline" style="color:#cecece;"></ion-icon>
+                                </div>
+                                <div class="in" style="color:#cecece;">
+                                    Upgrade
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- * menu -->
+
+                    <!-- others -->
+                    <div class="listview-title mt-1" style="background-color:#191919; color:#f2f2f2;">Others</div>
+                    <ul class="listview flush transparent no-line image-listview" style="background-color:#191919;">
+                        <li>
+                            <a href={{ path('earning') }} class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="repeat-outline" style="color:#cecece;"></ion-icon>
+                                </div>
+                                <div class="in" style="color:#cecece;">
+                                    Earning History
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href={{ path('transactions') }} class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="qr-code-outline" style="color:#cecece;"></ion-icon>
+                                </div>
+                                <div class="in" style="color:#cecece;">
+                                    Transactions
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href={{ path('ref') }} class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="link-outline" style="color:#cecece;"></ion-icon>
+                                </div>
+                                <div class="in" style="color:#cecece;">
+                                    Referral History
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href={{ path('profile') }} class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="person-outline" style="color:#cecece;"></ion-icon>
+                                </div>
+                                <div class="in" style="color:#cecece;">
+                                    Profile
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href={{ path('logout') }} class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="log-out-outline" style="color:#cecece;"></ion-icon>
+                                </div>
+                                <div class="in" style="color:#cecece;">
+                                    Log out
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- * others -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- * App Sidebar -->
+
+    <!-- iOS Add to Home Action Sheet -->
+    <div class="modal inset fade action-sheet ios-add-to-home" id="ios-add-to-home-screen" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add to Home Screen</h5>
+                    <a href="{{ path('dashboard') }}" class="close-button" data-bs-dismiss="modal">
+                        <ion-icon name="close"></ion-icon>
+                    </a>
+                </div>
+                <div class="modal-body">
+                    <div class="action-sheet-content text-center">
+                        <div class="mb-1"><img src="https://fortunesportfolio.com/wp-user/assets/img/icon/192x192.png" alt="image" class="imaged w64 mb-2">
+                        </div>
+                        <div>
+                            Install <strong>Finapp</strong> on your iPhone's home screen.
+                        </div>
+                        <div>
+                            Tap <ion-icon name="share-outline"></ion-icon> and Add to homescreen.
+                        </div>
+                        <div class="mt-2">
+                            <button class="btn btn-primary btn-block" data-bs-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- * iOS Add to Home Action Sheet -->
+
+    <!-- Android Add to Home Action Sheet -->
+    <div class="modal inset fade action-sheet android-add-to-home" id="android-add-to-home-screen" tabindex="-1"
+        role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add to Home Screen</h5>
+                    <a href="{{ path('dashboard') }}" class="close-button" data-bs-dismiss="modal">
+                        <ion-icon name="close"></ion-icon>
+                    </a>
+                </div>
+                <div class="modal-body">
+                    <div class="action-sheet-content text-center">
+                        <div class="mb-1">
+                            <img src="https://fortunesportfolio.com/wp-user/assets/img/icon/192x192.png" alt="image" class="imaged w64 mb-2">
+                        </div>
+                        <div>
+                            Install <strong>Finapp</strong> on your Android's home screen.
+                        </div>
+                        <div>
+                            Tap <ion-icon name="ellipsis-vertical"></ion-icon> and Add to homescreen.
+                        </div>
+                        <div class="mt-2">
+                            <button class="btn btn-primary btn-block" data-bs-dismiss="modal">CLOSE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- * Android Add to Home Action Sheet -->
+
+    <div id="cookiesbox" class="offcanvas offcanvas-bottom cookies-box" tabindex="-1" data-bs-scroll="true"
+        data-bs-backdrop="false">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">We use cookies</h5>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non lacinia quam. Nulla facilisi.
+                <a href="{{ path('dashboard') }}" class="text-secondary"><u>Learn more</u></a>
+            </div>
+            <div class="buttons">
+                <a href="{{ path('dashboard') }}" class="btn btn-primary btn-block" data-bs-dismiss="offcanvas">I understand</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========= JS Files =========  -->
+    <!-- Bootstrap -->
+    <script src="{{ asset('assets/js/lib/bootstrap.bundle.min.js') }}"></script>
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- Splide -->
+    <script src="https://fortunesportfolio.com/wp-user/assets/js/plugins/splide/splide.min.js"></script>
+    <!-- Base Js File 
+    <script src="assets/js/base.js"></script>-->
+    <script>
+        // Add to Home with 2 seconds delay.
+        AddtoHome("2000", "once");
+    </script>
+    <!-- Optional JavaScript -->
+    <script src="{{ asset('plugins/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('plugins/sweetalerts/sweetalert2.min.js') }}"></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+
+    {% block javascripts %}    
+    {% endblock %}
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894ye88K6+1B/ASc6KHqneYAZHhp/9M0YG7q4gq3K5e9B6cFXT0ZpAed6n0V2XqfY8XQ2QJYZJ/7rn7+j3T9jg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-5l3F7QJ5Z7UB1BOMab0a6L3JSMZ8T9eufRo8MDJow1JhUzWDNE60O3qOw+p8WkZ6LW3YW6B8DgkefcSpWUG7sQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{# In your base.html.twig, just before the closing </body> tag #}
+<script type="text/javascript">
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            toastr.options = {
+                "closeButton": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "timeOut": "5000"
+            };
+            {% if label == 'success' %}
+                toastr.success("{{ message|e('js') }}");
+            {% elseif label == 'error' %}
+                toastr.error("{{ message|e('js') }}");
+            {% elseif label == 'warning' %}
+                toastr.warning("{{ message|e('js') }}");
+            {% else %}
+                toastr.info("{{ message|e('js') }}");
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</script>
+
+</body>
 </html>

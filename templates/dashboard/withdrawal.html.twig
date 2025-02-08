@@ -1,0 +1,337 @@
+
+{% extends 'base.html.twig' %}
+{% block title %}
+    Withdrawal
+{% endblock %}
+
+{% block main %}
+    <div>
+    <!-- App Capsule -->
+    <div id="appCapsule">
+            <div class="section mt-2 mb-2"  id="content-page">
+            <div class="section-title" style="color:#f2f2f2;">Withdraw Funds</div>
+            <div class="card" style="background-color:#191919;">
+                <div class="card-body">
+                    <form action={{ path('withdrawal') }} method="post" autocomplete="off" id="withdrawal-form" class="was-validated">
+                        
+                        <p style="font-size:18px;" style="color:#cecece;"><b>NOTE:</b> </p>
+                        
+                        <div class="form-group boxed">
+                            <div class="input-wrapper">
+                                <label class="label" for="select4b" style="color:#cecece;">Select Payment option</label>
+                                <select name="withdrawalmethod" class="form-control custom-select" id="withdrawalMethod" required>
+                                   <option value="" style="font-size:30px;"><b>---Select Method---</b></option>
+                                                <option value="Bitcoin">Bitcoin</option>
+                                                <option value="Ethereum">Ethereum</option>
+                                                <option value="Litecoin">Litecoin</option>
+                                                <option value="BitcoinCash">BitcoinCash</option>
+                                                <option value="Skrill">Skrill</option>
+                                                <option value="Bank Transfer">Bank Transfer</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="field1" style="display: None;" class="form-group boxed">
+                            <div class="input-wrapper">
+                                <label class="label" for="text4b" style="color:#cecece;">BTC Wallet Address</label>
+                                <input type="text" class="form-control" id="text4b" name="bitcoin_address" placeholder="BTC Wallet Address">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+                        <div id="field2" style="display: None;" class="form-group boxed">
+                            <div class="input-wrapper">
+                                <label class="label" for="text4b" style="color:#cecece;">Ethereum Wallet Address</label>
+                                <input type="text" class="form-control" id="text4b" name="ethereum_address" placeholder="Ethereum Wallet Address">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+                        <div id="field3" style="display: None;" class="form-group boxed">
+                            <div class="input-wrapper">
+                                <label class="label" for="text4b" style="color:#cecece;">LiteCoin Wallet Address</label>
+                                <input type="text" class="form-control" id="text4b" name="litecoin_address" placeholder="LiteCoin Wallet Address">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+                        <div id="field4" style="display: None;" class="form-group boxed">
+                            <div class="input-wrapper">
+                                <label class="label" for="text4b" style="color:#cecece;">BitcoinCash Wallet Address</label>
+                                <input type="text" class="form-control" id="text4b" name="bitcoincash_address" placeholder="BitcoinCash Wallet Address">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+                        <div id="field5" style="display: None;" class="form-group boxed">
+                            <div class="input-wrapper">
+                                <label class="label" for="text4b" style="color:#cecece;">Skrill Email</label>
+                                <input type="text" class="form-control" id="text4b" name="skrill_email" placeholder="Skrill Email">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+                        <div id="field6" style="display: None;" class="form-group boxed">
+                            <div class="input-wrapper">
+                                <label class="label" for="text4b" style="color:#cecece;">PayPal Email</label>
+                                <input type="text" class="form-control" id="text4b" name="paypal_email" placeholder="PayPal Email">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+                        <div id="field7" style="display: None;" class="form-group boxed">
+                            <div class="input-wrapper">
+                                <label class="label" for="text4b" style="color:#cecece;">Bank Name</label>
+                                <input type="text" class="form-control" id="text4b" name="bank_name" placeholder="Bank Name">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+                        <div id="field8" style="display: None;" class="form-group boxed">
+                            <div class="input-wrapper">
+                                <label class="label" for="text4b" style="color:#cecece;">Account Number</label>
+                                <input type="text" class="form-control" id="text4b" name="account_number" placeholder="Account Number">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+                        <div id="field9" style="display: None;" class="form-group boxed">
+                            <div class="input-wrapper">
+                                <label class="label" for="text4b" style="color:#cecece;">Country</label>
+                                <input type="text" class="form-control" id="text4b" name="country" placeholder="Country">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+                        <div id="field10" style="display: None;" class="form-group boxed">
+                            <div class="input-wrapper">
+                                <label class="label" for="text4b" style="color:#cecece;">Swift Code</label>
+                                <input type="text" class="form-control" id="text4b" name="swift_code" placeholder="Swift Code">
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+                        <div class="form-group boxed">
+                            <div class="input-wrapper">
+                                <label class="label" for="text4b" style="color:#cecece;">Amount ($)</label>
+                                <input type="text" class="form-control" id="text4b" name="amount" placeholder="Amount without ($)" required>
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+                        <div class="form-group boxed">
+                            <div class="input-wrapper">
+                                <label class="label" for="text4b" style="color:#cecece;">Fees</label>
+                                <input class="form-control" name="fees" type="text" value="0%" readonly><br>
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+
+                        <div class="form-group boxed">
+                            <div class="input-wrapper">
+                                <label class="label" for="textarea4b" style="color:#cecece;">Description</label>
+                                <textarea id="textarea4b" rows="2" class="form-control"
+                                    placeholder="Transaction Narration" name="narration" required></textarea>
+                                <i class="clear-input">
+                                    <ion-icon name="close-circle"></ion-icon>
+                                </i>
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="customCheckd1" required>
+                            <label class="form-check-label" for="customCheckd1" style="color:#cecece;"> Agree to Terms & Conditions?</label>
+                        </div>
+                        <br>
+                          <button name="withdraw" type="submit" class="btn btn-outline-primary shadowed me-1 mb-1">Confirm Withdrawal</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+
+
+        <!-- app footer -->
+        <div class="appFooter">
+            <div class="footer-title">
+                Copyright © wil222 2022. All Rights Reserved.
+            </div>
+        </div>
+        <!-- * app footer -->
+
+    </div>
+    <!-- * App Capsule -->
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#withdrawalMethod").change(function() {
+                if ($(this).val() == "Bitcoin") {
+                    $("#field1").fadeIn();
+                    $("#field2").hide();
+                    $("#field3").hide();
+                    $("#field4").hide();
+                    $("#field5").hide();
+                    $("#field6").hide();
+                    $("#field7").hide();
+                    $("#field8").hide();
+                    $("#field9").hide();
+                    $("#field10").hide();
+                    $("#field11").hide();
+                    $('#wallet-number').attr("placeholder", "Bitcoin");
+                    $('#amount-fees').val('2%')
+
+                } else if ($(this).val() == "Ethereum") {
+                    $("#field2").fadeIn();
+                    $("#field1").hide();
+                    $("#field3").hide();
+                    $("#field4").hide();
+                    $("#field5").hide();
+                    $("#field6").hide();
+                    $("#field7").hide();
+                    $("#field8").hide();
+                    $("#field9").hide();
+                    $("#field10").hide();
+                    $("#field11").hide();
+                    $('#wallet-number').attr("placeholder", "Ethereum");
+                    $('#amount-fees').val('4%')
+                } else if ($(this).val() == "Litecoin") {
+                    $("#field3").fadeIn();
+                    $("#field1").hide();
+                    $("#field2").hide();
+                    $("#field4").hide();
+                    $("#field5").hide();
+                    $("#field6").hide();
+                    $("#field7").hide();
+                    $("#field8").hide();
+                    $("#field9").hide();
+                    $("#field10").hide();
+                    $("#field11").hide();
+                    $('#wallet-number').attr("placeholder", "Litecoin");
+                    $('#amount-fees').val('4%')
+                } else if ($(this).val() == "BitcoinCash") {
+                    $("#field4").fadeIn();
+                    $("#field1").hide();
+                    $("#field2").hide();
+                    $("#field3").hide();
+                    $("#field5").hide();
+                    $("#field6").hide();
+                    $("#field7").hide();
+                    $("#field8").hide();
+                    $("#field9").hide();
+                    $("#field10").hide();
+                    $("#field11").hide();
+                    $('#wallet-number').attr("placeholder", "BitcoinCash");
+                    $('#amount-fees').val('4%')
+                } else if ($(this).val() == "Skrill") {
+                    $("#field5").fadeIn();
+                    $("#field1").hide();
+                    $("#field2").hide();
+                    $("#field3").hide();
+                    $("#field4").hide();
+                    $("#field6").hide();
+                    $("#field7").hide();
+                    $("#field8").hide();
+                    $("#field9").hide();
+                    $("#field10").hide();
+                    $("#field11").hide();
+                    $('#wallet-number').attr("placeholder", "Skrill");
+                    $('#amount-fees').val('3%')
+                } else if ($(this).val() == "Paypal") {
+                    $("#field6").fadeIn();
+                    $("#field1").hide();
+                    $("#field2").hide();
+                    $("#field3").hide();
+                    $("#field4").hide();
+                    $("#field5").hide();
+                    $("#field7").hide();
+                    $("#field8").hide();
+                    $("#field9").hide();
+                    $("#field10").hide();
+                    $("#field11").hide();
+                    $('#wallet-number').attr("placeholder", "Paypal");
+                    $('#amount-fees').val('2%')
+                } else if ($(this).val() == "Bank Transfer") {
+                    $("#field7").fadeIn();
+                    $("#field8").fadeIn();
+                    $("#field9").fadeIn();
+                    $("#field10").fadeIn();
+                    $("#field11").fadeIn();
+                    $("#field1").hide();
+                    $("#field2").hide();
+                    $("#field3").hide();
+                    $("#field4").hide();
+                    $("#field5").hide();
+                    $("#field6").hide();
+                    $('#wallet-number').attr("placeholder", "Bank Transfer");
+                    $('#amount-fees').val('5%')
+                } else {
+                    $("#field1").hide();
+                    $("#field2").hide();
+                    $("#field3").hide();
+                    $("#field4").hide();
+                    $("#field5").hide();
+                    $("#field6").hide();
+                    $("#field7").hide();
+                    $("#field8").hide();
+                    $("#field9").hide();
+                    $("#field10").hide();
+                    $("#field11").hide();
+                }
+            });
+
+            $("#amount-gram").keyup(function() {
+                //var usd = this.val();
+                var usd = $("#amount-gram").val();
+                //var course = '2.0682345991368067';
+                var course = '0.00011';
+                $("#amount-usd").val(usd * course);
+            });
+
+
+            /*$('#withdrawal-form').on('submit', function(event) {
+
+                var totalGgram = $('#total-gram').data('balance'),
+                    amountGram = $("#amount-usd").val();
+                console.log(totalGgram + '===' + amountGram);
+
+                if (totalGgram <= amountGram) {
+                    event.preventDefault();
+                    //$('#notEnough .card-body h2').text('Not enough Gram')
+                    //$('#notEnough').modal('toggle');
+                    Swal.fire({
+                        title: "Error!",
+                        text: "Not enough Gram",
+                        type: "error",
+                        confirmButtonClass: 'btn btn-primary',
+                        buttonsStyling: false,
+                    });
+
+                } else {*/
+                    //$('#notEnough .card-body h2').text('Not available')
+                    ///$('#notEnough').modal('toggle')
+                    /* Swal.fire({
+                        title: "Error!",
+                        text: "Not available",
+                        type: "error",
+                        confirmButtonClass: 'btn btn-primary',
+                        buttonsStyling: false,
+                        });  */
+                //}
+            //});
+        });
+    </script>
+{% endblock %}

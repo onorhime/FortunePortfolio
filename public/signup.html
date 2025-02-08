@@ -1,0 +1,1633 @@
+
+
+<!DOCTYPE html>
+<html lang="en-uk" dir="ltr">
+<head>
+    <!-- Standard Meta -->
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="investment, Forex, Trading, Bitcoin, Cryptocurrency, Global investment, Live Trade, Trading class, indics">
+    <meta name="author" content="Fortunes Portfolio">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#313131" />
+    <!-- Site Properties -->
+    <title>Sign Up | Fortunes Portfolio</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="logo.png">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="broks/css/vendors/uikit.min.css">
+    <link rel="stylesheet" href="broks/css/style.css">
+
+    <script src="plugins/sweetalerts/promise-polyfill.js"></script>
+    <link href="plugins/sweetalerts/sweetalert.css" rel="stylesheet" type="text/css" />
+</head>
+<body style="background-color:#000;">
+    <!-- preloader begin -->
+    <!-- preloader end -->
+    <main>
+        <!-- section content begin -->
+        <div class="uk-section uk-padding-remove-vertical">
+            <div class="uk-container uk-container-expand">
+                <div class="uk-grid" data-uk-height-viewport="expand: true">
+                    <div class="uk-width-3-5@m uk-background-cover uk-background-center-right uk-visible@m uk-box-shadow-xlarge" style="background-image: url(https://fortunesportfolio.com/bo/img/h.jpg);">
+                    </div>
+                    <div class="uk-width-expand@m uk-flex uk-flex-middle">
+                        <div class="uk-grid uk-flex-center">
+                            <div class="uk-width-3-5@m">
+                                <div class="in-padding-horizontal@s" id="users">
+                                    <!-- module logo begin -->
+                                    <a class="uk-logo" href="index.html">
+                                        <img class="uk-margin-small-right in-offset-top-10" src="https://fortunesportfolio.com/img/in-lazy.gif" data-src="logo.png" alt="wave" style="padding-top: 40px;" width="350" height="29" data-uk-img>
+                                    </a>
+                                    <!-- module logo begin -->
+                                    <p class="uk-text-lead uk-margin-top uk-margin-remove-bottom">Create your account</p>
+                                    <p class="uk-text-small uk-margin-remove-top uk-margin-medium-bottom">Already have an account? <a href="signin.html" style="color: #ff5627;"><b>Login here</b></a></p>
+                                    
+                                    <!-- login form begin -->
+                                    <form class="uk-grid uk-form" id="signupForm" v-on:submit.prevent>
+                                        <div class="uk-margin-small uk-width-1-1 uk-inline">
+                                            <span class="uk-form-icon uk-form-icon-flip fas fa-user-circle fa-sm"></span>
+                                            <input style="background-color:#000;" class="uk-input uk-border-rounded" id="fullname" v-model="newUser.fullname" type="text" placeholder="Full Name" required>
+                                        </div>
+                                        <div class="uk-margin-small uk-width-1-1 uk-inline">
+                                            <span class="uk-form-icon uk-form-icon-flip fas fa-user fa-sm"></span>
+                                            <input style="background-color:#000;" class="uk-input uk-border-rounded" id="username" v-model="newUser.username" type="text" placeholder="Username" required>
+                                        </div>
+                                        <!--<div class="uk-margin-small uk-width-1-1 uk-inline">
+                                            <span class="uk-form-icon uk-form-icon-flip fas fa-house-user fa-sm"></span>
+                                            <input style="background-color:#000;" class="uk-input uk-border-rounded" id="home_address" v-model="newUser.home_address" type="text" placeholder="Home Address" required>
+                                        </div>
+                                        <div class="uk-margin-small uk-width-1-1 uk-inline">
+                                            <span class="uk-form-icon uk-form-icon-flip fas fa-city fa-sm"></span>
+                                            <input class="uk-input uk-border-rounded" id="city" v-model="newUser.city" type="text" placeholder="City" required>
+                                        </div>
+                                        <div class="uk-margin-small uk-width-1-1 uk-inline">
+                                            <span class="uk-form-icon uk-form-icon-flip fas fa-compass fa-sm"></span>
+                                            <input class="uk-input uk-border-rounded" id="postal_code" v-model="newUser.postal_code" type="text" placeholder="Zipcode/postal-code (Optional)">
+                                        </div>-->
+                                        <div class="uk-margin-small uk-width-1-1 uk-inline">
+                                            <span class="uk-form-icon uk-form-icon-flip fas fa-flag fa-sm"></span>
+                                            <select style="background-color:#000;" class="uk-input uk-border-rounded" id="country" v-model="newUser.country" @change="getCurrency" required inputmode="text" required>
+                                                <option value="" disabled="">Please Select Country</option>
+                                                <option value='Afghanistan'>Afghanistan (؋)</option>
+                                                <option value='Albania'>Albania (Lek)</option>
+                                                <option value='Algeria'>Algeria (دج)</option>
+                                                <option value='American Samoa'>American Samoa ($)</option>
+                                                <option value='Andorra'>Andorra (€)</option>
+                                                <option value='Angola'>Angola (Kz)</option>
+                                                <option value='Anguilla'>Anguilla ($)</option>
+                                                <option value='Antarctica'>Antarctica ($)</option>
+                                                <option value='Antigua and Barbuda'>Antigua and Barbuda ($)</option>
+                                                <option value='Argentina'>Argentina ($)</option>
+                                                <option value='Armenia'>Armenia (֏)</option>
+                                                <option value='Aruba'>Aruba (ƒ)</option>
+                                                <option value='Australia'>Australia ($)</option>
+                                                <option value='Austria'>Austria (€)</option>
+                                                <option value='Azerbaijan'>Azerbaijan (AZN)</option>
+                                                <option value='Bahamas'>Bahamas ($)</option>
+                                                <option value='Bahrain'>Bahrain (د.)</option>
+                                                <option value='Bangladesh'>Bangladesh (ó)</option>
+                                                <option value='Barbados'>Barbados ($)</option>
+                                                <option value='Belarus'>Belarus (Br)</option>
+                                                <option value='Belgium'>Belgium (€)</option>
+                                                <option value='Belize'>Belize ($)</option>
+                                                <option value='Benin'>Benin (CFA)</option>
+                                                <option value='Bermuda'>Bermuda ($)</option>
+                                                <option value='Bhutan'>Bhutan (Nu)</option>
+                                                <option value='Bolivia'>Bolivia (Bs)</option>
+                                                <option value='Bosnia and Herzegovina'>Bosnia and Herzegovina (KM)</option>
+                                                <option value='Botswana'>Botswana (P)</option>
+                                                <option value='Bouvet Island'>Bouvet Island (kr)</option>
+                                                <option value='Brazil'>Brazil (R$)</option>
+                                                <option value='British Indian Ocean Territory'>British Indian Ocean Territory ($)</option>
+                                                <option value='Brunei Darussalam'>Brunei Darussalam (B$)</option>
+                                                <option value='Bulgaria'>Bulgaria (Лв.)</option>
+                                                <option value='Burkina Faso'>Burkina Faso (CFA)</option>
+                                                <option value='Burundi'>Burundi (FBu)</option>
+                                                <option value='Cambodia'>Cambodia (៛)</option>
+                                                <option value='Cameroon'>Cameroon (FCFA)</option>
+                                                <option value='Canada'>Canada ($)</option>
+                                                <option value='Cape Verde'>Cape Verde ($)</option>
+                                                <option value='Cayman Islands'>Cayman Islands ($)</option>
+                                                <option value='Central African Republic'>Central African Republic (FCFA)</option>
+                                                <option value='Chad'>Chad (FCFA)</option>
+                                                <option value='Chile'>Chile ($)</option>
+                                                <option value='China'>China (¥)</option>
+                                                <option value='Christmas Island'>Christmas Island ($)</option>
+                                                <option value='Cocos (Keeling) Islands'>Cocos (Keeling) Islands ($)</option>
+                                                <option value='Colombia'>Colombia ($)</option>
+                                                <option value='Comoros'>Comoros (CF)</option>
+                                                <option value='Congo'>Congo (FC)</option>
+                                                <option value='Democratic Republic of the Congo'>Democratic Republic of the Congo (FC)</option>
+                                                <option value='Cook Islands'>Cook Islands ($)</option>
+                                                <option value='Costa Rica'>Costa Rica (₡)</option>
+                                                <option value="Cote D'Ivoire">Cote D'Ivoire (CFA)</option>
+                                                <option value='Croatia'>Croatia (Kn)</option>
+                                                <option value='Cuba'>Cuba ($)</option>
+                                                <option value='Cyprus'>Cyprus (€)</option>
+                                                <option value='Czech Republic'>Czech Republic (Kč)</option>
+                                                <option value='Denmark'>Denmark (kr)</option>
+                                                <option value='Djibouti'>Djibouti (Fdj)</option>
+                                                <option value='Dominica'>Dominica ($)</option>
+                                                <option value='Dominican Republic'>Dominican Republic (RD$)</option>
+                                                <option value='Ecuador'>Ecuador (S/.)</option>
+                                                <option value='Egypt'>Egypt (E£)</option>
+                                                <option value='El Salvador'>El Salvador (₡)</option>
+                                                <option value='Equatorial Guinea'>Equatorial Guinea (FCFA)</option>
+                                                <option value='Eritrea'>Eritrea (Nkf)</option>
+                                                <option value='Estonia'>Estonia (kr)</option>
+                                                <option value='Ethiopia'>Ethiopia (Br)</option>
+                                                <option value='Falkland Islands (Malvinas)'>Falkland Islands (Malvinas) (£)</option>
+                                                <option value='Faroe Islands'>Faroe Islands (kr)</option>
+                                                <option value='Fiji'>Fiji (FJ$)</option>
+                                                <option value='Finland'>Finland (mk)</option>
+                                                <option value='France'>France (€)</option>
+                                                <option value='French Guiana'>French Guiana (€)</option>
+                                                <option value='French Polynesia'>French Polynesia (F)</option>
+                                                <option value='French Southern Territories'>French Southern Territories (€)</option>
+                                                <option value='Gabon'>Gabon (FCFA)</option>
+                                                <option value='Gambia'>Gambia (D)</option>
+                                                <option value='Georgia'>Georgia (GEL)</option>
+                                                <option value='Germany'>Germany (€)</option>
+                                                <option value='Ghana'>Ghana (GH₵)</option>
+                                                <option value='Gibraltar'>Gibraltar (£)</option>
+                                                <option value='Greece'>Greece (€)</option>
+                                                <option value='Greenland'>Greenland (Kr.)</option>
+                                                <option value='Grenada'>Grenada ($)</option>
+                                                <option value='Guadeloupe'>Guadeloupe (€)</option>
+                                                <option value='Guam'>Guam ($)</option>
+                                                <option value='Guatemala'>Guatemala (Q)</option>
+                                                <option value='Guernsey'>Guernsey (£)</option>
+                                                <option value='Guinea'>Guinea (FG)</option>
+                                                <option value='Guinea-Bissau'>Guinea-Bissau (CFA)</option>
+                                                <option value='Guyana'>Guyana (G$)</option>
+                                                <option value='Haiti'>Haiti (G)</option>
+                                                <option value='Heard Island and McDonald Islands'>Heard Island and McDonald Islands ($)</option>
+                                                <option value='Holy See (Vatican City State)'>Holy See (Vatican City State) (₤)</option>
+                                                <option value='Honduras'>Honduras (HNL)</option>
+                                                <option value='Hong Kong'>Hong Kong (HK$)</option>
+                                                <option value='Hungary'>Hungary (Ft)</option>
+                                                <option value='Iceland'>Iceland (kr)</option>
+                                                <option value='India'>India (₹)</option>
+                                                <option value='Indonesia'>Indonesia (Rp)</option>
+                                                <option value='Islamic Republic of Iran'>Islamic Republic of Iran (IRR)</option>
+                                                <option value='Iraq'>Iraq (د.ع)</option>
+                                                <option value='Ireland'>Ireland (€)</option>
+                                                <option value='Isle of Man'>Isle of Man (£)</option>
+                                                <option value='Israel'>Israel (₪)</option>
+                                                <option value='Italy'>Italy (€)</option>
+                                                <option value='Jamaica'>Jamaica (J$)</option>
+                                                <option value='Japan'>Japan (¥)</option>
+                                                <option value='Jersey'>Jersey (£)</option>
+                                                <option value='Jordan'>Jordan (د.ا)</option>
+                                                <option value='Kazakhstan'>Kazakhstan (₸)</option>
+                                                <option value='Kenya'>Kenya (KSh)</option>
+                                                <option value='Kiribati'>Kiribati ($)</option>
+                                                <option value="Democratic People's Republic of Korea">Democratic People's Republic of Korea (₩)</option>
+                                                <option value='Republic of Korea'>Republic of Korea (₩)</option>
+                                                <option value='Kuwait'>Kuwait (د.ك)</option>
+                                                <option value='Kyrgyzstan'>Kyrgyzstan (лв)</option>
+                                                <option value="Lao People's Democratic Republic">Lao People's Democratic Republic (₭)</option>
+                                                <option value='Latvia'>Latvia (LVL)</option>
+                                                <option value='Lebanon'>Lebanon (ل.ل)</option>
+                                                <option value='Lesotho'>Lesotho (L)</option>
+                                                <option value='Liberia'>Liberia (L$)</option>
+                                                <option value='Libyan Arab Jamahiriya'>Libyan Arab Jamahiriya (LD)</option>
+                                                <option value='Liechtenstein'>Liechtenstein (CHF)</option>
+                                                <option value='Lithuania'>Lithuania (Lt)</option>
+                                                <option value='Luxembourg'>Luxembourg (€)</option>
+                                                <option value='Macao'>Macao (MOP$)</option>
+                                                <option value='The Former Yugoslav Republic of Macedonia'>The Former Yugoslav Republic of Macedonia (den)</option>
+                                                <option value='Madagascar'>Madagascar (Ar)</option>
+                                                <option value='Malawi'>Malawi (K)</option>
+                                                <option value='Malaysia'>Malaysia (RM)</option>
+                                                <option value='Maldives'>Maldives (Rf)</option>
+                                                <option value='Mali'>Mali (MAF)</option>
+                                                <option value='Malta'>Malta (€)</option>
+                                                <option value='Marshall Islands'>Marshall Islands ($)</option>
+                                                <option value='Martinique'>Martinique (€)</option>
+                                                <option value='Mauritania'>Mauritania (MRU</option>
+                                                <option value='Mauritius'>Mauritius (₨)</option>
+                                                <option value='Mayotte'>Mayotte (€)</option>
+                                                <option value='Mexico'>Mexico ($)</option>
+                                                <option value='Federated States of Micronesia'>Federated States of Micronesia ($)</option>
+                                                <option value='Republic of Moldova'>Republic of Moldova (L)</option>
+                                                <option value='Monaco'>Monaco (€)</option>
+                                                <option value='Mongolia'>Mongolia (₮)</option>
+                                                <option value='Montenegro'>Montenegro (€)</option>
+                                                <option value='Montserrat'>Montserrat ($)</option>
+                                                <option value='Morocco'>Morocco (MAD)</option>
+                                                <option value='Mozambique'>Mozambique (MT)</option>
+                                                <option value='Myanmar'>Myanmar (K)</option>
+                                                <option value='Namibia'>Namibia (N$)</option>
+                                                <option value='Nauru'>Nauru ($)</option>
+                                                <option value='Nepal'>Nepal (Rs)</option>
+                                                <option value='Netherlands'>Netherlands (ANG)</option>
+                                                <option value='Netherlands Antilles'>Netherlands Antilles (NAf)</option>
+                                                <option value='New Caledonia'>New Caledonia (F)</option>
+                                                <option value='New Zealand'>New Zealand ($)</option>
+                                                <option value='Nicaragua'>Nicaragua (C$)</option>
+                                                <option value='Niger'>Niger (XOF)</option>
+                                                <option value='Nigeria'>Nigeria (₦)</option>
+                                                <option value='Niue'>Niue ($)</option>
+                                                <option value='Norfolk Island'>Norfolk Island ($)</option>
+                                                <option value='Northern Mariana Islands'>Northern Mariana Islands ($)</option>
+                                                <option value='Norway'>Norway (kr)</option>
+                                                <option value='Oman'>Oman (ر.ع.)</option>
+                                                <option value='Pakistan'>Pakistan (₨)</option>
+                                                <option value='Palau'>Palau ($)</option>
+                                                <option value='Occupied Palestinian Territory'>Occupied Palestinian Territory ($)</option>
+                                                <option value='Panama'>Panama (B/)</option>
+                                                <option value='Papua New Guinea'>Papua New Guinea (K)</option>
+                                                <option value='Paraguay'>Paraguay (₲)</option>
+                                                <option value='Peru'>Peru (S/)</option>
+                                                <option value='Philippines'>Philippines (₱)</option>
+                                                <option value='Pitcairn'>Pitcairn ($)</option>
+                                                <option value='Poland'>Poland (zł)</option>
+                                                <option value='Portugal'>Portugal (€)</option>
+                                                <option value='Puerto Rico'>Puerto Rico ($)</option>
+                                                <option value='Qatar'>Qatar (QR)</option>
+                                                <option value='Reunion'>Reunion (€)</option>
+                                                <option value='Romania'>Romania (lei)</option>
+                                                <option value='Russian Federation'>Russian Federation (₽)</option>
+                                                <option value='Rwanda'>Rwanda (FRw)</option>
+                                                <option value='Saint Barthélemy'>Saint Barthélemy (€)</option>
+                                                <option value='Saint Helena'>Saint Helena (£)</option>
+                                                <option value='Saint Kitts and Nevis'>Saint Kitts and Nevis ($)</option>
+                                                <option value='Saint Lucia'>Saint Lucia ($)</option>
+                                                <option value='Saint Martin'>Saint Martin (ƒ)</option>
+                                                <option value='Saint Pierre and Miquelon'>Saint Pierre and Miquelon (€)</option>
+                                                <option value='Saint Vincent and the Grenadines'>Saint Vincent and the Grenadines (X$)</option>
+                                                <option value='Samoa'>Samoa ($)</option>
+                                                <option value='San Marino'>San Marino (€)</option>
+                                                <option value='Sao Tome and Principe'>Sao Tome and Principe (Db)</option>
+                                                <option value='Saudi Arabia'>Saudi Arabia (﷼)</option>
+                                                <option value='Senegal'>Senegal (CFA)</option>
+                                                <option value='Serbia'>Serbia (din)</option>
+                                                <option value='Seychelles'>Seychelles (SCR)</option>
+                                                <option value='Sierra Leone'>Sierra Leone (Le)</option>
+                                                <option value='Singapore'>Singapore (S$)</option>
+                                                <option value='Slovakia'>Slovakia (SKK)</option>
+                                                <option value='Slovenia'>Slovenia (€)</option>
+                                                <option value='Solomon Islands'>Solomon Islands (Si$)</option>
+                                                <option value='Somalia'>Somalia (Sh.so.)</option>
+                                                <option value='South Africa'>South Africa (R)</option>
+                                                <option value='South Georgia and the South Sandwich Islands'>South Georgia and the South Sandwich Islands (£)</option>
+                                                <option value='Spain'>Spain (€)</option>
+                                                <option value='Sri Lanka'>Sri Lanka (Rs)</option>
+                                                <option value='Sudan'>Sudan (£SD)</option>
+                                                <option value='Suriname'>Suriname ($)</option>
+                                                <option value='Svalbard and Jan Mayen'>Svalbard and Jan Mayen (kr)</option>
+                                                <option value='Swaziland'>Swaziland (L)</option>
+                                                <option value='Sweden'>Sweden (kr)</option>
+                                                <option value='Switzerland'>Switzerland (CHf)</option>
+                                                <option value='Syrian Arab Republic'>Syrian Arab Republic (LS)</option>
+                                                <option value='Taiwan, Province Of China'>Taiwan, Province Of China (NT$)</option>
+                                                <option value='Tajikistan'>Tajikistan (SM)</option>
+                                                <option value='United Republic of Tanzania'>United Republic of Tanzania (TSh)</option>
+                                                <option value='Thailand'>Thailand (฿))</option>
+                                                <option value='Timor-Leste'>Timor-Leste ($)</option>
+                                                <option value='Togo'>Togo (CFA)</option>
+                                                <option value='Tokelau'>Tokelau ($)</option>
+                                                <option value='Tonga'>Tonga (T$)</option>
+                                                <option value='Trinidad and Tobago'>Trinidad and Tobago (TT$)</option>
+                                                <option value='Tunisia'>Tunisia (د.ت)</option>
+                                                <option value='Turkey'>Turkey (₺)</option>
+                                                <option value='Turkmenistan'>Turkmenistan (T)</option>
+                                                <option value='Turks and Caicos Islands'>Turks and Caicos Islands ($)</option>
+                                                <option value='Tuvalu'>Tuvalu ($)</option>
+                                                <option value='Uganda'>Uganda (USh)</option>
+                                                <option value='Ukraine'>Ukraine (₴)</option>
+                                                <option value='United Arab Emirates'>United Arab Emirates (د.إ)</option>
+                                                <option value='United Kingdom'>United Kingdom (£)</option>
+                                                <option value='United States'>United States ($)</option>
+                                                <option value='United States Minor Outlying Islands'>United States Minor Outlying Islands ($)</option>
+                                                <option value='Uruguay'>Uruguay ($)</option>
+                                                <option value='Uzbekistan'>Uzbekistan (лв)</option>
+                                                <option value='Vanuatu'>Vanuatu (VT)</option>
+                                                <option value='Venezuela'>Venezuela (Bs.)</option>
+                                                <option value='Vietnam'>Vietnam (₫)</option>
+                                                <option value='British, Virgin Islands'>British, Virgin Islands ($)</option>
+                                                <option value='U.S., Virgin Islands'>U.S., Virgin Islands ($)</option>
+                                                <option value='Wallis And Futuna'>Wallis And Futuna (Fr)</option>
+                                                <option value='Western Sahara'>Western Sahara (د.م.)</option>
+                                                <option value='Yemen'>Yemen (﷼)</option>
+                                                <option value='Zambia'>Zambia (ZK)</option>
+                                                <option value='Zimbabwe'>Zimbabwe (Z$)</option>
+                                            </select>
+                                            <input class="uk-input uk-border-rounded" id="currency" v-model="newUser.currency" type="hidden">
+                                        </div>
+                                        <!--<div class="uk-margin-small uk-width-1-1 uk-inline">
+                                            Select Currency
+                                            <span class="uk-form-icon uk-form-icon-flip fas fa-flag fa-sm"></span>
+                                            <select class="uk-input uk-border-rounded" id="currency" v-model="newUser.currency" required inputmode="text" required>
+                                                <option disabled="" selected="">Please Select Currency</option>
+                                                <option value="؋<"؋</option>
+                                                <option value="Lek">Lek</option>
+                                                <option value="دج"> </option>
+                                                <option value="$">$</option>
+                                                <option value="€">€</option>
+                                                <option value="Kz">Kz</option>
+                                                <option value="֏">֏</option>
+                                                <option value="ƒ">ƒ</option>
+                                                <option value="AZN">AZN</option>
+                                                <option value="د."></option>
+                                                <option value="ó">ó</option>
+                                                <option value="Br">Br</option>
+                                                <option value="CFA">CFA</option>
+                                                <option value="Nu">Nu</option>
+                                                <option value="Bs">Bs</option>
+                                                <option value="KM">KM</option>
+                                                <option value="P">P</option>
+                                                <option value="kr">kr</option>
+                                                <option value="R$">R$</option>
+                                                <option value="B$">B$</option>
+                                                <option value="Лв.">Лв.</option>
+                                                <option value="FBu">FBu</option>
+                                                <option value="៛">៛</option>
+                                                <option value="FCFA">FCFA</option>
+                                                <option value="¥">¥</option>
+                                                <option value="CF">CF</option>
+                                                <option value="FC">FC</option>
+                                                <option value="₡">₡</option>
+                                                <option value="Kn">Kn</option>
+                                                <option value="Kč">Kč</option>
+                                                <option value="Fdj">Fdj</option>
+                                                <option value="RD$">RD$</option>
+                                                <option value="S/.">S/.</option>
+                                                <option value="E£">E£</option>
+                                                <option value="Nkf">Nkf</option>
+                                                <option value="£">£</option>
+                                                <option value="FJ$">FJ$</option>
+                                                <option value="mk">mk</option>
+                                                <option value="₣">₣</option>
+                                                <option value="D">D</option>
+                                                <option value="GEL">GEL</option>
+                                                <option value="GH₵">GH₵</option>
+                                                <option value="Kr.">Kr.</option>
+                                                <option value="Q">Q</option>
+                                                <option value="FG">FG</option>
+                                                <option value="G$">G$</option>
+                                                <option value="G">G</option>
+                                                <option value="₤">₤</option>
+                                                <option value="HNL">HNL</option>
+                                                <option value="HK$">HK$</option>
+                                                <option value="Ft">Ft</option>
+                                                <option value="₹">₹</option>
+                                                <option value="Rp">Rp</option>
+                                                <option value="IRR">IRR</option>
+                                                <option value="د.ع"></option>
+                                                <option value="₪">₪</option>
+                                                <option value="J$">J$</option>
+                                                <option value="د.ا"></option>
+                                                <option value="₸">₸</option>
+                                                <option value="KSh">KSh</option>
+                                                <option value="₩">₩</option>
+                                                <option value="د.ك"></option>
+                                                <option value="лв">лв</option>
+                                                <option value="₭">₭</option>
+                                                <option value="LVL">LVL</option>
+                                                <option value="ل.ل"></option>
+                                                <option value="L">L</option>
+                                                <option value="L$">L$</option>
+                                                <option value="LD">LD</option>
+                                                <option value="CHF">CHF</option>
+                                                <option value="Lt">Lt</option>
+                                                <option value="MOP$">MOP$</option>
+                                                <option value="den">den</option>
+                                                <option value="Ar">Ar</option>
+                                                <option value="K">K</option>
+                                                <option value="RM">RM</option>
+                                                <option value="Rf">Rf</option>
+                                                <option value="MAF">MAF</option>
+                                                <option value="MRU">MRU</option>
+                                                <option value="₨">₨</option>
+                                                <option value="L">L</option>
+                                                <option value="₮">₮</option>
+                                                <option value="MAD">MAD</option>
+                                                <option value="MT">MT</option>
+                                                <option value="N$">N$</option>
+                                                <option value="Rs">Rs</option>
+                                                <option value="ANG">ANG</option>
+                                                <option value="NAf">NAf</option>
+                                                <option value="C$">C$</option>
+                                                <option value="XOF">XOF</option>
+                                                <option value="₦">₦</option>
+                                                <option value="ر.ع."></option>
+                                                <option value="B/">B/</option>
+                                                <option value="₲">₲</option>
+                                                <option value="S/">S/</option>
+                                                <option value="₱">₱</option>
+                                                <option value="zł">zł</option>
+                                                <option value="QR">QR</option>
+                                                <option value="lei">lei</option>
+                                                <option value="₽">₽</option>
+                                                <option value="FRw">FRw</option>
+                                                <option value="X$">X$</option>
+                                                <option value="Db">Db</option>
+                                                <option value="﷼"></option>
+                                                <option value="din">din</option>
+                                                <option value="SCR">SCR</option>
+                                                <option value="Le">Le</option>
+                                                <option value="S$">S$</option>
+                                                <option value="SKK">SKK</option>
+                                                <option value="Si$">Si$</option>
+                                                <option value="Sh.so.">Sh.so.</option>
+                                                <option value="£SD">£SD</option>
+                                                <option value="CHf">CHf</option>
+                                                <option value="LS">LS</option>
+                                                <option value="NT$">NT$</option>
+                                                <option value="SM">SM</option>
+                                                <option value="TSh">TSh</option>
+                                                <option value="฿">฿</option>
+                                                <option value="T$">T$</option>
+                                                <option value="TT$">TT$</option>
+                                                <option value="DT">DT</option>
+                                                <option value="₺">₺</option>
+                                                <option value="T">T</option>
+                                                <option value="USh">USh</option>
+                                                <option value="₴">₴</option>
+                                                <option value="د.إ"></option>
+                                                <option value="$U">$U</option>
+                                                <option value="VT">VT</option>
+                                                <option value="Bs.">Bs.</option>
+                                                <option value="₫">₫</option>
+                                                <option value="Fr">Fr</option>
+                                                <option value="د.م."></option>
+                                                <option value="ر.ي, ﷼"></option>
+                                                <option value="ZK">ZK</option>
+                                            </select>
+                                        </div>-->
+                                        <!--<div class="uk-margin-small uk-width-1-1 uk-inline">
+                                            <span class="uk-form-icon uk-form-icon-flip fas fa-phone fa-sm"></span>
+                                            <input class="uk-input uk-border-rounded" id="phone" v-model="newUser.phone" type="tel" placeholder="Phone number : +xxxxxxxxx" required>
+                                        </div>-->
+                                        <div class="uk-margin-small uk-width-1-1 uk-inline">
+                                            <span class="uk-form-icon uk-form-icon-flip fas fa-envelope fa-sm"></span>
+                                            <input style="background-color:#000;" class="uk-input uk-border-rounded" id="email" v-model="newUser.email" type="email" placeholder="Email address" required>
+                                        </div>
+                                        <div class="uk-margin-small uk-width-1-1 uk-inline">
+                                            <span class="uk-form-icon uk-form-icon-flip fas fa-lock fa-sm"></span>
+                                            <input style="background-color:#000;" class="uk-input uk-border-rounded" id="password" v-model="newUser.password" type="password" placeholder="Password" maxlength="16" ng-minlength="8" required pattern=".{8,}" title="8 characters minimum" required>
+                                        </div>
+                                        <div class="uk-margin-small uk-width-1-1 uk-inline">
+                                            <span class="uk-form-icon uk-form-icon-flip fas fa-lock fa-sm"></span>
+                                            <input style="background-color:#000;" class="uk-input uk-border-rounded" id="confirm_password" v-model="newUser.confirm_password" type="password" placeholder="Confirm Password" maxlength="16" ng-minlength="8" pattern=".{6,}" title="8 characters minimum" required>
+                                        </div>
+
+                                        <!--<div class="uk-margin-small uk-width-auto uk-text-small">
+                                            <label><input class="uk-checkbox uk-border-rounded" type="checkbox"> I Agree To Terms & Conditions</label>
+                                        </div>-->
+
+                                        <div class="uk-margin-small uk-width-1-1 uk-inline">
+                                            <span class="uk-form-icon uk-form-icon-flip fas fa-flag fa-sm"></span>
+                                            <select style="background-color:#000;" class="uk-input uk-border-rounded" id="social_account" v-model="newUser.social_account" @change="getSocialAccount" required inputmode="text" required>
+                                                <option value="" disabled="">Please Select Social Account</option>
+                                                <option value="Facebook">Facebook</option>
+                                                <option value="Twitter">Twitter</option>
+                                                <option value="Instagram">Instagram</option>
+                                                <option value="WhatsApp">WhatsApp</option>
+                                                <option value="Telegram">Telegram</option>
+                                                <option value="LinkedIn">LinkedIn</option>
+                                            </select>
+                                        </div>
+                                        <div class="uk-margin-small uk-width-1-1 uk-inline" id="social_account_form">
+                                            <!--<span class="uk-form-icon uk-form-icon-flip fas fa-city fa-sm"></span>-->
+                                            <input style="background-color:#000;" class="uk-input uk-border-rounded" id="social_account_contact" v-model="newUser.social_account_contact" type="text" placeholder="Social Account Contact (Handle/Number)" required>
+                                        </div>
+
+                                        <div class="uk-margin-small uk-width-1-1 uk-inline">
+                                            <span class="uk-form-icon uk-form-icon-flip fas fa-user fa-sm"></span>
+                                            <input style="background-color:#000;" class="uk-input uk-border-rounded" id="ref_code" v-model="newUser.ref_code" type="text" placeholder="Referral Code" required>
+                                        </div>
+
+                                        <div class="uk-margin-small uk-width-1-1">
+                                            <button class="uk-button uk-width-1-1 uk-button-primary uk-border-rounded uk-float-left" type="submit" @click="checkSignUpForm()" style="background-color: #ff5627;" id="btnSignup">Sign Up</button>
+                                        </div>
+
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- section content end -->
+    </main>
+    <!-- Javascript -->
+    <script src="plugins/jquery-3.1.1.min.js"></script>
+    <script src="plugins/sweetalerts/sweetalert2.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+
+    <script src="broks/js/vendors/uikit.min.js"></script>
+    <script src="broks/js/vendors/indonez.min.js"></script>
+
+    <script src="vuejs/vue.js"></script>
+    <script src="vuejs/axios.js"></script>
+    <script>
+        // Site Under Maintenance
+        /*swal({
+            html: '<span style="font-size:25px!important;">Users please note:<br><b>Site is under maintenance.</b><br><br>We\'ll be back soon.</span>',
+            type: 'info',
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+        });*/
+
+        $('#social_account_form').hide(); // Hide social_account_form
+        document.getElementById('social_account_form').style.display = 'none!important'; // Hide social_account_form
+
+        // BASE URL and API Inclusion
+        const BASE_URL = '/';
+        const API = `${BASE_URL}home`;
+    </script>
+    <!--<script src="vuejs/users.js"></script>-->
+    <script>
+        var app = new Vue({
+            el: '#users',
+            data: {
+                newUser: { fullname:'', username:'', country:'', currency:'', email:'', password:'', confirm_password:'', social_account:'', social_account_contact:'', ref_code:'', mgr_code:'' }
+            },
+
+            methods: {
+
+                // 2.1. Check Sign Up Form
+                checkSignUpForm(){ // Check Form for any error before signing up User
+                    var UserForm = app.toFormData(app.newUser);
+                    
+                    if (!this.newUser.fullname){ // check if fullname is empty
+                        this.swalEmptyNotice('fullname');
+                    }
+                    else if (!this.newUser.username){ // check if username is empty
+                        this.swalEmptyNotice('username');
+                    }
+                    /*else if (!this.newUser.home_address){ // check if home_address is empty
+                        this.swalEmptyNotice('home_address');
+                    }
+                    else if (!this.newUser.city){ // check if city is empty
+                        this.swalEmptyNotice('city');
+                    }*/
+                    else if (!this.newUser.country){ // check if country is empty
+                        this.swalEmptyNotice('country');
+                    }
+                    /*else if (!this.newUser.phone){ // check if phone is empty
+                        this.swalEmptyNotice('phone');
+                    }*/
+                    else if (!this.newUser.email){ // check if email is empty
+                        this.swalEmptyNotice('email');
+                    }
+                    else if (!this.validEmail(this.newUser.email)){ // check if email is valid
+                        this.swalIEFTNotice('email');
+                    }
+                    else if (!this.newUser.password){ // check if password is empty
+                        this.swalEmptyNotice('password');
+                    }
+                    else if (!this.newUser.confirm_password){ // check if confirm_password is empty
+                        this.swalEmptyNotice('confirm_password');
+                    }
+                    else if ( this.newUser.confirm_password != this.newUser.password ){
+                        swal({
+                            html: `Sorry! <b>Passwords</b> do not match, please try again.`,
+                            type: "error",
+                            confirmButtonColor: "#c40000",
+                            confirmButtonText: "Okay!",
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            padding: '2em'
+                        });
+                    }
+                    else if (!this.newUser.social_account){ // check if social_account is empty
+                        this.swalEmptyNotice('social_account');
+                    }
+                    else if (!this.newUser.social_account_contact){ // check if social_account_contact is empty
+                        this.swalEmptyNotice('social_account_contact');
+                    }
+                    else {
+                        this.saveUser(UserForm);
+                    }
+                },
+                
+                // 2.2. Save New User
+                saveUser: function(UserFormData){
+                    $('#btnSignup').prop('disabled', true); // disable signup button
+                    axios.post(API+'/register', UserFormData)
+                    .then( function(val){
+                        
+                        $("#btnSignup").html('validating...'); // validating
+                        //$("#btnSignup").html('validating... <img src="https://fortunesportfolio.com/\'email-assets/images/loader.gif\'" alt=\'loader\' style=\'height:24px;\'>');
+
+                        if ( val.data.error==true && val.data.notice=='exists' ){
+                            // 1. Username or Email Exists
+                            swal({
+                                title: 'Exists!',
+                                html: `${val.data.message}`,
+                                type: "error",
+                                confirmButtonColor: "#c40000",
+                                confirmButtonText: "Try again!",
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                padding: '2em'
+                            }).then(function(){
+                                $("#btnSignup").html('Sign Up'); // Sign Up
+                                $('#btnSignup').prop('disabled', false); // enable signup button
+                                document.getElementById(`${val.data.field}`).focus(); // send focus to input field
+                            });
+                        }
+                        else if ( val.data.error==false && val.data.notice=='successful' ){
+                            // 2.1. Sign Up Successful
+                            app.clearSignUpForm(); // clear sign up form
+
+                            var note = val.data.notice.toUpperCase();
+                            swal({
+                                title: `${note}!`,
+                                html: `${val.data.message}`,
+                                type: "success",
+                                confirmButtonColor: "#c40000",
+                                confirmButtonText: "Great! Thank you.",
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                padding: '2em'
+                            }).then(function(){
+                                window.location.href = `/signin.html`;
+                            });
+                        }
+                        else if ( val.data.error==true && val.data.notice=='wrong' ){
+                            // 2.2. Something Went Wrong
+                            swal({
+                                title: 'Wrong!',
+                                html: `${val.data.message}`,
+                                type: 'info',
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                confirmButtonColor: "#c40000",
+                                confirmButtonText: 'Try again!'
+                            }).then(function(){
+                                window.location.reload();
+                            });
+                        }
+                    });
+                },
+                // clear form after successfully submitting new Student data
+                clearSignUpForm: function(){
+                    app.newUser=app.newUser = { fullname:'', username:'', country:'', currency:'', email:'', password:'', confirm_password:'', social_account:'', social_account_contact:'', ref_code:'', mgr_code:'' };
+                },
+
+
+                // Filter Email to Make Valid
+                validEmail: function (email){ // Validate Email
+                    var re = RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+                    return re.test(email);
+                },
+
+                // Get Country's Currency
+                getCurrency(){
+                    country_curr = this.newUser.country;
+
+                    //alert( country_curr );
+                    if ( country_curr == "Afghanistan" ){ this.newUser.currency = '؋'; }
+                    else if ( country_curr == "Albania" ){ this.newUser.currency = 'Lek'; }
+                    else if ( country_curr == "Algeria" ){ this.newUser.currency = 'دج'; }
+                    else if ( country_curr == "American Samoa" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Andorra" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Angola" ){ this.newUser.currency = 'Kz'; }
+                    else if ( country_curr == "Anguilla" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Antarctica" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Antigua and Barbuda" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Argentina" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Armenia" ){ this.newUser.currency = '֏'; }
+                    else if ( country_curr == "Aruba" ){ this.newUser.currency = 'ƒ'; }
+                    else if ( country_curr == "Australia" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Austria" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Azerbaijan" ){ this.newUser.currency = 'AZN'; }
+                    else if ( country_curr == "Bahamas" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Bahrain" ){ this.newUser.currency = 'د.'; }
+                    else if ( country_curr == "Bangladesh" ){ this.newUser.currency = 'ó'; }
+                    else if ( country_curr == "Barbados" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Belarus" ){ this.newUser.currency = 'Br'; }
+                    else if ( country_curr == "Belgium" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Belize" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Benin" ){ this.newUser.currency = 'CFA'; }
+                    else if ( country_curr == "Bermuda" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Bhutan" ){ this.newUser.currency = 'Nu'; }
+                    else if ( country_curr == "Bolivia" ){ this.newUser.currency = 'Bs'; }
+                    else if ( country_curr == "Bosnia and Herzegovina" ){ this.newUser.currency = 'KM'; }
+                    else if ( country_curr == "Botswana" ){ this.newUser.currency = 'P'; }
+                    else if ( country_curr == "Bouvet Island" ){ this.newUser.currency = 'kr'; }
+                    else if ( country_curr == "Brazil" ){ this.newUser.currency = 'R$'; }
+                    else if ( country_curr == "British Indian Ocean Territory" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Brunei Darussalam" ){ this.newUser.currency = 'B$'; }
+                    else if ( country_curr == "Bulgaria" ){ this.newUser.currency = 'Лв.'; }
+                    else if ( country_curr == "Burkina Faso" ){ this.newUser.currency = 'CFA'; }
+                    else if ( country_curr == "Burundi" ){ this.newUser.currency = 'FBu'; }
+                    else if ( country_curr == "Cambodia" ){ this.newUser.currency = '៛'; }
+                    else if ( country_curr == "Cameroon" ){ this.newUser.currency = 'FCFA'; }
+                    else if ( country_curr == "Canada" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Cape Verde" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Cayman Islands" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Central African Republic" ){ this.newUser.currency = 'FCFA'; }
+                    else if ( country_curr == "Chad" ){ this.newUser.currency = 'FCFA'; }
+                    else if ( country_curr == "Chile" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "China" ){ this.newUser.currency = '¥'; }
+                    else if ( country_curr == "Christmas Island" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Cocos (Keeling) Islands" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Colombia" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Comoros" ){ this.newUser.currency = 'CF'; }
+                    else if ( country_curr == "Congo" ){ this.newUser.currency = 'FC'; }
+                    else if ( country_curr == "Democratic Republic of the Congo" ){ this.newUser.currency = 'FC'; }
+                    else if ( country_curr == "Cook Islands" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Costa Rica" ){ this.newUser.currency = '₡'; }
+                    else if ( country_curr == "Cote D'Ivoire" ){ this.newUser.currency = 'CFA'; }
+                    else if ( country_curr == "Croatia" ){ this.newUser.currency = 'Kn'; }
+                    else if ( country_curr == "Cuba" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Cyprus" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Czech Republic" ){ this.newUser.currency = 'Kč'; }
+                    else if ( country_curr == "Denmark" ){ this.newUser.currency = 'kr'; }
+                    else if ( country_curr == "Djibouti" ){ this.newUser.currency = 'Fdj'; }
+                    else if ( country_curr == "Dominica" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Dominican Republic" ){ this.newUser.currency = 'RD$'; }
+                    else if ( country_curr == "Ecuador" ){ this.newUser.currency = 'S/.'; }
+                    else if ( country_curr == "Egypt" ){ this.newUser.currency = 'E£'; }
+                    else if ( country_curr == "El Salvador" ){ this.newUser.currency = '₡'; }
+                    else if ( country_curr == "Equatorial Guinea" ){ this.newUser.currency = 'FCFA'; }
+                    else if ( country_curr == "Eritrea" ){ this.newUser.currency = 'Nkf'; }
+                    else if ( country_curr == "Estonia" ){ this.newUser.currency = 'kr'; }
+                    else if ( country_curr == "Ethiopia" ){ this.newUser.currency = 'Br'; }
+                    else if ( country_curr == "Falkland Islands (Malvinas)" ){ this.newUser.currency = '£'; }
+                    else if ( country_curr == "Faroe Islands" ){ this.newUser.currency = 'kr'; }
+                    else if ( country_curr == "Fiji" ){ this.newUser.currency = 'FJ$'; }
+                    else if ( country_curr == "Finland" ){ this.newUser.currency = 'mk'; }
+                    else if ( country_curr == "France" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "French Guiana" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "French Polynesia" ){ this.newUser.currency = '₣'; }
+                    else if ( country_curr == "French Southern Territories" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Gabon" ){ this.newUser.currency = 'FCFA'; }
+                    else if ( country_curr == "Gambia" ){ this.newUser.currency = 'D'; }
+                    else if ( country_curr == "Georgia" ){ this.newUser.currency = 'GEL'; }
+                    else if ( country_curr == "Germany" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Ghana" ){ this.newUser.currency = 'GH₵'; }
+                    else if ( country_curr == "Gibraltar" ){ this.newUser.currency = '£'; }
+                    else if ( country_curr == "Greece" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Greenland" ){ this.newUser.currency = 'Kr.'; }
+                    else if ( country_curr == "Grenada" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Guadeloupe" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Guam" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Guatemala" ){ this.newUser.currency = 'Q'; }
+                    else if ( country_curr == "Guernsey" ){ this.newUser.currency = '£'; }
+                    else if ( country_curr == "Guinea" ){ this.newUser.currency = 'FG'; }
+                    else if ( country_curr == "Guinea-Bissau" ){ this.newUser.currency = 'CFA'; }
+                    else if ( country_curr == "Guyana" ){ this.newUser.currency = 'G$'; }
+                    else if ( country_curr == "Haiti" ){ this.newUser.currency = 'G'; }
+                    else if ( country_curr == "Heard Island and McDonald Islands" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Holy See (Vatican City State)" ){ this.newUser.currency = '₤'; }
+                    else if ( country_curr == "Honduras" ){ this.newUser.currency = 'HNL'; }
+                    else if ( country_curr == "Hong Kong" ){ this.newUser.currency = 'HK$'; }
+                    else if ( country_curr == "Hungary" ){ this.newUser.currency = 'Ft'; }
+                    else if ( country_curr == "Iceland" ){ this.newUser.currency = 'kr'; }
+                    else if ( country_curr == "India" ){ this.newUser.currency = '₹'; }
+                    else if ( country_curr == "Indonesia" ){ this.newUser.currency = 'Rp'; }
+                    else if ( country_curr == "Islamic Republic of Iran" ){ this.newUser.currency = 'IRR'; }
+                    else if ( country_curr == "Iraq" ){ this.newUser.currency = 'د.ع'; }
+                    else if ( country_curr == "Ireland" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Isle of Man" ){ this.newUser.currency = '£'; }
+                    else if ( country_curr == "Israel" ){ this.newUser.currency = '₪'; }
+                    else if ( country_curr == "Italy" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Jamaica" ){ this.newUser.currency = 'J$'; }
+                    else if ( country_curr == "Japan" ){ this.newUser.currency = '¥'; }
+                    else if ( country_curr == "Jersey" ){ this.newUser.currency = '£'; }
+                    else if ( country_curr == "Jordan" ){ this.newUser.currency = 'د.ا'; }
+                    else if ( country_curr == "Kazakhstan" ){ this.newUser.currency = '₸'; }
+                    else if ( country_curr == "Kenya" ){ this.newUser.currency = 'KSh'; }
+                    else if ( country_curr == "Kiribati" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Democratic People's Republic of Korea" ){ this.newUser.currency = '₩'; }
+                    else if ( country_curr == "Republic of Korea" ){ this.newUser.currency = '₩'; }
+                    else if ( country_curr == "Kuwait" ){ this.newUser.currency = 'د.ك'; }
+                    else if ( country_curr == "Kyrgyzstan" ){ this.newUser.currency = 'лв'; }
+                    else if ( country_curr == "Lao People's Democratic Republic" ){ this.newUser.currency = '₭'; }
+                    else if ( country_curr == "Latvia" ){ this.newUser.currency = 'LVL'; }
+                    else if ( country_curr == "Lebanon" ){ this.newUser.currency = 'ل.ل'; }
+                    else if ( country_curr == "Lesotho" ){ this.newUser.currency = 'L'; }
+                    else if ( country_curr == "Liberia" ){ this.newUser.currency = 'L$'; }
+                    else if ( country_curr == "Libyan Arab Jamahiriya" ){ this.newUser.currency = 'LD'; }
+                    else if ( country_curr == "Liechtenstein" ){ this.newUser.currency = 'CHF'; }
+                    else if ( country_curr == "Lithuania" ){ this.newUser.currency = 'Lt'; }
+                    else if ( country_curr == "Luxembourg" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Macao" ){ this.newUser.currency = 'MOP$'; }
+                    else if ( country_curr == "The Former Yugoslav Republic of Macedonia" ){ this.newUser.currency = 'den'; }
+                    else if ( country_curr == "Madagascar" ){ this.newUser.currency = 'Ar'; }
+                    else if ( country_curr == "Malawi" ){ this.newUser.currency = 'K'; }
+                    else if ( country_curr == "Malaysia" ){ this.newUser.currency = 'RM'; }
+                    else if ( country_curr == "Maldives" ){ this.newUser.currency = 'Rf'; }
+                    else if ( country_curr == "Mali" ){ this.newUser.currency = 'MAF'; }
+                    else if ( country_curr == "Malta" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Marshall Islands" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Martinique" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Mauritania" ){ this.newUser.currency = 'MRU'; }
+                    else if ( country_curr == "Mauritius" ){ this.newUser.currency = '₨'; }
+                    else if ( country_curr == "Mayotte" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Mexico" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Federated States of Micronesia" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Republic of Moldova" ){ this.newUser.currency = 'L'; }
+                    else if ( country_curr == "Monaco" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Mongolia" ){ this.newUser.currency = '₮'; }
+                    else if ( country_curr == "Montenegro" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Montserrat" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Morocco" ){ this.newUser.currency = 'MAD'; }
+                    else if ( country_curr == "Mozambique" ){ this.newUser.currency = 'MT'; }
+                    else if ( country_curr == "Myanmar" ){ this.newUser.currency = 'K'; }
+                    else if ( country_curr == "Namibia" ){ this.newUser.currency = 'N$'; }
+                    else if ( country_curr == "Nauru" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Nepal" ){ this.newUser.currency = 'Rs'; }
+                    else if ( country_curr == "Netherlands" ){ this.newUser.currency = 'ANG'; }
+                    else if ( country_curr == "Netherlands Antilles" ){ this.newUser.currency = 'NAf'; }
+                    else if ( country_curr == "New Caledonia" ){ this.newUser.currency = '₣'; }
+                    else if ( country_curr == "New Zealand" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Nicaragua" ){ this.newUser.currency = 'C$'; }
+                    else if ( country_curr == "Niger" ){ this.newUser.currency = 'XOF'; }
+                    else if ( country_curr == "Nigeria" ){ this.newUser.currency = '₦'; }
+                    else if ( country_curr == "Niue" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Norfolk Island" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Northern Mariana Islands" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Norway" ){ this.newUser.currency = 'kr'; }
+                    else if ( country_curr == "Oman" ){ this.newUser.currency = 'ر.ع.'; }
+                    else if ( country_curr == "Pakistan" ){ this.newUser.currency = '₨'; }
+                    else if ( country_curr == "Palau" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Occupied Palestinian Territory" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Panama" ){ this.newUser.currency = 'B/'; }
+                    else if ( country_curr == "Papua New Guinea" ){ this.newUser.currency = 'K'; }
+                    else if ( country_curr == "Paraguay" ){ this.newUser.currency = '₲'; }
+                    else if ( country_curr == "Peru" ){ this.newUser.currency = 'S/'; }
+                    else if ( country_curr == "Philippines" ){ this.newUser.currency = '₱'; }
+                    else if ( country_curr == "Pitcairn" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Poland" ){ this.newUser.currency = 'zł'; }
+                    else if ( country_curr == "Portugal" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Puerto Rico" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Qatar" ){ this.newUser.currency = 'QR'; }
+                    else if ( country_curr == "Reunion" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Romania" ){ this.newUser.currency = 'lei'; }
+                    else if ( country_curr == "Russian Federation" ){ this.newUser.currency = '₽'; }
+                    else if ( country_curr == "Rwanda" ){ this.newUser.currency = 'FRw'; }
+                    else if ( country_curr == "Saint Barthélemy" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Saint Helena" ){ this.newUser.currency = '£'; }
+                    else if ( country_curr == "Saint Kitts and Nevis" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Saint Lucia" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Saint Martin" ){ this.newUser.currency = 'ƒ'; }
+                    else if ( country_curr == "Saint Pierre and Miquelon" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Saint Vincent and the Grenadines" ){ this.newUser.currency = 'X$'; }
+                    else if ( country_curr == "Samoa" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "San Marino" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Sao Tome and Principe" ){ this.newUser.currency = 'Db'; }
+                    else if ( country_curr == "Saudi Arabia" ){ this.newUser.currency = '﷼'; }
+                    else if ( country_curr == "Senegal" ){ this.newUser.currency = 'CFA'; }
+                    else if ( country_curr == "Serbia" ){ this.newUser.currency = 'din'; }
+                    else if ( country_curr == "Seychelles" ){ this.newUser.currency = 'SCR'; }
+                    else if ( country_curr == "Sierra Leone" ){ this.newUser.currency = 'Le'; }
+                    else if ( country_curr == "Singapore" ){ this.newUser.currency = 'S$'; }
+                    else if ( country_curr == "Slovakia" ){ this.newUser.currency = 'SKK'; }
+                    else if ( country_curr == "Slovenia" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Solomon Islands" ){ this.newUser.currency = 'Si$'; }
+                    else if ( country_curr == "Somalia" ){ this.newUser.currency = 'Sh.so.'; }
+                    else if ( country_curr == "South Africa" ){ this.newUser.currency = 'R'; }
+                    else if ( country_curr == "South Georgia and the South Sandwich Islands" ){ this.newUser.currency = '£'; }
+                    else if ( country_curr == "Spain" ){ this.newUser.currency = '€'; }
+                    else if ( country_curr == "Sri Lanka" ){ this.newUser.currency = 'Rs'; }
+                    else if ( country_curr == "Sudan" ){ this.newUser.currency = '£SD'; }
+                    else if ( country_curr == "Suriname" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Svalbard and Jan Mayen" ){ this.newUser.currency = 'kr'; }
+                    else if ( country_curr == "Swaziland" ){ this.newUser.currency = 'L'; }
+                    else if ( country_curr == "Sweden" ){ this.newUser.currency = 'kr'; }
+                    else if ( country_curr == "Switzerland" ){ this.newUser.currency = 'CHf'; }
+                    else if ( country_curr == "Syrian Arab Republic" ){ this.newUser.currency = 'LS'; }
+                    else if ( country_curr == "Taiwan, Province Of China" ){ this.newUser.currency = 'NT$'; }
+                    else if ( country_curr == "Tajikistan" ){ this.newUser.currency = 'SM'; }
+                    else if ( country_curr == "United Republic of Tanzania" ){ this.newUser.currency = 'TSh'; }
+                    else if ( country_curr == "Thailand" ){ this.newUser.currency = '฿)'; }
+                    else if ( country_curr == "Timor-Leste" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Togo" ){ this.newUser.currency = 'CFA'; }
+                    else if ( country_curr == "Tokelau" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Tonga" ){ this.newUser.currency = 'T$'; }
+                    else if ( country_curr == "Trinidad and Tobago" ){ this.newUser.currency = 'TT$'; }
+                    else if ( country_curr == "Tunisia" ){ this.newUser.currency = 'د.ت'; }
+                    else if ( country_curr == "Turkey" ){ this.newUser.currency = '₺'; }
+                    else if ( country_curr == "Turkmenistan" ){ this.newUser.currency = 'T'; }
+                    else if ( country_curr == "Turks and Caicos Islands" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Tuvalu" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Uganda" ){ this.newUser.currency = 'USh'; }
+                    else if ( country_curr == "Ukraine" ){ this.newUser.currency = '₴'; }
+                    else if ( country_curr == "United Arab Emirates" ){ this.newUser.currency = 'د.إ'; }
+                    else if ( country_curr == "United Kingdom" ){ this.newUser.currency = '£'; }
+                    else if ( country_curr == "United States" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "United States Minor Outlying Islands" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Uruguay" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Uzbekistan" ){ this.newUser.currency = 'лв'; }
+                    else if ( country_curr == "Vanuatu" ){ this.newUser.currency = 'VT'; }
+                    else if ( country_curr == "Venezuela" ){ this.newUser.currency = 'Bs.'; }
+                    else if ( country_curr == "Vietnam" ){ this.newUser.currency = '₫'; }
+                    else if ( country_curr == "British, Virgin Islands" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "U.S., Virgin Islands" ){ this.newUser.currency = '$'; }
+                    else if ( country_curr == "Wallis And Futuna" ){ this.newUser.currency = 'Fr'; }
+                    else if ( country_curr == "Western Sahara" ){ this.newUser.currency = 'د.م.'; }
+                    else if ( country_curr == "Yemen" ){ this.newUser.currency = '﷼'; }
+                    else if ( country_curr == "Zambia" ){ this.newUser.currency = 'ZK'; }
+                    else if ( country_curr == "Zimbabwe" ){ this.newUser.currency = 'Z$'; }
+                },
+
+                // Get User's Social Account
+                getSocialAccount(){
+                    social_acc = this.newUser.social_account;
+
+                    if ( social_acc != "" ){
+                        $('#social_account_form').show(); // Show social_account_form
+                        document.getElementById('social_account_form').style.display = 'block!important'; // Show social_account_form
+                    }
+                },
+
+
+                //---- Notices: BEFORE LOGIN
+                // For Empty Input Fields - Sign In; Sign Up & Others
+                swalEmptyNotice: function(field){
+                    fieldAlert = field.split('_').join(' ').toUpperCase(); // convert to uppercase
+                    swal({
+                        html: `Sorry! <b>${fieldAlert}</b> cannot be left empty, please try again.`,
+                        type: "error",
+                        confirmButtonColor: "#c40000",
+                        confirmButtonText: "Try again!",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        padding: '2em'
+                    }).then(function(){
+                        document.getElementById(`${field}`).focus(); // send focus to input field
+                    });
+                },
+
+                // Invalid Email & File Type
+                swalIEFTNotice: function(field){
+                    fieldAlert = field.split('_').join(' ').toUpperCase(); // convert to uppercase
+                    swal({
+                        //title: 'Are you sure you want to delete your account?',
+                        html: `Sorry! <b>${fieldAlert}</b> is not valid, please try again.`,
+                        type: "error",
+                        confirmButtonColor: "#c40000",
+                        confirmButtonText: 'Oops, sorry!',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        padding: '2em'
+                    });
+                },
+
+                toFormData: function(obj){
+                    var form_data = new FormData();
+                    for(var key in obj){
+                        form_data.append(key, obj[key]);
+                    }
+                    return form_data;
+                },
+            }
+        });
+    </script>
+    <script>
+        /*$(document).ready(function(){
+            $('#country').on('change', function(){
+                var country = $(this).val();
+
+                if ( country == "Afghanistan" ){ $('#currency').val('؋'); }
+                else if ( country == "Albania" ){ $('#currency').val('Lek'); }
+                else if ( country == "Algeria" ){ $('#currency').val('دج'); }
+                else if ( country == "American Samoa" ){ $('#currency').val('$'); }
+                else if ( country == "Andorra" ){ $('#currency').val('€'); }
+                else if ( country == "Angola" ){ $('#currency').val('Kz'); }
+                else if ( country == "Anguilla" ){ $('#currency').val('$'); }
+                else if ( country == "Antarctica" ){ $('#currency').val('$'); }
+                else if ( country == "Antigua and Barbuda" ){ $('#currency').val('$'); }
+                else if ( country == "Argentina" ){ $('#currency').val('$'); }
+                else if ( country == "Armenia" ){ $('#currency').val('֏'); }
+                else if ( country == "Aruba" ){ $('#currency').val('ƒ'); }
+                else if ( country == "Australia" ){ $('#currency').val('$'); }
+                else if ( country == "Austria" ){ $('#currency').val('€'); }
+                else if ( country == "Azerbaijan" ){ $('#currency').val('AZN'); }
+                else if ( country == "Bahamas" ){ $('#currency').val('$'); }
+                else if ( country == "Bahrain" ){ $('#currency').val('د.'); }
+                else if ( country == "Bangladesh" ){ $('#currency').val('ó'); }
+                else if ( country == "Barbados" ){ $('#currency').val('$'); }
+                else if ( country == "Belarus" ){ $('#currency').val('Br'); }
+                else if ( country == "Belgium" ){ $('#currency').val('€'); }
+                else if ( country == "Belize" ){ $('#currency').val('$'); }
+                else if ( country == "Benin" ){ $('#currency').val('CFA'); }
+                else if ( country == "Bermuda" ){ $('#currency').val('$'); }
+                else if ( country == "Bhutan" ){ $('#currency').val('Nu'); }
+                else if ( country == "Bolivia" ){ $('#currency').val('Bs'); }
+                else if ( country == "Bosnia and Herzegovina" ){ $('#currency').val('KM'); }
+                else if ( country == "Botswana" ){ $('#currency').val('P'); }
+                else if ( country == "Bouvet Island" ){ $('#currency').val('kr'); }
+                else if ( country == "Brazil" ){ $('#currency').val('R$'); }
+                else if ( country == "British Indian Ocean Territory" ){ $('#currency').val('$'); }
+                else if ( country == "Brunei Darussalam" ){ $('#currency').val('B$'); }
+                else if ( country == "Bulgaria" ){ $('#currency').val('Лв.'); }
+                else if ( country == "Burkina Faso" ){ $('#currency').val('CFA'); }
+                else if ( country == "Burundi" ){ $('#currency').val('FBu'); }
+                else if ( country == "Cambodia" ){ $('#currency').val('៛'); }
+                else if ( country == "Cameroon" ){ $('#currency').val('FCFA'); }
+                else if ( country == "Canada" ){ $('#currency').val('$'); }
+                else if ( country == "Cape Verde" ){ $('#currency').val('$'); }
+                else if ( country == "Cayman Islands" ){ $('#currency').val('$'); }
+                else if ( country == "Central African Republic" ){ $('#currency').val('FCFA'); }
+                else if ( country == "Chad" ){ $('#currency').val('FCFA'); }
+                else if ( country == "Chile" ){ $('#currency').val('$'); }
+                else if ( country == "China" ){ $('#currency').val('¥'); }
+                else if ( country == "Christmas Island" ){ $('#currency').val('$'); }
+                else if ( country == "Cocos (Keeling) Islands" ){ $('#currency').val('$'); }
+                else if ( country == "Colombia" ){ $('#currency').val('$'); }
+                else if ( country == "Comoros" ){ $('#currency').val('CF'); }
+                else if ( country == "Congo" ){ $('#currency').val('FC'); }
+                else if ( country == "Democratic Republic of the Congo" ){ $('#currency').val('FC'); }
+                else if ( country == "Cook Islands" ){ $('#currency').val('$'); }
+                else if ( country == "Costa Rica" ){ $('#currency').val('₡'); }
+                else if ( country == "Cote D'Ivoire" ){ $('#currency').val('CFA'); }
+                else if ( country == "Croatia" ){ $('#currency').val('Kn'); }
+                else if ( country == "Cuba" ){ $('#currency').val('$'); }
+                else if ( country == "Cyprus" ){ $('#currency').val('€'); }
+                else if ( country == "Czech Republic" ){ $('#currency').val('Kč'); }
+                else if ( country == "Denmark" ){ $('#currency').val('kr'); }
+                else if ( country == "Djibouti" ){ $('#currency').val('Fdj'); }
+                else if ( country == "Dominica" ){ $('#currency').val('$'); }
+                else if ( country == "Dominican Republic" ){ $('#currency').val('RD$'); }
+                else if ( country == "Ecuador" ){ $('#currency').val('S/.'); }
+                else if ( country == "Egypt" ){ $('#currency').val('E£'); }
+                else if ( country == "El Salvador" ){ $('#currency').val('₡'); }
+                else if ( country == "Equatorial Guinea" ){ $('#currency').val('FCFA'); }
+                else if ( country == "Eritrea" ){ $('#currency').val('Nkf'); }
+                else if ( country == "Estonia" ){ $('#currency').val('kr'); }
+                else if ( country == "Ethiopia" ){ $('#currency').val('Br'); }
+                else if ( country == "Falkland Islands (Malvinas)" ){ $('#currency').val('£'); }
+                else if ( country == "Faroe Islands" ){ $('#currency').val('kr'); }
+                else if ( country == "Fiji" ){ $('#currency').val('FJ$'); }
+                else if ( country == "Finland" ){ $('#currency').val('mk'); }
+                else if ( country == "France" ){ $('#currency').val('€'); }
+                else if ( country == "French Guiana" ){ $('#currency').val('€'); }
+                else if ( country == "French Polynesia" ){ $('#currency').val('₣'); }
+                else if ( country == "French Southern Territories" ){ $('#currency').val('€'); }
+                else if ( country == "Gabon" ){ $('#currency').val('FCFA'); }
+                else if ( country == "Gambia" ){ $('#currency').val('D'); }
+                else if ( country == "Georgia" ){ $('#currency').val('GEL'); }
+                else if ( country == "Germany" ){ $('#currency').val('€'); }
+                else if ( country == "Ghana" ){ $('#currency').val('GH₵'); }
+                else if ( country == "Gibraltar" ){ $('#currency').val('£'); }
+                else if ( country == "Greece" ){ $('#currency').val('€'); }
+                else if ( country == "Greenland" ){ $('#currency').val('Kr.'); }
+                else if ( country == "Grenada" ){ $('#currency').val('$'); }
+                else if ( country == "Guadeloupe" ){ $('#currency').val('€'); }
+                else if ( country == "Guam" ){ $('#currency').val('$'); }
+                else if ( country == "Guatemala" ){ $('#currency').val('Q'); }
+                else if ( country == "Guernsey" ){ $('#currency').val('£'); }
+                else if ( country == "Guinea" ){ $('#currency').val('FG'); }
+                else if ( country == "Guinea-Bissau" ){ $('#currency').val('CFA'); }
+                else if ( country == "Guyana" ){ $('#currency').val('G$'); }
+                else if ( country == "Haiti" ){ $('#currency').val('G'); }
+                else if ( country == "Heard Island and McDonald Islands" ){ $('#currency').val('$'); }
+                else if ( country == "Holy See (Vatican City State)" ){ $('#currency').val('₤'); }
+                else if ( country == "Honduras" ){ $('#currency').val('HNL'); }
+                else if ( country == "Hong Kong" ){ $('#currency').val('HK$'); }
+                else if ( country == "Hungary" ){ $('#currency').val('Ft'); }
+                else if ( country == "Iceland" ){ $('#currency').val('kr'); }
+                else if ( country == "India" ){ $('#currency').val('₹'); }
+                else if ( country == "Indonesia" ){ $('#currency').val('Rp'); }
+                else if ( country == "Islamic Republic of Iran" ){ $('#currency').val('IRR'); }
+                else if ( country == "Iraq" ){ $('#currency').val('د.ع'); }
+                else if ( country == "Ireland" ){ $('#currency').val('€'); }
+                else if ( country == "Isle of Man" ){ $('#currency').val('£'); }
+                else if ( country == "Israel" ){ $('#currency').val('₪'); }
+                else if ( country == "Italy" ){ $('#currency').val('€'); }
+                else if ( country == "Jamaica" ){ $('#currency').val('J$'); }
+                else if ( country == "Japan" ){ $('#currency').val('¥'); }
+                else if ( country == "Jersey" ){ $('#currency').val('£'); }
+                else if ( country == "Jordan" ){ $('#currency').val('د.ا'); }
+                else if ( country == "Kazakhstan" ){ $('#currency').val('₸'); }
+                else if ( country == "Kenya" ){ $('#currency').val('KSh'); }
+                else if ( country == "Kiribati" ){ $('#currency').val('$'); }
+                else if ( country == "Democratic People's Republic of Korea" ){ $('#currency').val('₩'); }
+                else if ( country == "Republic of Korea" ){ $('#currency').val('₩'); }
+                else if ( country == "Kuwait" ){ $('#currency').val('د.ك'); }
+                else if ( country == "Kyrgyzstan" ){ $('#currency').val('лв'); }
+                else if ( country == "Lao People's Democratic Republic" ){ $('#currency').val('₭'); }
+                else if ( country == "Latvia" ){ $('#currency').val('LVL'); }
+                else if ( country == "Lebanon" ){ $('#currency').val('ل.ل'); }
+                else if ( country == "Lesotho" ){ $('#currency').val('L'); }
+                else if ( country == "Liberia" ){ $('#currency').val('L$'); }
+                else if ( country == "Libyan Arab Jamahiriya" ){ $('#currency').val('LD'); }
+                else if ( country == "Liechtenstein" ){ $('#currency').val('CHF'); }
+                else if ( country == "Lithuania" ){ $('#currency').val('Lt'); }
+                else if ( country == "Luxembourg" ){ $('#currency').val('€'); }
+                else if ( country == "Macao" ){ $('#currency').val('MOP$'); }
+                else if ( country == "The Former Yugoslav Republic of Macedonia" ){ $('#currency').val('den'); }
+                else if ( country == "Madagascar" ){ $('#currency').val('Ar'); }
+                else if ( country == "Malawi" ){ $('#currency').val('K'); }
+                else if ( country == "Malaysia" ){ $('#currency').val('RM'); }
+                else if ( country == "Maldives" ){ $('#currency').val('Rf'); }
+                else if ( country == "Mali" ){ $('#currency').val('MAF'); }
+                else if ( country == "Malta" ){ $('#currency').val('€'); }
+                else if ( country == "Marshall Islands" ){ $('#currency').val('$'); }
+                else if ( country == "Martinique" ){ $('#currency').val('€'); }
+                else if ( country == "Mauritania" ){ $('#currency').val('MRU'); }
+                else if ( country == "Mauritius" ){ $('#currency').val('₨'); }
+                else if ( country == "Mayotte" ){ $('#currency').val('€'); }
+                else if ( country == "Mexico" ){ $('#currency').val('$'); }
+                else if ( country == "Federated States of Micronesia" ){ $('#currency').val('$'); }
+                else if ( country == "Republic of Moldova" ){ $('#currency').val('L'); }
+                else if ( country == "Monaco" ){ $('#currency').val('€'); }
+                else if ( country == "Mongolia" ){ $('#currency').val('₮'); }
+                else if ( country == "Montenegro" ){ $('#currency').val('€'); }
+                else if ( country == "Montserrat" ){ $('#currency').val('$'); }
+                else if ( country == "Morocco" ){ $('#currency').val('MAD'); }
+                else if ( country == "Mozambique" ){ $('#currency').val('MT'); }
+                else if ( country == "Myanmar" ){ $('#currency').val('K'); }
+                else if ( country == "Namibia" ){ $('#currency').val('N$'); }
+                else if ( country == "Nauru" ){ $('#currency').val('$'); }
+                else if ( country == "Nepal" ){ $('#currency').val('Rs'); }
+                else if ( country == "Netherlands" ){ $('#currency').val('ANG'); }
+                else if ( country == "Netherlands Antilles" ){ $('#currency').val('NAf'); }
+                else if ( country == "New Caledonia" ){ $('#currency').val('₣'); }
+                else if ( country == "New Zealand" ){ $('#currency').val('$'); }
+                else if ( country == "Nicaragua" ){ $('#currency').val('C$'); }
+                else if ( country == "Niger" ){ $('#currency').val('XOF'); }
+                else if ( country == "Nigeria" ){ $('#currency').val('₦'); }
+                else if ( country == "Niue" ){ $('#currency').val('$'); }
+                else if ( country == "Norfolk Island" ){ $('#currency').val('$'); }
+                else if ( country == "Northern Mariana Islands" ){ $('#currency').val('$'); }
+                else if ( country == "Norway" ){ $('#currency').val('kr'); }
+                else if ( country == "Oman" ){ $('#currency').val('ر.ع.'); }
+                else if ( country == "Pakistan" ){ $('#currency').val('₨'); }
+                else if ( country == "Palau" ){ $('#currency').val('$'); }
+                else if ( country == "Occupied Palestinian Territory" ){ $('#currency').val('$'); }
+                else if ( country == "Panama" ){ $('#currency').val('B/'); }
+                else if ( country == "Papua New Guinea" ){ $('#currency').val('K'); }
+                else if ( country == "Paraguay" ){ $('#currency').val('₲'); }
+                else if ( country == "Peru" ){ $('#currency').val('S/'); }
+                else if ( country == "Philippines" ){ $('#currency').val('₱'); }
+                else if ( country == "Pitcairn" ){ $('#currency').val('$'); }
+                else if ( country == "Poland" ){ $('#currency').val('zł'); }
+                else if ( country == "Portugal" ){ $('#currency').val('€'); }
+                else if ( country == "Puerto Rico" ){ $('#currency').val('$'); }
+                else if ( country == "Qatar" ){ $('#currency').val('QR'); }
+                else if ( country == "Reunion" ){ $('#currency').val('€'); }
+                else if ( country == "Romania" ){ $('#currency').val('lei'); }
+                else if ( country == "Russian Federation" ){ $('#currency').val('₽'); }
+                else if ( country == "Rwanda" ){ $('#currency').val('FRw'); }
+                else if ( country == "Saint Barthélemy" ){ $('#currency').val('€'); }
+                else if ( country == "Saint Helena" ){ $('#currency').val('£'); }
+                else if ( country == "Saint Kitts and Nevis" ){ $('#currency').val('$'); }
+                else if ( country == "Saint Lucia" ){ $('#currency').val('$'); }
+                else if ( country == "Saint Martin" ){ $('#currency').val('ƒ'); }
+                else if ( country == "Saint Pierre and Miquelon" ){ $('#currency').val('€'); }
+                else if ( country == "Saint Vincent and the Grenadines" ){ $('#currency').val('X$'); }
+                else if ( country == "Samoa" ){ $('#currency').val('$'); }
+                else if ( country == "San Marino" ){ $('#currency').val('€'); }
+                else if ( country == "Sao Tome and Principe" ){ $('#currency').val('Db'); }
+                else if ( country == "Saudi Arabia" ){ $('#currency').val('﷼'); }
+                else if ( country == "Senegal" ){ $('#currency').val('CFA'); }
+                else if ( country == "Serbia" ){ $('#currency').val('din'); }
+                else if ( country == "Seychelles" ){ $('#currency').val('SCR'); }
+                else if ( country == "Sierra Leone" ){ $('#currency').val('Le'); }
+                else if ( country == "Singapore" ){ $('#currency').val('S$'); }
+                else if ( country == "Slovakia" ){ $('#currency').val('SKK'); }
+                else if ( country == "Slovenia" ){ $('#currency').val('€'); }
+                else if ( country == "Solomon Islands" ){ $('#currency').val('Si$'); }
+                else if ( country == "Somalia" ){ $('#currency').val('Sh.so.'); }
+                else if ( country == "South Africa" ){ $('#currency').val('R'); }
+                else if ( country == "South Georgia and the South Sandwich Islands" ){ $('#currency').val('£'); }
+                else if ( country == "Spain" ){ $('#currency').val('€'); }
+                else if ( country == "Sri Lanka" ){ $('#currency').val('Rs'); }
+                else if ( country == "Sudan" ){ $('#currency').val('£SD'); }
+                else if ( country == "Suriname" ){ $('#currency').val('$'); }
+                else if ( country == "Svalbard and Jan Mayen" ){ $('#currency').val('kr'); }
+                else if ( country == "Swaziland" ){ $('#currency').val('L'); }
+                else if ( country == "Sweden" ){ $('#currency').val('kr'); }
+                else if ( country == "Switzerland" ){ $('#currency').val('CHf'); }
+                else if ( country == "Syrian Arab Republic" ){ $('#currency').val('LS'); }
+                else if ( country == "Taiwan, Province Of China" ){ $('#currency').val('NT$'); }
+                else if ( country == "Tajikistan" ){ $('#currency').val('SM'); }
+                else if ( country == "United Republic of Tanzania" ){ $('#currency').val('TSh'); }
+                else if ( country == "Thailand" ){ $('#currency').val('฿)'); }
+                else if ( country == "Timor-Leste" ){ $('#currency').val('$'); }
+                else if ( country == "Togo" ){ $('#currency').val('CFA'); }
+                else if ( country == "Tokelau" ){ $('#currency').val('$'); }
+                else if ( country == "Tonga" ){ $('#currency').val('T$'); }
+                else if ( country == "Trinidad and Tobago" ){ $('#currency').val('TT$'); }
+                else if ( country == "Tunisia" ){ $('#currency').val('د.ت'); }
+                else if ( country == "Turkey" ){ $('#currency').val('₺'); }
+                else if ( country == "Turkmenistan" ){ $('#currency').val('T'); }
+                else if ( country == "Turks and Caicos Islands" ){ $('#currency').val('$'); }
+                else if ( country == "Tuvalu" ){ $('#currency').val('$'); }
+                else if ( country == "Uganda" ){ $('#currency').val('USh'); }
+                else if ( country == "Ukraine" ){ $('#currency').val('₴'); }
+                else if ( country == "United Arab Emirates" ){ $('#currency').val('د.إ'); }
+                else if ( country == "United Kingdom" ){ $('#currency').val('£'); }
+                else if ( country == "United States" ){ $('#currency').val('$'); }
+                else if ( country == "United States Minor Outlying Islands" ){ $('#currency').val('$'); }
+                else if ( country == "Uruguay" ){ $('#currency').val('$'); }
+                else if ( country == "Uzbekistan" ){ $('#currency').val('лв'); }
+                else if ( country == "Vanuatu" ){ $('#currency').val('VT'); }
+                else if ( country == "Venezuela" ){ $('#currency').val('Bs.'); }
+                else if ( country == "Vietnam" ){ $('#currency').val('₫'); }
+                else if ( country == "British, Virgin Islands" ){ $('#currency').val('$'); }
+                else if ( country == "U.S., Virgin Islands" ){ $('#currency').val('$'); }
+                else if ( country == "Wallis And Futuna" ){ $('#currency').val('Fr'); }
+                else if ( country == "Western Sahara" ){ $('#currency').val('د.م.'); }
+                else if ( country == "Yemen" ){ $('#currency').val('﷼'); }
+                else if ( country == "Zambia" ){ $('#currency').val('ZK'); }
+                else if ( country == "Zimbabwe" ){ $('#currency').val('Z$'); }
+            });
+        });*/
+    </script>
+    <script src="//code.tidio.co/if5sxpmaixaobvzhl4wzuvjpbyoq65br.js" async></script>
+</body>
+</html>
+
+<!--
+<select class="uk-input uk-border-rounded" id="country" v-model="newUser.country" required inputmode="text" required>
+    <option disabled="" selected="">Please Select Country</option>
+    <option value='Afghanistan'>Afghanistan </option>
+    <option value='Albania'>Albania</option>
+    <option value='Algeria'>Algeria</option>
+    <option value='American Samoa'>American Samoa</option>
+    <option value='Andorra'>Andorra</option>
+    <option value='Angola'>Angola</option>
+    <option value='Anguilla'>Anguilla</option>
+    <option value='Antarctica'>Antarctica</option>
+    <option value='Antigua and Barbuda'>Antigua and Barbuda</option>
+    <option value='Argentina'>Argentina</option>
+    <option value='Armenia'>Armenia</option>
+    <option value='Aruba'>Aruba</option>
+    <option value='Australia'>Australia</option>
+    <option value='Austria'>Austria</option>
+    <option value='Azerbaijan'>Azerbaijan</option>
+    <option value='Bahamas'>Bahamas</option>
+    <option value='Bahrain'>Bahrain</option>
+    <option value='Bangladesh'>Bangladesh</option>
+    <option value='Barbados'>Barbados</option>
+    <option value='Belarus'>Belarus</option>
+    <option value='Belgium'>Belgium</option>
+    <option value='Belize'>Belize</option>
+    <option value='Benin'>Benin</option>
+    <option value='Bermuda'>Bermuda</option>
+    <option value='Bhutan'>Bhutan</option>
+    <option value='Bolivia'>Bolivia</option>
+    <option value='Bosnia and Herzegovina'>Bosnia and Herzegovina</option>
+    <option value='Botswana'>Botswana</option>
+    <option value='Bouvet Island'>Bouvet Island</option>
+    <option value='Brazil'>Brazil</option>
+    <option value='British Indian Ocean Territory'>British Indian Ocean Territory</option>
+    <option value='Brunei Darussalam'>Brunei Darussalam</option>
+    <option value='Bulgaria'>Bulgaria</option>
+    <option value='Burkina Faso'>Burkina Faso</option>
+    <option value='Burundi'>Burundi</option>
+    <option value='Cambodia'>Cambodia</option>
+    <option value='Cameroon'>Cameroon</option>
+    <option value='Canada'>Canada</option>
+    <option value='Cape Verde'>Cape Verde</option>
+    <option value='Cayman Islands'>Cayman Islands</option>
+    <option value='Central African Republic'>Central African Republic</option>
+    <option value='Chad'>Chad</option>
+    <option value='Chile'>Chile</option>
+    <option value='China'>China</option>
+    <option value='Christmas Island'>Christmas Island</option>
+    <option value='Cocos (Keeling) Islands'>Cocos (Keeling) Islands</option>
+    <option value='Colombia'>Colombia</option>
+    <option value='Comoros'>Comoros</option>
+    <option value='Congo'>Congo</option>
+    <option value='Democratic Republic of the Congo'>Democratic Republic of the Congo</option>
+    <option value='Cook Islands'>Cook Islands </option>
+    <option value='Costa Rica'>Costa Rica </option>
+    <option value="Cote D'Ivoire">Cote D'Ivoire </option>
+    <option value='Croatia'>Croatia </option>
+    <option value='Cuba'>Cuba </option>
+    <option value='Cyprus'>Cyprus </option>
+    <option value='Czech Republic'>Czech Republic </option>
+    <option value='Denmark'>Denmark </option>
+    <option value='Djibouti'>Djibouti </option>
+    <option value='Dominica'>Dominica </option>
+    <option value='Dominican Republic'>Dominican Republic </option>
+    <option value='Ecuador'>Ecuador </option>
+    <option value='Egypt'>Egypt </option>
+    <option value='El Salvador'>El Salvador </option>
+    <option value='Equatorial Guinea'>Equatorial Guinea </option>
+    <option value='Eritrea'>Eritrea </option>
+    <option value='Estonia'>Estonia </option>
+    <option value='Ethiopia'>Ethiopia </option>
+    <option value='Falkland Islands (Malvinas)'>Falkland Islands (Malvinas) </option>
+    <option value='Faroe Islands'>Faroe Islands </option>
+    <option value='Fiji'>Fiji </option>
+    <option value='Finland'>Finland </option>
+    <option value='France'>France </option>
+    <option value='French Guiana'>French Guiana </option>
+    <option value='French Polynesia'>French Polynesia </option>
+    <option value='French Southern Territories'>French Southern Territories </option>
+    <option value='Gabon'>Gabon </option>
+    <option value='Gambia'>Gambia </option>
+    <option value='Georgia'>Georgia </option>
+    <option value='Germany'>Germany </option>
+    <option value='Ghana'>Ghana </option>
+    <option value='Gibraltar'>Gibraltar </option>
+    <option value='Greece'>Greece </option>
+    <option value='Greenland'>Greenland </option>
+    <option value='Grenada'>Grenada </option>
+    <option value='Guadeloupe'>Guadeloupe </option>
+    <option value='Guam'>Guam </option>
+    <option value='Guatemala'>Guatemala </option>
+    <option value='Guernsey'>Guernsey </option>
+    <option value='Guinea'>Guinea </option>
+    <option value='Guinea-Bissau'>Guinea-Bissau </option>
+    <option value='Guyana'>Guyana </option>
+    <option value='Haiti'>Haiti </option>
+    <option value='Heard Island and McDonald Islands'>Heard Island and McDonald Islands </option>
+    <option value='Holy See (Vatican City State)'>Holy See (Vatican City State) </option>
+    <option value='Honduras'>Honduras </option>
+    <option value='Hong Kong'>Hong Kong </option>
+    <option value='Hungary'>Hungary </option>
+    <option value='Iceland'>Iceland </option>
+    <option value='India'>India </option>
+    <option value='Indonesia'>Indonesia </option>
+    <option value='Islamic Republic of Iran'>Islamic Republic of Iran</option>
+    <option value='Iraq'>Iraq </option>
+    <option value='Ireland'>Ireland </option>
+    <option value='Isle of Man'>Isle of Man </option>
+    <option value='Israel'>Israel </option>
+    <option value='Italy'>Italy </option>
+    <option value='Jamaica'>Jamaica </option>
+    <option value='Japan'>Japan </option>
+    <option value='Jersey'>Jersey </option>
+    <option value='Jordan'>Jordan </option>
+    <option value='Kazakhstan'>Kazakhstan </option>
+    <option value='Kenya'>Kenya </option>
+    <option value='Kiribati'>Kiribati </option>
+    <option value="Democratic People's Republic of Korea">Democratic People's Republic of Korea</option>
+    <option value='Republic of Korea'>Republic of Korea</option>
+    <option value='Kuwait'>Kuwait </option>
+    <option value='Kyrgyzstan'>Kyrgyzstan </option>
+    <option value="Lao People's Democratic Republic">Lao People's Democratic Republic </option>
+    <option value='Latvia'>Latvia </option>
+    <option value='Lebanon'>Lebanon </option>
+    <option value='Lesotho'>Lesotho </option>
+    <option value='Liberia'>Liberia </option>
+    <option value='Libyan Arab Jamahiriya'>Libyan Arab Jamahiriya </option>
+    <option value='Liechtenstein'>Liechtenstein </option>
+    <option value='Lithuania'>Lithuania </option>
+    <option value='Luxembourg'>Luxembourg </option>
+    <option value='Macao'>Macao </option>
+    <option value='The Former Yugoslav Republic of Macedonia'>The Former Yugoslav Republic of Macedonia</option>
+    <option value='Madagascar'>Madagascar </option>
+    <option value='Malawi'>Malawi </option>
+    <option value='Malaysia'>Malaysia </option>
+    <option value='Maldives'>Maldives </option>
+    <option value='Mali'>Mali </option>
+    <option value='Malta'>Malta </option>
+    <option value='Marshall Islands'>Marshall Islands</option>
+    <option value='Martinique'>Martinique </option>
+    <option value='Mauritania'>Mauritania </option>
+    <option value='Mauritius'>Mauritius </option>
+    <option value='Mayotte'>Mayotte </option>
+    <option value='Mexico'>Mexico </option>
+    <option value='Federated States of Micronesia'>Federated States of Micronesia</option>
+    <option value='Republic of Moldova'>Republic of Moldova</option>
+    <option value='Monaco'>Monaco </option>
+    <option value='Mongolia'>Mongolia </option>
+    <option value='Montenegro'>Montenegro </option>
+    <option value='Montserrat'>Montserrat </option>
+    <option value='Morocco'>Morocco </option>
+    <option value='Mozambique'>Mozambique </option>
+    <option value='Myanmar'>Myanmar </option>
+    <option value='Namibia'>Namibia </option>
+    <option value='Nauru'>Nauru </option>
+    <option value='Nepal'>Nepal </option>
+    <option value='Netherlands'>Netherlands </option>
+    <option value='Netherlands Antilles'>Netherlands Antilles </option>
+    <option value='New Caledonia'>New Caledonia </option>
+    <option value='New Zealand'>New Zealand </option>
+    <option value='Nicaragua'>Nicaragua </option>
+    <option value='Niger'>Niger </option>
+    <option value='Nigeria'>Nigeria </option>
+    <option value='Niue'>Niue </option>
+    <option value='Norfolk Island'>Norfolk Island </option>
+    <option value='Northern Mariana Islands'>Northern Mariana Islands </option>
+    <option value='Norway'>Norway </option>
+    <option value='Oman'>Oman </option>
+    <option value='Pakistan'>Pakistan </option>
+    <option value='Palau'>Palau </option>
+    <option value='Occupied Palestinian Territory'>Occupied Palestinian Territory</option>
+    <option value='Panama'>Panama </option>
+    <option value='Papua New Guinea'>Papua New Guinea </option>
+    <option value='Paraguay'>Paraguay </option>
+    <option value='Peru'>Peru </option>
+    <option value='Philippines'>Philippines </option>
+    <option value='Pitcairn'>Pitcairn </option>
+    <option value='Poland'>Poland </option>
+    <option value='Portugal'>Portugal </option>
+    <option value='Puerto Rico'>Puerto Rico </option>
+    <option value='Qatar'>Qatar </option>
+    <option value='Reunion'>Reunion </option>
+    <option value='Romania'>Romania </option>
+    <option value='Russian Federation'>Russian Federation </option>
+    <option value='Rwanda'>Rwanda </option>
+    <option value='Saint Barthélemy'>Saint Barthélemy </option>
+    <option value='Saint Helena'>Saint Helena </option>
+    <option value='Saint Kitts and Nevis'>Saint Kitts and Nevis </option>
+    <option value='Saint Lucia'>Saint Lucia </option>
+    <option value='Saint Martin'>Saint Martin </option>
+    <option value='Saint Pierre and Miquelon'>Saint Pierre and Miquelon </option>
+    <option value='Saint Vincent and the Grenadines'>Saint Vincent and the Grenadines </option>
+    <option value='Samoa'>Samoa </option>
+    <option value='San Marino'>San Marino </option>
+    <option value='Sao Tome and Principe'>Sao Tome and Principe </option>
+    <option value='Saudi Arabia'>Saudi Arabia </option>
+    <option value='Senegal'>Senegal </option>
+    <option value='Serbia'>Serbia </option>
+    <option value='Seychelles'>Seychelles </option>
+    <option value='Sierra Leone'>Sierra Leone </option>
+    <option value='Singapore'>Singapore </option>
+    <option value='Slovakia'>Slovakia </option>
+    <option value='Slovenia'>Slovenia </option>
+    <option value='Solomon Islands'>Solomon Islands </option>
+    <option value='Somalia'>Somalia </option>
+    <option value='South Africa'>South Africa </option>
+    <option value='South Georgia and the South Sandwich Islands'>South Georgia and the South Sandwich Islands </option>
+    <option value='Spain'>Spain </option>
+    <option value='Sri Lanka'>Sri Lanka </option>
+    <option value='Sudan'>Sudan </option>
+    <option value='Suriname'>Suriname </option>
+    <option value='Svalbard and Jan Mayen'>Svalbard and Jan Mayen </option>
+    <option value='Swaziland'>Swaziland </option>
+    <option value='Sweden'>Sweden </option>
+    <option value='Switzerland'>Switzerland </option>
+    <option value='Syrian Arab Republic'>Syrian Arab Republic </option>
+    <option value='Taiwan, Province Of China'>Taiwan, Province Of China </option>
+    <option value='Tajikistan'>Tajikistan </option>
+    <option value='United Republic of Tanzania'>United Republic of Tanzania</option>
+    <option value='Thailand'>Thailand </option>
+    <option value='Timor-Leste'>Timor-Leste </option>
+    <option value='Togo'>Togo </option>
+    <option value='Tokelau'>Tokelau </option>
+    <option value='Tonga'>Tonga </option>
+    <option value='Trinidad and Tobago'>Trinidad and Tobago </option>
+    <option value='Tunisia'>Tunisia </option>
+    <option value='Turkey'>Turkey </option>
+    <option value='Turkmenistan'>Turkmenistan </option>
+    <option value='Turks and Caicos Islands'>Turks and Caicos Islands </option>
+    <option value='Tuvalu'>Tuvalu </option>
+    <option value='Uganda'>Uganda </option>
+    <option value='Ukraine'>Ukraine </option>
+    <option value='United Arab Emirates'>United Arab Emirates </option>
+    <option value='United Kingdom'>United Kingdom </option>
+    <option value='United States'>United States </option>
+    <option value='United States Minor Outlying Islands'>United States Minor Outlying Islands </option>
+    <option value='Uruguay'>Uruguay </option>
+    <option value='Uzbekistan'>Uzbekistan </option>
+    <option value='Vanuatu'>Vanuatu </option>
+    <option value='Venezuela'>Venezuela </option>
+    <option value='Vietnam'>Vietnam </option>
+    <option value='British, Virgin Islands'>British, Virgin Islands</option>
+    <option value='U.S., Virgin Islands'>U.S., Virgin Islands</option>
+    <option value='Wallis And Futuna'>Wallis And Futuna </option>
+    <option value='Western Sahara'>Western Sahara </option>
+    <option value='Yemen'>Yemen </option>
+    <option value='Zambia'>Zambia </option>
+    <option value='Zimbabwe'>Zimbabwe </option>
+</select>
+
+<select class="uk-input uk-border-rounded" id="currency" v-model="newUser.currency" required inputmode="text" required>
+    <option disabled="" selected="">Please Select Currency</option>
+    <option value="؋<"؋</option>
+    <option value="Lek">Lek</option>
+    <option value="دج"> </option>
+    <option value="$">$</option>
+    <option value="€">€</option>
+    <option value="Kz">Kz</option>
+    <option value="֏">֏</option>
+    <option value="ƒ">ƒ</option>
+    <option value="AZN">AZN</option>
+    <option value="د."></option>
+    <option value="ó">ó</option>
+    <option value="Br">Br</option>
+    <option value="CFA">CFA</option>
+    <option value="Nu">Nu</option>
+    <option value="Bs">Bs</option>
+    <option value="KM">KM</option>
+    <option value="P">P</option>
+    <option value="kr">kr</option>
+    <option value="R$">R$</option>
+    <option value="B$">B$</option>
+    <option value="Лв.">Лв.</option>
+    <option value="FBu">FBu</option>
+    <option value="៛">៛</option>
+    <option value="FCFA">FCFA</option>
+    <option value="¥">¥</option>
+    <option value="CF">CF</option>
+    <option value="FC">FC</option>
+    <option value="₡">₡</option>
+    <option value="Kn">Kn</option>
+    <option value="Kč">Kč</option>
+    <option value="Fdj">Fdj</option>
+    <option value="RD$">RD$</option>
+    <option value="S/.">S/.</option>
+    <option value="E£">E£</option>
+    <option value="Nkf">Nkf</option>
+    <option value="£">£</option>
+    <option value="FJ$">FJ$</option>
+    <option value="mk">mk</option>
+    <option value="₣">₣</option>
+    <option value="D">D</option>
+    <option value="GEL">GEL</option>
+    <option value="GH₵">GH₵</option>
+    <option value="Kr.">Kr.</option>
+    <option value="Q">Q</option>
+    <option value="FG">FG</option>
+    <option value="G$">G$</option>
+    <option value="G">G</option>
+    <option value="₤">₤</option>
+    <option value="HNL">HNL</option>
+    <option value="HK$">HK$</option>
+    <option value="Ft">Ft</option>
+    <option value="₹">₹</option>
+    <option value="Rp">Rp</option>
+    <option value="IRR">IRR</option>
+    <option value="د.ع"></option>
+    <option value="₪">₪</option>
+    <option value="J$">J$</option>
+    <option value="د.ا"></option>
+    <option value="₸">₸</option>
+    <option value="KSh">KSh</option>
+    <option value="₩">₩</option>
+    <option value="د.ك"></option>
+    <option value="лв">лв</option>
+    <option value="₭">₭</option>
+    <option value="LVL">LVL</option>
+    <option value="ل.ل"></option>
+    <option value="L">L</option>
+    <option value="L$">L$</option>
+    <option value="LD">LD</option>
+    <option value="CHF">CHF</option>
+    <option value="Lt">Lt</option>
+    <option value="MOP$">MOP$</option>
+    <option value="den">den</option>
+    <option value="Ar">Ar</option>
+    <option value="K">K</option>
+    <option value="RM">RM</option>
+    <option value="Rf">Rf</option>
+    <option value="MAF">MAF</option>
+    <option value="MRU">MRU</option>
+    <option value="₨">₨</option>
+    <option value="L">L</option>
+    <option value="₮">₮</option>
+    <option value="MAD">MAD</option>
+    <option value="MT">MT</option>
+    <option value="N$">N$</option>
+    <option value="Rs">Rs</option>
+    <option value="ANG">ANG</option>
+    <option value="NAf">NAf</option>
+    <option value="C$">C$</option>
+    <option value="XOF">XOF</option>
+    <option value="₦">₦</option>
+    <option value="ر.ع."></option>
+    <option value="B/">B/</option>
+    <option value="₲">₲</option>
+    <option value="S/">S/</option>
+    <option value="₱">₱</option>
+    <option value="zł">zł</option>
+    <option value="QR">QR</option>
+    <option value="lei">lei</option>
+    <option value="₽">₽</option>
+    <option value="FRw">FRw</option>
+    <option value="X$">X$</option>
+    <option value="Db">Db</option>
+    <option value="﷼"></option>
+    <option value="din">din</option>
+    <option value="SCR">SCR</option>
+    <option value="Le">Le</option>
+    <option value="S$">S$</option>
+    <option value="SKK">SKK</option>
+    <option value="Si$">Si$</option>
+    <option value="Sh.so.">Sh.so.</option>
+    <option value="£SD">£SD</option>
+    <option value="CHf">CHf</option>
+    <option value="LS">LS</option>
+    <option value="NT$">NT$</option>
+    <option value="SM">SM</option>
+    <option value="TSh">TSh</option>
+    <option value="฿">฿</option>
+    <option value="T$">T$</option>
+    <option value="TT$">TT$</option>
+    <option value="DT">DT</option>
+    <option value="₺">₺</option>
+    <option value="T">T</option>
+    <option value="USh">USh</option>
+    <option value="₴">₴</option>
+    <option value="د.إ"></option>
+    <option value="$U">$U</option>
+    <option value="VT">VT</option>
+    <option value="Bs.">Bs.</option>
+    <option value="₫">₫</option>
+    <option value="Fr">Fr</option>
+    <option value="د.م."></option>
+    <option value="ر.ي, ﷼"></option>
+    <option value="ZK">ZK</option>
+</select>
+-->

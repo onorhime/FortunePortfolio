@@ -1,0 +1,184 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Transactions
+{% endblock %}
+
+{% block main %}
+<div id="appCapsule">
+    <!-- Deposits Section -->
+    <div class="section mt-2">
+        <div class="section-title" style="color:#f2f2f2;">Deposits</div>
+        <p style="color:#cecece;">All deposit transactions are listed below.</p>
+        <div class="card" style="background-color:#191919;">
+            <div class="table-responsive">
+                <table id="depositsTable" class="table">
+                    <thead>
+                        <tr>
+                            <th style="color:#f2f2f2;">Method</th>
+                            <th style="color:#f2f2f2;">Amount</th>
+                            <th style="color:#f2f2f2;">Narration</th>
+                            <th style="color:#f2f2f2;">Time</th>
+                            <th style="color:#f2f2f2;">Date</th>
+                            <th style="color:#f2f2f2;">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for deposit in deposits %}
+                            <tr>
+                                <td style="color:#B3B3B3;">{{ deposit.depositMethod }}</td>
+                                <td style="color:#B3B3B3;">{{ app.user.currency|default('$') }}{{ deposit.amount|number_format(2) }}</td>
+                                <td style="color:#B3B3B3;">{{ deposit.narration }}</td>
+                                <td style="color:#B3B3B3;">{{ deposit.createdAt|date('H:i') }}</td>
+                                <td style="color:#B3B3B3;">{{ deposit.createdAt|date('Y-m-d') }}</td>
+                                <td style="color:#B3B3B3;">{{ deposit.status }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6" style="text-align: center; color:#B3B3B3;">No deposit transactions found.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-text-primary" onclick="window.print()">
+                    <i class="las la-download"></i>Tap to Print
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Withdrawals Section -->
+    <div class="section mt-2">
+        <div class="section-title" style="color:#f2f2f2;">Withdrawals</div>
+        <p style="color:#cecece;">All withdrawal transactions are listed below.</p>
+        <div class="card" style="background-color:#191919;">
+            <div class="table-responsive">
+                <table id="withdrawalsTable" class="table">
+                    <thead>
+                        <tr>
+                            <th style="color:#f2f2f2;">Method</th>
+                            <th style="color:#f2f2f2;">Amount</th>
+                            <th style="color:#f2f2f2;">Narration</th>
+                            <th style="color:#f2f2f2;">Time</th>
+                            <th style="color:#f2f2f2;">Date</th>
+                            <th style="color:#f2f2f2;">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for withdrawal in withdrawals %}
+                            <tr>
+                                <td style="color:#B3B3B3;">{{ withdrawal.withdrawalMethod }}</td>
+                                <td style="color:#B3B3B3;">{{ app.user.currency|default('$') }}{{ withdrawal.amount|number_format(2) }}</td>
+                                <td style="color:#B3B3B3;">{{ withdrawal.narration }}</td>
+                                <td style="color:#B3B3B3;">{{ withdrawal.createdAt|date('H:i') }}</td>
+                                <td style="color:#B3B3B3;">{{ withdrawal.createdAt|date('Y-m-d') }}</td>
+                                <td style="color:#B3B3B3;">{{ withdrawal.status }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6" style="text-align: center; color:#B3B3B3;">No withdrawal transactions found.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-text-primary" onclick="window.print()">
+                    <i class="las la-download"></i>Tap to Print
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signal Activations Section -->
+    <div class="section mt-2">
+        <div class="section-title" style="color:#f2f2f2;">Signal Activations</div>
+        <p style="color:#cecece;">All signal activation requests are listed below.</p>
+        <div class="card" style="background-color:#191919;">
+            <div class="table-responsive">
+                <table id="signalsTable" class="table">
+                    <thead>
+                        <tr>
+                            <th style="color:#f2f2f2;">Method</th>
+                            <th style="color:#f2f2f2;">Amount</th>
+                            <th style="color:#f2f2f2;">Status</th>
+                            <th style="color:#f2f2f2;">Time</th>
+                            <th style="color:#f2f2f2;">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for signal in signals %}
+                            <tr>
+                                <td style="color:#B3B3B3;">{{ signal.depositMethod }}</td>
+                                <td style="color:#B3B3B3;">{{ app.user.currency|default('$') }}{{ signal.amount|number_format(2) }}</td>
+                                <td style="color:#B3B3B3;">{{ signal.status }}</td>
+                                <td style="color:#B3B3B3;">{{ signal.createdAt|date('H:i') }}</td>
+                                <td style="color:#B3B3B3;">{{ signal.createdAt|date('Y-m-d') }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5" style="text-align: center; color:#B3B3B3;">No signal activations found.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-text-primary" onclick="window.print()">
+                    <i class="las la-download"></i>Tap to Print
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trades Section -->
+    <div class="section mt-2">
+        <div class="section-title" style="color:#f2f2f2;">Trades</div>
+        <p style="color:#cecece;">All trades executed are listed below.</p>
+        <div class="card" style="background-color:#191919;">
+            <div class="table-responsive">
+                <table id="tradesTable" class="table">
+                    <thead>
+                        <tr>
+                            <th style="color:#f2f2f2;">Trading Type</th>
+                            <th style="color:#f2f2f2;">Currency Pair</th>
+                            <th style="color:#f2f2f2;">Action</th>
+                            <th style="color:#f2f2f2;">Entry Price</th>
+                            <th style="color:#f2f2f2;">Stop Loss</th>
+                            <th style="color:#f2f2f2;">Take Profit</th>
+                            <th style="color:#f2f2f2;">Status</th>
+                            <th style="color:#f2f2f2;">Time</th>
+                            <th style="color:#f2f2f2;">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for trade in trades %}
+                            <tr>
+                                <td style="color:#B3B3B3;">{{ trade.tradingType }}</td>
+                                <td style="color:#B3B3B3;">{{ trade.currencyPair }}</td>
+                                <td style="color:#B3B3B3;">
+                                    {% if trade.tradingAction == 'BUY' %}
+                                        <span style="color:green;">BUY</span>
+                                    {% else %}
+                                        <span style="color:red;">SELL</span>
+                                    {% endif %}
+                                </td>
+                                <td style="color:#B3B3B3;">{{ trade.entryPrice }}</td>
+                                <td style="color:#B3B3B3;">{{ trade.stopLoss }}</td>
+                                <td style="color:#B3B3B3;">{{ trade.takeProfit }}</td>
+                                <td style="color:#B3B3B3;">{{ trade.status }}</td>
+                                <td style="color:#B3B3B3;">{{ trade.createdAt|date('H:i') }}</td>
+                                <td style="color:#B3B3B3;">{{ trade.createdAt|date('Y-m-d') }}</td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="9" style="text-align: center; color:#B3B3B3;">No trades executed yet.</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-text-primary" onclick="window.print()">
+                    <i class="las la-download"></i>Tap to Print
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- * App Capsule -->
+{% endblock %}

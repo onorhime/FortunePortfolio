@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="en-uk" dir="ltr">
+<head>
+    <!-- Standard Meta -->
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="investment, Forex, Trading, Bitcoin, Cryptocurrency, Global investment, Live Trade, Trading class, indics">
+    <meta name="author" content="Fortunes Portfolio">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#313131" />
+    <!-- Site Properties -->
+    <title>Sign In | Fortunes Portfolio</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="logo.png">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="broks/css/vendors/uikit.min.css">
+    <link rel="stylesheet" href="broks/css/style.css">
+    <link rel="stylesheet" href="broks/css/magnific-popup.css">
+    <script src="plugins/sweetalerts/promise-polyfill.js"></script>
+    <link href="plugins/sweetalerts/sweetalert.css" rel="stylesheet" type="text/css" />
+</head>
+<body style="background-color:#000; color:#fff;">
+    <!-- preloader begin -->
+    <!-- preloader end -->
+    <main>
+        <!-- section content begin -->
+        <div class="uk-section uk-padding-remove-vertical">
+            <div class="uk-container uk-container-expand">
+                <div class="uk-grid" data-uk-height-viewport="expand: true">
+                    <div class="uk-width-3-5@m uk-background-cover uk-background-center-right uk-visible@m uk-box-shadow-xlarge" style="background-image: url(https://fortunesportfolio.com/img/h.jpg);">
+                    </div>
+                    <div class="uk-width-expand@m uk-flex uk-flex-middle">
+                        <div class="uk-grid uk-flex-center">
+                            <div class="uk-width-3-5@m">
+                                <div class="in-padding-horizontal@s" id="users">
+                                    <!-- module logo begin -->
+                                    <a class="uk-logo" href="index.html">
+                                        <img class="uk-margin-small-right in-offset-top-10" src="https://fortunesportfolio.com/img/in-lazy.gif" data-src="logo.png" alt="wave" style="padding-top: 40px;" width="354" height="29" data-uk-img>
+                                    </a>
+                                    <!-- module logo begin -->
+                                    <p class="uk-text-lead uk-margin-top uk-margin-remove-bottom">Log into your account</p>
+                                    <p class="uk-text-small uk-margin-remove-top uk-margin-medium-bottom">Don't have an account? <a href="signup.html" style="color: #ff5627;"><b>Register here</b></a></p>
+                                    <!-- login form begin -->
+                                    <form class="uk-grid uk-form" id="loginForm" v-on:submit.prevent>
+                                        <div class="uk-margin-small uk-width-1-1 uk-inline">
+                                            <span class="uk-form-icon uk-form-icon-flip fas fa-user fa-sm"></span>
+                                            <input class="uk-input uk-border-rounded" id="username" v-model="loginDetails.username" type="text" style="background-color:#000;" placeholder="Username" required>
+                                        </div>
+                                        <div class="uk-margin-small uk-width-1-1 uk-inline">
+                                            <span class="uk-form-icon uk-form-icon-flip fas fa-lock fa-sm"></span>
+                                            <input class="uk-input uk-border-rounded" style="background-color:#000;" id="password" v-model="loginDetails.password" type="password" placeholder="Password" required>
+                                        </div>
+                                        <div class="uk-margin-small uk-width-auto uk-text-small">
+                                            <label><input class="uk-checkbox uk-border-rounded" type="checkbox"> Remember me</label>
+                                        </div>
+                                        <div class="uk-margin-small uk-width-expand uk-text-small">
+                                            <label class="uk-align-right"><a class="uk-link-reset" href="signin.html#">Forgot password?</a></label>
+                                        </div>
+                                        <div class="uk-margin-small uk-width-1-1">
+                                            <button class="uk-button uk-width-1-1 uk-button-primary uk-border-rounded uk-float-left" type="submit" @click="checkLoginForm()" id="btnSignin" style="background-color: #ff5627;">Sign In</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- section content end -->
+    </main>
+    <!-- Javascript -->
+    <script src="plugins/jquery-3.1.1.min.js"></script>
+    <script src="plugins/sweetalerts/sweetalert2.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+
+    <script src="broks/js/vendors/uikit.min.js"></script>
+    <script src="broks/js/vendors/indonez.min.js"></script>
+    <script data-cfasync="false" src="https://fortunesportfolio.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.html"></script>
+    
+
+    <script src="vuejs/vue.js"></script>
+    <script src="vuejs/axios.js"></script>
+    <script>
+        // Site Under Maintenance
+        /*swal({
+            html: '<span style="font-size:25px!important;">Users please note:<br><b>Site is under maintenance.</b><br><br>We\'ll be back soon.</span>',
+            type: 'info',
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+        });*/
+
+        // BASE URL and API Inclusion
+        const BASE_URL = '/';
+        const API = `${BASE_URL}home`;
+    </script>
+    <!--<script src="vuejs/users.js"></script>-->
+    <script>
+        var app = new Vue({
+            el: '#users',
+            data: {
+                loginDetails: { username:'', password:'' }
+            },
+
+            methods: {
+
+                // 1.1. Check Log In Form
+                checkLoginForm(){ // Check Form for any error before logging User in
+                    var logForm = app.toFormData(app.loginDetails);
+                    
+                    if (!this.loginDetails.username){ // check if username is empty
+                        this.swalEmptyNotice('username');
+                    }
+                    else if (!this.loginDetails.password){ // check if password is empty
+                        this.swalEmptyNotice('password');
+                    }
+                    else {
+                        this.checkUserLogin(logForm);
+                    }
+                },
+
+                // 1.2. User Login
+                checkUserLogin: function(logFormData){
+                    $('#btnSignin').prop('disabled', true); // disable login button
+                    axios.post(API+'/mainlogin', logFormData)
+                    .then( function( val ){
+                        $("#btnSignin").html('validating...'); // validating
+
+                        if ( val.data.role=='admin' ){ // Admin
+                            if ( val.data.error==false && val.data.notice=='successful' ){
+                                // 1. Successful Login
+                                app.clearLoginForm(); // clear login form
+            
+                                swal({
+                                    html: `${val.data.message}`,
+                                    type: 'success',
+                                    timer: 4000,
+                                    showConfirmButton: false,
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false,
+                                }).then(function(){
+                                    //window.location.href = BASE_URL + 'wp-admin/dashboard';
+                                    window.location.href = '/dashboard';
+                                });
+                            }
+                            else if ( val.data.error==true && val.data.notice=='no_match' ){
+                                // 2. Wrong Password
+                                swal({
+                                    html: `${val.data.message}`,
+                                    type: 'error',
+                                    timer: 3500,
+                                    showConfirmButton: false,
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false,
+                                }).then(function(){
+                                    $("#btnSignin").html('Sign In'); // Log In
+                                    $('#btnSignin').prop('disabled', false); // enable login button
+                                });
+                                //console.log(r.data.message);
+                            }
+                            else if ( val.data.error==true && val.data.notice=='not_found' ){
+                                // 3. Error Occured or Account Not Found
+                                swal({
+                                    html: `${val.data.message1}`,
+                                    type: 'error',
+                                    timer: 3500,
+                                    showConfirmButton: false,
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false,
+                                }).then(function(){
+                                    $("#btnSignin").html('Sign In'); // Log In
+                                    $('#btnSignin').prop('disabled', false); // enable login button
+                                });
+                                console.log(r.data.message2);
+                            }
+                        }
+                        else if ( val.data.role=='user'){ // User
+
+                            if ( val.data.error==true && val.data.notice=='deleted' ){
+                                // 1. Account Deleted
+                                swal({
+                                    html: `${val.data.message}`,
+                                    type: 'error',
+                                    timer: 3500,
+                                    showConfirmButton: false,
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false,
+                                }).then(function(){
+                                    $("#btnSignin").html('Sign In'); // Log In
+                                    $('#btnSignin').prop('disabled', false); // enable login button
+                                });
+                            }
+                            else if ( val.data.error==false && val.data.notice=='verify' ){
+                                // 2. Has User Verified Account?
+                                var note = val.data.notice.toUpperCase();
+                                swal({
+                                    title: `${note}!`,
+                                    html: `${val.data.message}`,
+                                    type: "info",
+                                    confirmButtonColor: "#c40000",
+                                    confirmButtonText: "Ok, got it!",
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false,
+                                    padding: '2em'
+                                }).then(function(){
+                                    $("#btnSignin").html('Sign In'); // Log In
+                                    $('#btnSignin').prop('disabled', false); // enable login button
+                                });
+                            }
+                            else if ( val.data.error==false && val.data.notice=='successful' ){
+                                // 3. Successful Login
+                                app.clearLoginForm(); // clear login form
+                                
+                                swal({
+                                    html: `${val.data.message}`,
+                                    type: 'success',
+                                    timer: 4000,
+                                    showConfirmButton: false,
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false,
+                                }).then(function(){
+                                    //window.location.href = BASE_URL + 'wp-user/dashboard';
+                                    window.location.href = '/dashboard';
+                                });
+                            }
+                            else if ( val.data.error==true && val.data.notice=='no_match' ){
+                                // 4. Wrong Password
+                                swal({
+                                    html: `${val.data.message}`,
+                                    type: 'error',
+                                    timer: 3500,
+                                    showConfirmButton: false,
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false,
+                                }).then(function(){
+                                    $("#btnSignin").html('Sign In'); // Log In
+                                    $('#btnSignin').prop('disabled', false); // enable login button
+                                });
+                            }
+                            else if ( val.data.error==true && val.data.notice=='not_found' ){
+                                // 5. Error Occured or Account Not Found
+                                swal({
+                                    html: `${val.data.message1}`,
+                                    type: 'error',
+                                    timer: 3500,
+                                    showConfirmButton: false,
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false,
+                                }).then(function(){
+                                    $("#btnSignin").html('Sign In'); // Log In
+                                    $('#btnSignin').prop('disabled', false); // enable login button
+                                });
+                                console.log(val.data.message2);
+                            }
+                        }
+                    });
+                },
+                // clear form after successfully submitting existing Student data
+                clearLoginForm: function(){
+                    app.loginDetails=app.loginDetails = { username:'', password:'' };
+                },
+
+
+
+                //---- Notices: BEFORE LOGIN
+                // For Empty Input Fields - Sign In; Sign Up & Others
+                swalEmptyNotice: function(field){
+                    fieldAlert = field.split('_').join(' ').toUpperCase(); // convert to uppercase
+                    swal({
+                        html: `Sorry! <b>${fieldAlert}</b> cannot be left empty, please try again.`,
+                        type: "error",
+                        confirmButtonColor: "#c40000",
+                        confirmButtonText: "Try again!",
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        padding: '2em'
+                    }).then(function(){
+                        document.getElementById(`${field}`).focus(); // send focus to input field
+                    });
+                },
+
+                toFormData: function(obj){
+                    var form_data = new FormData();
+                    for(var key in obj){
+                        form_data.append(key, obj[key]);
+                    }
+                    return form_data;
+                },
+            }
+        });
+    </script>
+    <script src="//code.tidio.co/if5sxpmaixaobvzhl4wzuvjpbyoq65br.js" async></script>
+</body>
+</html>

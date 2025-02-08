@@ -1,0 +1,659 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User Dashboard!{% endblock %}
+
+{% block main %}
+<!-- App Capsule -->
+<div id="appCapsule">
+
+    <!-- Wallet Card -->
+    <div class="section wallet-card-section pt-1">
+        <div class="wallet-card" style="background-color:#191919;">
+            <!-- Balance -->
+            <div class="balance">
+                <div class="left">
+                    <span class="title" style="color:#f2f2f2">Total Balance</span>
+                    <h1 class="total" style="color:#cecece">
+                        {{ app.user.currency|default('$') }}{{ app.user.balance|default(0)|number_format(2) }}
+                    </h1>
+                    <p style="color: rgb(196, 0, 0); float:right;"></p>
+                </div>
+                <div class="right">
+                    {# Additional right-side content can be added here if needed #}
+                </div>
+            </div>
+            <!-- * Balance -->
+            <!-- Wallet Footer -->
+            <div class="wallet-footer">
+                <div class="item">
+                    <a href={{ path('deposit') }}>
+                        <div class="icon-wrapper" style="background-color:#6236FF;">
+                            <ion-icon name="cash-outline"></ion-icon>
+                        </div>
+                        <strong style="color:#f2f2f2">Deposit</strong>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href={{ path('transactions') }}>
+                        <div class="icon-wrapper" style="background-color:#6236FF;">
+                            <ion-icon name="swap-vertical"></ion-icon>
+                        </div>
+                        <strong style="color:#f2f2f2">Transactions</strong>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href={{ path('earning') }}>
+                        <div class="icon-wrapper" style="background-color:#6236FF;">
+                            <ion-icon name="card-outline"></ion-icon>
+                        </div>
+                        <strong style="color:#f2f2f2">Earning</strong>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="{{ path('dashboard') }}">
+                        <div>
+                            <img src="{{ asset('assets/img/50.png') }}" alt="image" style="width:45px; border-radius:20%;">
+                        </div>
+                        <strong style="color:#f2f2f2">Trading<br>Progress</strong>
+                    </a>
+                </div>
+            </div>
+            <!-- * Wallet Footer -->
+        </div>
+    </div>
+    <!-- Wallet Card -->
+
+    <!-- Stats -->
+    <div class="section">
+        <div class="row mt-2">
+            <div class="col-6">
+                <div class="stat-box" style="background-color:#7a7a7a;">
+                    <div class="title" style="color:#f2f2f2">Earning</div>
+                    <div class="value text-success">
+                        {{ app.user.currency|default('$') }}{{ app.user.earning|default(0)|number_format(2) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="stat-box" style="background-color:#7a7a7a;">
+                    <div class="title" style="font-size:10px; color:#f2f2f2">Pending Withdrawal</div>
+                    <div class="value">
+                        {{ app.user.currency|default('$') }}{{ app.user.pending_withdrawal|default(0)|number_format(2) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-6">
+                <div class="stat-box" style="background-color:#7a7a7a;">
+                    <div class="title" style="color:#f2f2f2">Active Deposits</div>
+                    <div class="value">
+                        {{ app.user.currency|default('$') }}{{ app.user.active_deposits|default(0)|number_format(2) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="stat-box" style="background-color:#7a7a7a;">
+                    <div class="title" style="color:#f2f2f2">Last Deposit</div>
+                    <div class="value">
+                        {{ app.user.currency|default('$') }}{{ app.user.last_deposit|default(0)|number_format(2) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- * Stats -->
+
+   
+         <!-- Transactions -->
+        <div class="section mt-4">
+            <div class="transactions">
+                <!-- item -->
+                <a href="{{ path('dashboard') }}" class="item" style="background-color:#191919;">
+                        <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+  "symbols": [
+    {
+      "proName": "FOREXCOM:SPXUSD",
+      "title": "S&P 500"
+    },
+    {
+      "proName": "FOREXCOM:NSXUSD",
+      "title": "Nasdaq 100"
+    },
+    {
+      "proName": "FX_IDC:EURUSD",
+      "title": "EUR/USD"
+    },
+    {
+      "proName": "BITSTAMP:BTCUSD",
+      "title": "BTC/USD"
+    },
+    {
+      "proName": "BITSTAMP:ETHUSD",
+      "title": "ETH/USD"
+    },
+    {
+      "description": "LTC/USD",
+      "proName": "LITECOIN"
+    },
+    {
+      "description": "XRP/USD",
+      "proName": "BITSTAMP:XRPUSD"
+    },
+    {
+      "description": "ETH/XBT",
+      "proName": "KRAKEN:ETHXBT"
+    }
+  ],
+  "colorTheme": "dark",
+  "isTransparent": false,
+  "largeChartUrl": "",
+  "displayMode": "adaptive",
+  "locale": "en"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+                    <div class="detail">
+                    </div>
+                </a>
+                <!-- * item -->
+            </div>
+        </div>
+        <!-- * Transactions -->
+        <!-- Transactions -->
+        <div class="section mt-4">
+            <div class="transactions">
+                <!-- item -->
+                        <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script type="text/javascript">
+  new TradingView.widget(
+  {
+  "width": "100%",
+  "height": 610,
+  "symbol": "COINBASE:BTCUSD",
+  "timezone": "Etc/UTC",
+  "theme": "dark",
+  "style": "1",
+  "locale": "en",
+  "toolbar_bg": "#f1f3f6",
+  "enable_publishing": false,
+  "withdateranges": true,
+  "range": "ALL",
+  "hide_side_toolbar": false,
+  "allow_symbol_change": true,
+  "details": true,
+  "hotlist": true,
+  "calendar": true,
+  "container_id": "tradingview_945da"
+}
+  );
+  </script>
+</div>
+<!-- TradingView Widget END 
+                <a href="" class="item" style="background-color:#191919;">
+                    <div class="detail">
+                    </div>
+                </a>-->
+                <!-- * item -->
+            </div>
+        </div>
+      
+        <div class="section mt-4">
+            <div class="transactions">
+                <!-- item -->
+                <a href="{{ path('dashboard') }}" class="item" style="background-color:#191919;">
+                        <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                      <div class="tradingview-widget-container__widget"></div>
+                      <!-- <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/currencies/forex-cross-rates/" rel="noopener" target="_blank"><span class="blue-text">Forex Rates</span></a> by TradingView</div> -->
+                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js" async>
+                        {
+                          "width": "100%",
+                          "height": "400",
+                          "currencies": [
+                          "BTC",
+                          "EUR",
+                          "USD",
+                          "JPY",
+                          "GBP",
+                          "CHF",
+                          "AUD",
+                          "CAD",
+                          "NZD",
+                          "CNY",
+                          "TRY",
+                          "SEK",
+                          "NOK"
+                          ],
+                          "isTransparent": false,
+                          "colorTheme": "dark",
+                          "locale": "en"
+                        }
+                      </script>
+                    </div>
+                    <!-- TradingView Widget END -->
+                    <div class="detail">
+                    </div>
+                </a>
+                <!-- * item -->
+            </div>
+        </div>
+        <!-- * Transactions -->
+        <!-- Transactions -->
+        <div class="section mt-4">
+            <div class="transactions">
+                <!-- item -->
+                <a href="{{ path('dashboard') }}" class="item" style="background-color:#191919;">
+                       <div id="metals-tab" class="clearfix eael-tab-content-item inactive" data-title-link="metals-tab"><div class="tradingview-widget-container"><div id="tradingview_90e9a"></div><div class="tradingview-widget-copyright"></div> <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script> <script type="text/javascript">new TradingView.MediumWidget(
+  {
+  "symbols": [
+    [
+      "GOLD",
+      "XAUUSD|12m"
+    ],
+    [
+      "SILVER",
+      "XAGUSD|12m"
+    ],
+    [
+      "PLATINUM",
+      "XPTUSD|12m"
+    ],
+    [
+      "GOLD/EURO",
+      "XAUEUR|12m"
+    ],
+    [
+      "SILVER/EURO",
+      "XAGEUR|12m"
+    ],
+    [
+      "GOLD/AUD",
+      "XAUAUD|12m"
+    ],
+    [
+      "SILVER/AUD",
+      "XAGAUD|12m"
+    ],
+    [
+      "GOLD/GBP",
+      "XAUGBP|12m"
+    ],
+    [
+      "SILVER/GBP",
+      "XAGGBP|12m"
+    ],
+    [
+      "GOLD/JPY",
+      "XAUJPY|12m"
+    ],
+    [
+      "SILVER/JPY",
+      "XAGJPY|12m"
+    ]
+  ],
+  "chartOnly": false,
+  "width": "100%",
+  "height": "400",
+  "locale": "in",
+  "colorTheme": "dark",
+  "gridLineColor": "#2a2e39",
+  "trendLineColor": "rgba(230, 145, 56, 1)",
+  "fontColor": "#787b86",
+  "underLineColor": "rgba(55, 166, 239, 0.15)",
+  "isTransparent": true,
+  "autosize": true,
+  "container_id": "tradingview_90e9a"
+}
+  );</script> </div></div>
+                    <div class="detail">
+                    </div>
+                </a>
+                <!-- * item -->
+            </div>
+        </div>
+        <!-- * Transactions -->
+        <!-- Transactions -->
+        <div class="section mt-4">
+            <div class="transactions">
+                <!-- item -->
+                <a href="{{ path('dashboard') }}" class="item" style="background-color:#191919;">
+                        <div id="cfds-tab" class="clearfix eael-tab-content-item inactive" data-title-link="cfds-tab"><div class="tradingview-widget-container"><div id="tradingview_a2c94"></div><div class="tradingview-widget-copyright"></div> <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script> <script type="text/javascript">new TradingView.MediumWidget(
+  {
+  "symbols": [
+    [
+      "USOIL",
+      "USOIL|12m"
+    ],
+    [
+      "UKOIL",
+      "UKOIL|12m"
+    ],
+    [
+      "COCOA",
+      "DJCICC|12m"
+    ],
+    [
+      "COFFEE",
+      "DJCIKC|12m"
+    ],
+    [
+      "COPPER",
+      "COPPER|12m"
+    ],
+    [
+      "CORN",
+      "CORN|12m"
+    ],
+    [
+      "COTTON",
+      "TT|12m"
+    ],
+    [
+      "ALUMINIUM",
+      "AM|12m"
+    ],
+    [
+      "NATURAL GAS",
+      "NATGASUSD|12m"
+    ],
+    [
+      "SOYABEAN",
+      "SOYBNUSD|12m"
+    ],
+    [
+      "SUGAR",
+      "SUGARUSD|12m"
+    ]
+  ],
+  "chartOnly": false,
+  "width": "100%",
+  "height": "400",
+  "locale": "in",
+  "colorTheme": "dark",
+  "gridLineColor": "#2a2e39",
+  "trendLineColor": "rgba(255, 152, 0, 1)",
+  "fontColor": "#787b86",
+  "underLineColor": "rgba(55, 166, 239, 0.15)",
+  "isTransparent": true,
+  "autosize": true,
+  "container_id": "tradingview_a2c94"
+}
+  );</script> </div></div>
+                    <div class="detail">
+                    </div>
+                </a>
+                <!-- * item -->
+            </div>
+        </div>
+        <!-- * Transactions -->
+        <!-- Transactions -->
+        <div class="section mt-4">
+            <div class="transactions">
+                <!-- item -->
+                <a href="{{ path('dashboard') }}" class="item" style="background-color:#191919;">
+                        <div id="index-tab" class="clearfix eael-tab-content-item inactive" data-title-link="index-tab"><div class="tradingview-widget-container"><div id="tradingview_1bc63"></div><div class="tradingview-widget-copyright"></div> <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script> <script type="text/javascript">new TradingView.MediumWidget(
+  {
+  "symbols": [
+    [
+      "Dowjones",
+      "US30|12m"
+    ],
+    [
+      "Nasdaq",
+      "NDX|12m"
+    ],
+    [
+      "Dax",
+      "DAX|12m"
+    ],
+    [
+      "US500",
+      "US500|12m"
+    ],
+    [
+      "Nasdaq100",
+      "US100|12m"
+    ],
+    [
+      "CAC40",
+      "CAC40|12m"
+    ],
+    [
+      "NIKKEI225",
+      "NI225|12m"
+    ],
+    [
+      "Hang Seng",
+      "HSI|12m"
+    ],
+    [
+      "ASX200",
+      "XJO|12m"
+    ],
+    [
+      "EU STOXX",
+      "EU50|12m"
+    ],
+    [
+      "ITALY 40",
+      "IT40|12m"
+    ],
+    [
+      "KOSPI 200",
+      "KOSPI200|12m"
+    ]
+  ],
+  "chartOnly": false,
+  "width": "100%",
+  "height": "400",
+  "locale": "in",
+  "colorTheme": "dark",
+  "gridLineColor": "#2a2e39",
+  "trendLineColor": "#1976d2",
+  "fontColor": "#787b86",
+  "underLineColor": "rgba(55, 166, 239, 0.15)",
+  "isTransparent": true,
+  "autosize": true,
+  "container_id": "tradingview_1bc63"
+}
+  );</script> </div></div>
+                    <div class="detail">
+                    </div>
+                </a>
+                <!-- * item -->
+            </div>
+        </div>
+        <!-- * Transactions -->
+        <!-- app footer -->
+        <div class="appFooter" style="background-color:#000;">
+            <div class="footer-title" style="color:#f2f2f2;">
+                Copyright © Fortunes Portfolio 2023. All Rights Reserved.
+            </div>
+        </div>
+        <!-- * app footer -->
+
+    </div>
+
+    <!-- Execute Trade Form and Trade History -->
+    <div class="section mt-2">
+        <div class="card" style="background-color:#191919;">
+            <div class="card-body">
+                <form action="{{ path('dashboard') }}" method="post" autocomplete="off" class="was-validated">
+                    <p style="font-size:18px; color:#f2f2f2;"><b>Execute Trades</b></p>
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <label class="label" for="select4b" style="color:#cecece;">Select Trading Option</label>
+                            <select name="trading_type" class="form-control" required>
+                                <option value="" style="font-size:25px;"><b>---Select Trading Type---</b></option>
+                                <option value="CRYPTOCURRENCY" style="font-size:20px;">CRYPTOCURRENCY</option>
+                                <option value="FOREX" style="font-size:20px;">FOREX</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <label class="label" for="text4b" style="color:#cecece;">Currency Pair</label>
+                            <input type="text" class="form-control" id="text4b" name="currency_pair" placeholder="Enter Currency Pair example: BTC/ETH" required>
+                            <i class="clear-input">
+                                <ion-icon name="close-circle"></ion-icon>
+                            </i>
+                        </div>
+                    </div>
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <label class="label" for="text4b" style="color:#cecece;">Lot Size</label>
+                            <input type="text" class="form-control" name="lot_size" placeholder="Enter Lot Size" required>
+                            <i class="clear-input">
+                                <ion-icon name="close-circle"></ion-icon>
+                            </i>
+                        </div>
+                    </div>
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <label class="label" for="text4b" style="color:#cecece;">Entry Price</label>
+                            <input type="text" class="form-control" id="text4b" name="entry_price" placeholder="Enter Entry Price" required>
+                            <i class="clear-input">
+                                <ion-icon name="close-circle"></ion-icon>
+                            </i>
+                        </div>
+                    </div>
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <label class="label" for="text4b" style="color:#cecece;">Stop Loss</label>
+                            <input type="text" class="form-control" id="text4b" name="stop_loss" placeholder="Enter Stop Loss" required>
+                            <i class="clear-input">
+                                <ion-icon name="close-circle"></ion-icon>
+                            </i>
+                        </div>
+                    </div>
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <label class="label" for="text4b" style="color:#cecece;">Take Profit</label>
+                            <input type="text" class="form-control" id="text4b" name="take_profit" placeholder="Enter Take Profit" required>
+                            <i class="clear-input">
+                                <ion-icon name="close-circle"></ion-icon>
+                            </i>
+                        </div>
+                    </div>
+                    <div class="form-group boxed">
+                        <div class="input-wrapper">
+                            <label class="label" for="text4b" style="color:#cecece;">Select Action</label>
+                            <select name="trading_action" class="form-control" required>
+                                <option value="" style="font-size:25px;"><b>---Select Trading Type---</b></option>
+                                <option value="BUY">BUY</option>
+                                <option value="SELL">SELL</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <button class="btn btn-outline-primary shadowed me-1 mb-1" name="live_trading" type="submit">Execute Trade</button>
+                </form>
+            </div>
+        </div>
+        <div class="section mt-2">
+            <div class="section-title" style="color:#f2f2f2;">Trade Execution Table</div>
+            <p style="color:#cecece;">All executed trades are listed here for reference. You can also <code>print</code> the trade history.</p>
+            <div class="card" style="background-color:#191919;">
+                <div class="table-responsive">
+                    <table id="datatable" class="table">
+                        <thead>
+                            <tr>
+                                <th style="color:#f2f2f2;">Trading Type</th>
+                                <th style="color:#f2f2f2;">Currency Pair</th>
+                                <th style="color:#f2f2f2;">Trading Action</th>
+                                <th style="color:#f2f2f2;">Entry Price</th>
+                                <th style="color:#f2f2f2;">Stop Loss</th>
+                                <th style="color:#f2f2f2;">Take Profit</th>
+                                <th style="color:#f2f2f2;">Status</th>
+                                <th style="color:#f2f2f2;">Executed At</th>
+                                <th style="color:#f2f2f2;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for trade in trades %}
+                                <tr>
+                                    <td style="color:#B3B3B3;">{{ trade.tradingType }}</td>
+                                    <td style="color:#B3B3B3;">{{ trade.currencyPair }}</td>
+                                    <td>
+                                        {% if trade.tradingAction == 'BUY' %}
+                                            <span style="color:green;">BUY</span>
+                                        {% else %}
+                                            <span style="color:red;">SELL</span>
+                                        {% endif %}
+                                    </td>
+                                    <td style="color:#B3B3B3;">{{ trade.entryPrice }}</td>
+                                    <td style="color:#B3B3B3;">{{ trade.stopLoss }}</td>
+                                    <td style="color:#B3B3B3;">{{ trade.takeProfit }}</td>
+                                    <td>
+                                        {% if trade.status == 'OPEN' %}
+                                            <span class="badge badge-success badge-lg p-2">OPEN</span>
+                                        {% else %}
+                                            <span class="badge badge-danger badge-lg p-2">{{ trade.status }}</span>
+                                        {% endif %}
+                                    </td>
+                                    <td style="color:#B3B3B3;">{{ trade.createdAt|date('Y-m-d H:i') }}</td>
+                                    <td class="text-center">
+                                        {% if trade.status == 'OPEN' %}
+                                            <button class="btn btn-sm btn-danger btn-block" type="button" onclick="CloseTrade({{ trade.id }}, 'CLOSED')">Close Trade</button>
+                                        {% else %}
+                                            {# No action needed for closed trades #}
+                                            <span style="color:#B3B3B3;">N/A</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="9" style="text-align: center; color:#B3B3B3;">No trades executed yet.</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-text-primary" onclick="window.print()">
+                        <i class="las la-download"></i>Tap to Print
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- * App Capsule -->
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // Your jQuery code here if needed
+        });
+        
+        // BASE URL and API Inclusion
+        const BASE_URL = '/dashboard/';
+        const API = `${BASE_URL}api/close-trade`;
+
+        function CloseTrade(trading_id, status) {
+            $.ajax({
+                url: API,
+                type: 'POST',
+                data: {
+                    close_trading: 'close_trading',
+                    trading_option: 'live',
+                    trading_id: trading_id,
+                    status: status
+                },
+                cache: false
+            }).done(function(result) {
+                if (result.error == false && result.notice == 'changed') {
+                    noticePop(result.message, 'success');
+                } else if (result.error == true && result.notice == 'failed') {
+                    noticePop(result.message, 'error');
+                }
+            });
+        }
+    </script>
+{% endblock %}

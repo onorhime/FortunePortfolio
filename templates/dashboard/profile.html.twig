@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block main %}
+     <!-- App Capsule -->
+    <div id="appCapsule">
+        <div class="section mt-3 text-center">
+            <div class="avatar-section">
+                <a href="{{ path('profile') }}">
+                    <img src="{{ asset(app.user.avatar|default('assets/img/sample/avatar/avatar1.jpg')) }}" alt="avatar" class="imaged w100 rounded">
+                </a>
+            </div>
+        </div>
+        <div class="section mt-3 mb-3">
+            <div class="card" style="background-color:#191919; color:#cecece;">
+                <div class="card-body">
+                    <h2 class="card-title" style="color:#f2f2f2;">Full Name</h2>
+                    {{ app.user.fullName|default('Not provided') }}
+                </div>
+            </div>
+        </div>
+        <div class="section mt-3 mb-3">
+            <div class="card" style="background-color:#191919; color:#cecece;">
+                <div class="card-body">
+                    <h2 class="card-title" style="color:#f2f2f2;">Username</h2>
+                    {{ app.user.username|default('Not provided') }}
+                </div>
+            </div>
+        </div>
+        {# Additional fields can be added below if needed #}
+        <div class="section mt-3 mb-3">
+            <div class="card" style="background-color:#191919; color:#cecece;">
+                <div class="card-body">
+                    <h2 class="card-title" style="color:#f2f2f2;">Contact</h2>
+                    <a href="callto:{{ app.user.contact|default('Not provided') }}">{{ app.user.contact|default('Not provided') }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="section mt-3 mb-3">
+            <div class="card" style="background-color:#191919; color:#cecece;">
+                <div class="card-body">
+                    <h2 class="card-title" style="color:#f2f2f2;">Email</h2>
+                    <a href="mailto:{{ app.user.email }}">{{ app.user.email }}</a>
+                </div>
+            </div>
+        </div>
+        {# Uncomment or add additional sections for Address, City, etc. if needed #}
+        <div class="section mt-3 mb-3">
+            <div class="card" style="background-color:#191919; color:#cecece;">
+                <div class="card-body">
+                    <h2 class="card-title" style="color:#f2f2f2;">Country</h2>
+                    {{ app.user.country|default('Not provided') }}
+                </div>
+            </div>
+        </div>
+        <div class="section mt-3 mb-3">
+            <div class="card" style="background-color:#191919; color:#cecece;">
+                <div class="card-body">
+                    <h2 class="card-title" style="color:#f2f2f2;">Currency</h2>
+                    {{ app.user.currency|default('$') }}
+                </div>
+            </div>
+        </div>
+        <div class="section mt-3 mb-3">
+            <div class="card" style="background-color:#191919; color:#cecece;">
+                <div class="card-body">
+                    <a href="{{ path('logout') }}" class="card-title" style="color:#f2f2f2;">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- * App Capsule -->
+{% endblock %}

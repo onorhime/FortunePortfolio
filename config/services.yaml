@@ -4,8 +4,16 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    uploads_directory: '%kernel.project_dir%/public/uploads/kyc'
+    uploads_deposit_proofs: '%kernel.project_dir%/public/uploads/deposit_proofs'
+    uploads_signal_proofs: '%kernel.project_dir%/public/uploads/signal_proofs'
+    uploads_upgrade_proofs: '%kernel.project_dir%/public/uploads/upgrade_proofs'
 
 services:
+    App\Service\MailerService:
+        autowire: true
+        autoconfigure: true
+        public: true  # or false, depending on your preference
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.

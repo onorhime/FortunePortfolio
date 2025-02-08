@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome Email</title>
+<style>
+/* Reset CSS */
+body, p, h1, h2, h3, h4, h5, h6, table, td {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.logo {
+    text-align: center;
+}
+
+.logo img {
+    max-width: 150px;
+}
+
+.welcome-message {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.account-details {
+    margin-top: 30px;
+}
+
+.account-details table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.account-details td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.footer {
+    margin-top: 20px;
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="logo">
+        <img src="https://fortunesportfolio.com/home/asset/images/logo.png" alt="Company Logo">
+    </div>
+    <div class="welcome-message">
+        <h1>Welcome to Our Community!</h1>
+        <p>Thank you for joining us. Please confirm your email address to activate your account.</p>
+        <a href="https://fortunesportfolio.com/dashboard" class="button">Confirm Email</a>
+    </div>
+    <div class="account-details">
+        <h2>Account Details</h2>
+        <table>
+            <tr>
+                <td><strong>Username:</strong></td>
+                <td>{{name}}</td>
+            </tr>
+            <tr>
+                <td><strong>Email:</strong></td>
+                <td>{{useremail}}</td>
+            </tr>
+            <tr>
+                <td><strong>Referral Code:</strong></td>
+                <td>{{ref}}</td>
+            </tr>
+            <tr>
+                <td><strong>Join Date:</strong></td>
+                <td>{{date}}</td>
+            </tr>
+           
+        </table>
+    </div>
+    <div class="footer">
+        <p>If you have any questions, feel free to <a href="mailto:fortune@fortunesportfolio.com">contact us</a>.</p>
+        <p>You're receiving this email because you signed up for Fortune Portfolio's service.</p>
+    </div>
+</div>
+</body>
+</html>

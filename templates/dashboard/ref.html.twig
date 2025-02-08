@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Referral History
+{% endblock %}
+
+{% block main %}
+    <!-- App Capsule -->
+    <div id="appCapsule">
+         <div class="section mt-2">
+            <div class="section-title" style="color:#f2f2f2;">Referral History Table</div>
+            <p style="color:#cecece;">
+                All referrals are saved here for reference. You can also <code>print</code> transactions.
+            </p>
+            <div class="mb-2">
+                <input type="text" class="form-control" value="{{ referralCode }}" id="ref_code" disabled>
+            </div>
+            <hr>
+            <br>
+            <p style="color:#cecece;">Total Referral Earning: <b>{{ app.user.currency|default('$') }}{{ totalEarnings|number_format(2) }}</b></p>
+            <div class="card" style="background-color:#191919;">
+                <div class="table-responsive">
+                    <table id="datatable" class="table">
+                        <thead>
+                            <tr>
+                                <th style="color:#f2f2f2;">Username</th>
+                                <th style="color:#f2f2f2;">Name</th>
+                                <th style="color:#f2f2f2;">Amount</th>
+                                <th style="color:#f2f2f2;">Account Created</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if referrals is not empty %}
+                                {% for referral in referrals %}
+                                    <tr>
+                                        <td style="color:#B3B3B3;">{{ referral.username }}</td>
+                                        <td style="color:#B3B3B3;">{{ referral.fullName }}</td>
+                                        <td style="color:#B3B3B3;">{{ app.user.currency|default('$') }}5.00</td>
+                                        <td style="color:#B3B3B3;">{{ referral.createdAt|date('Y-m-d H:i') }}</td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                <tr>
+                                    <td colspan="4" style="text-align: center; color:#B3B3B3;">
+                                        No user has used your referral code. Copy the above code and share it.
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-text-primary" onclick="window.print()">
+                        <i class="las la-download"></i>Tap to Print
+                    </button>
+                </div>
+            </div>
+         </div>
+    </div>
+    <!-- * App Capsule -->
+{% endblock %}
