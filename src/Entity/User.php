@@ -134,6 +134,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Upgrade::class, mappedBy: 'user')]
     private Collection $upgrades;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $visiblepassword = null;
+
     public function __construct()
     {
         $this->refs = new ArrayCollection();
@@ -654,6 +657,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $upgrade->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getVisiblepassword(): ?string
+    {
+        return $this->visiblepassword;
+    }
+
+    public function setVisiblepassword(?string $visiblepassword): static
+    {
+        $this->visiblepassword = $visiblepassword;
 
         return $this;
     }

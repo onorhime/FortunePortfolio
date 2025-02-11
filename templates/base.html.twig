@@ -57,15 +57,16 @@
         <div class="pageTitle">
             <p>
                 {{ app.user.username|default('Unknown User') }} 
-                {% if app.user.isVerified is defined and not app.user.isVerified %}
-                    {% if app.user.isVerified is defined and app.user.verificationStatus == 'PENDING' %}
+               
+                    {% if app.user.verificationStatus is defined and app.user.verificationStatus == 'PENDING' %}
                     <span style="color:orange;">Verification Pending<i class="las la-exclamation-circle" style="color:red;"></i></span>
                
                     {% else %}
+                    {% if app.user.verificationStatus is not defined or app.user.verificationStatus is null %}
                     <span style="color:red;">Not Verified<i class="las la-exclamation-circle" style="color:red;"></i></span>
-               
+               {% endif %}
                     {% endif %}
-                     {% endif %}
+                     
             </p>
         </div>
         <div class="right">

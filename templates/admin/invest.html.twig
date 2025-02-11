@@ -1,0 +1,83 @@
+{% include 'adminbase.html.twig' %}
+       {% block main %}
+            <div class="dashboard-wrapper">
+            <div class="dashboard-ecommerce">
+                <div class="container-fluid dashboard-content ">
+                  
+                    <div class="ecommerce-widget">
+
+                       
+                        <div class="row">
+                            <!-- ============================================================== -->
+                      
+                            <!-- ============================================================== -->
+
+                                          <!-- recent orders  -->
+                            <!-- ============================================================== -->
+                            <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Wallets List</h5>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead class="bg-light">
+                                                    <tr class="border-0">
+                                                    
+                                                        <th class="border-0">Name</th>
+                                                        <th class="border-0">Plan Name</th>
+                                                        <th class="border-0">amount</th>
+                                                        <th class="border-0">Start Date</th>
+                                                         <th class="border-0">End Date</th> 
+                                                         <th class="border-0">Interest (daily)</th>
+                                                         <th class="border-0">Action </th>
+                                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                   {% for plan in plans %}
+                                                    <tr>
+                                                    
+                                                        <td> {{plan.user.firstname ~" "~ plan.user.lastname}}</td>
+                                                        <td> {{plan.name}}</td>
+                                                        <form action="" method="post">
+                                                        <td><input type="number" value="{{plan.amount}}" name="amount" ></td>
+                                                        <td><input type="date" name="date" > </td>
+                                                        <td>{{ plan.endat | date('D, M d, Y g:i A') }}</td>
+                                                        <td>{{plan.interest}}% Daiy</td>
+                                                        <td>
+                                                            <select name="status">
+                                                                <option value="Running" {{plan.status is same as("Running")? "selected" : "" }}>Running</option>
+                                                                <option value="Complete" {{plan.status is same as("Complete") ? "selected" : ""}}>Complete</option>
+
+                                                            </select>
+                                                        </td>
+                                                        <td><input type="text" name="id" value="{{plan.id}}" hidden> <input type="submit" name="update" class="btn btn-primary btn-lg btn-block" value="Update"></td>
+                                                       </form>
+                                                    </tr>
+                                                   {% endfor %}
+                                                </tbody>
+                                                  {{ knp_pagination_render(plans) }}     
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- ============================================================== -->
+                            <!-- end recent orders  -->
+
+    
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            
+            <!-- ============================================================== -->
+            <!-- end footer -->
+            <!-- ============================================================== -->
+        </div>
+       {% endblock %}
+    

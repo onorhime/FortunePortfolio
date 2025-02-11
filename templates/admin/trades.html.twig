@@ -1,0 +1,83 @@
+{% include 'adminbase.html.twig' %}
+{% block main %}
+<div class="dashboard-wrapper">
+    <div class="dashboard-ecommerce">
+        <div class="container-fluid dashboard-content">
+            <!-- pageheader -->
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-header">
+                        <h2 class="pageheader-title">Trade Requests</h2>
+                        <div class="page-breadcrumb">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="{{ path('admin') }}" class="breadcrumb-link">Dashboard</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">Trade Requests</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end pageheader -->
+
+            <div class="ecommerce-widget">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+                        <div class="card">
+                            <h5 class="card-header">Pending Trades List</h5>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class="bg-light">
+                                            <tr class="border-0">
+                                                <th class="border-0">User Name</th>
+                                                <th class="border-0">Trading Type</th>
+                                                <th class="border-0">Currency Pair</th>
+                                                <th class="border-0">Lot Size</th>
+                                                <th class="border-0">Entry Price</th>
+                                                <th class="border-0">Stop Loss</th>
+                                                <th class="border-0">Take Profit</th>
+                                                <th class="border-0">Action</th>
+                                                <th class="border-0">Status</th>
+                                                <th class="border-0">Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for trade in trades %}
+                                                <tr>
+                                                    <td>{{ trade.user ? trade.user.fullname : 'N/A' }}</td>
+                                                    <td>{{ trade.tradingType }}</td>
+                                                    <td>{{ trade.currencyPair }}</td>
+                                                    <td>{{ trade.lotSize|default(0) }}</td>
+                                                    <td>{{ trade.entryPrice|default(0) }}</td>
+                                                    <td>{{ trade.stopLoss|default(0) }}</td>
+                                                    <td>{{ trade.takeProfit|default(0) }}</td>
+                                                    <form action="" method="post">
+                                                        <td>
+                                                            <input type="text" name="id" value="{{ trade.id }}" hidden>
+                                                            <input type="submit" class="btn btn-primary btn-sm" name="approve" value="Approve">
+                                                            <input type="submit" name="delete" class="btn btn-danger btn-sm" value="Decline">
+                                                        </td>
+                                                        <td>{{ trade.status }}</td>
+                                                        <td>
+                                                            <input type="date" name="date">
+                                                        </td>
+                                                    </form>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end trades table -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

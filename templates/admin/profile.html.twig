@@ -1,0 +1,138 @@
+{% include 'adminbase.html.twig' %}
+
+{% block main %}
+<div class="dashboard-wrapper">
+    <div class="container-fluid dashboard-content">
+        <!-- pageheader -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-header">
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ path('admin') }}" class="breadcrumb-link">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="{{ path('admin') }}" class="breadcrumb-link">Users</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end pageheader -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <h5 class="card-header">{{ user.fullname }} Account Details</h5>
+                    <div class="card-body">
+                        <form method="post" action="">
+                            <!-- Full Name (read-only if you prefer) -->
+                            <div class="form-group">
+                                <label for="fullname">Full Name</label>
+                                <input type="text" class="form-control" id="fullname" name="fullname" value="{{ user.fullname }}" required>
+                            </div>
+
+                            <!-- Email (read-only or editable) -->
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" name="email" value="{{ user.email }}" required>
+                            </div>
+
+                            <!-- Country -->
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <input type="text" class="form-control" id="country" name="country" value="{{ user.country|default('') }}">
+                            </div>
+
+                            <!-- Currency -->
+                            <div class="form-group">
+                                <label for="currency">Currency</label>
+                                <input type="text" class="form-control" id="currency" name="currency" value="{{ user.currency|default('') }}">
+                            </div>
+
+                            <!-- Balance -->
+                            <div class="form-group">
+                                <label for="balance">Balance</label>
+                                <input type="number" step="0.01" class="form-control" id="balance" name="balance" value="{{ user.balance|default(0) }}">
+                            </div>
+
+                            <!-- Earning -->
+                            <div class="form-group">
+                                <label for="earning">Earning</label>
+                                <input type="number" step="0.01" class="form-control" id="earning" name="earning" value="{{ user.earning|default(0) }}">
+                            </div>
+
+                            <!-- Pending Withdrawal -->
+                            <div class="form-group">
+                                <label for="pending_withdrawal">Pending Withdrawal</label>
+                                <input type="number" step="0.01" class="form-control" id="pending_withdrawal" name="pending_withdrawal" value="{{ user.pendingWithdrawal|default(0) }}">
+                            </div>
+
+                            <!-- Active Deposits -->
+                            <div class="form-group">
+                                <label for="active_deposits">Active Deposits</label>
+                                <input type="number" step="0.01" class="form-control" id="active_deposits" name="active_deposits" value="{{ user.activeDeposits|default(0) }}">
+                            </div>
+
+                            <!-- Last Deposit -->
+                            <div class="form-group">
+                                <label for="last_deposit">Last Deposit</label>
+                                <input type="number" step="0.01" class="form-control" id="last_deposit" name="last_deposit" value="{{ user.lastDeposit|default(0) }}">
+                            </div>
+
+                            <!-- Visible Password -->
+                            <div class="form-group">
+                                <label for="visiblepassword">Visible Password</label>
+                                <input type="text" class="form-control" id="visiblepassword" name="visiblepassword" value="{{ user.visiblepassword|default('') }}">
+                            </div>
+
+                            <!-- Registration Date (read-only) -->
+                            <div class="form-group">
+                                <label>Registration Date</label>
+                                <input type="text" class="form-control" value="{{ user.createdAt ? user.createdAt|date('Y-m-d H:i') : '' }}" disabled>
+                            </div>
+
+                            <!-- Update Button -->
+                            <div class="form-group mt-3">
+                                <input type="submit" class="btn btn-primary" name="update" value="Update User">
+                            </div>
+
+                            <!-- Toggle Verification Button -->
+                            <div class="form-group mt-3">
+                                <input type="submit" class="btn btn-primary" name="activate" value="{{ user.isVerified ? 'De-Activate User Account' : 'Activate User Account' }}">
+                            </div>
+
+                            <!-- Delete User Button -->
+                            <div class="form-group mt-3">
+                                <input type="submit" class="btn btn-danger" name="delete" value="Delete User">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Optional: Add a deposit transaction form -->
+        <div class="row mt-3">
+            <div class="col-12">
+                <div class="card">
+                    <h5 class="card-header">{{ user.fullname }} Add Transfer Deposit</h5>
+                    <div class="card-body">
+                        <form method="post" action="">
+                            <div class="form-group">
+                                <label for="deposit_amount">Amount</label>
+                                <input type="text" class="form-control" id="deposit_amount" name="amount" placeholder="Transaction amount" required>
+                            </div>
+                           
+                            <div class="form-group mt-3">
+                                <input type="submit" class="btn btn-success" name="adddeposit" value="Add Deposit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

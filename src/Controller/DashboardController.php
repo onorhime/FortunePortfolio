@@ -249,6 +249,7 @@ final class DashboardController extends AbstractController
     {
         // Get the logged-in user.
         $user = $this->getUser();
+        $user = $entityManager->getRepository(User::class)->find($user);
         if (!$user) {
             flash()->error('You must be logged in to make a deposit.');
             return $this->redirectToRoute('app_login');
@@ -295,7 +296,15 @@ final class DashboardController extends AbstractController
             // Persist and flush.
             $entityManager->persist($deposit);
             $entityManager->flush();
-            
+            $this->emailSender->sendEmail(
+                "fortune@fortunesportfolio.com",
+                "New Deposit",
+                "email/noti.twig",
+                [
+                    "title" => "Deposit request",
+                    "message" => "New Deposit Request from " . $user->getFullname(),
+                ]
+            );
             // Use php-flasher to show a pop-up notification.
             flash()->success('Deposit request submitted successfully.');
             return $this->redirectToRoute('dashboard');
@@ -357,7 +366,16 @@ final class DashboardController extends AbstractController
             // Persist and flush.
             $entityManager->persist($deposit);
             $entityManager->flush();
-            
+            $user = $entityManager->getRepository(User::class)->find($user);
+            $this->emailSender->sendEmail(
+                "fortune@fortunesportfolio.com",
+                "New Deposit",
+                "email/noti.twig",
+                [
+                    "title" => "Deposit request",
+                    "message" => "New Deposit Request from " . $user->getFullname(),
+                ]
+            );
             // Use php-flasher to show a pop-up notification.
             flash()->success('Deposit request submitted successfully.');
             return $this->redirectToRoute('dashboard');
@@ -434,10 +452,23 @@ final class DashboardController extends AbstractController
             $withdrawal->setStatus("PENDING");
             $withdrawal->setCreatedAt(new \DateTime());
             $withdrawal->setUpdatedAt(new \DateTime());
+
+            $user->setBalance($user->getBalance() - (float)$amount);
             
             // Persist to the database.
             $entityManager->persist($withdrawal);
+            $entityManager->persist($user);
             $entityManager->flush();
+
+            $this->emailSender->sendEmail(
+                "fortune@fortunesportfolio.com",
+                "New Withdrawal",
+                "email/noti.twig",
+                [
+                    "title" => "Withdrawal request",
+                    "message" => "New Withdrawal Request from " . $user->getFullname(),
+                ]
+            );
             
             flash()->success("Withdrawal request submitted successfully.");
             return $this->redirectToRoute('dashboard');
@@ -496,6 +527,17 @@ final class DashboardController extends AbstractController
             // Persist the Signal entity.
             $entityManager->persist($signal);
             $entityManager->flush();
+
+            $user = $entityManager->getRepository(User::class)->find($user);
+            $this->emailSender->sendEmail(
+                "fortune@fortunesportfolio.com",
+                "New Signal Request",
+                "email/noti.twig",
+                [
+                    "title" => "Signal request",
+                    "message" => "New Signal Request from " . $user->getFullname(),
+                ]
+            );
             
             flash()->success("Signal activation request submitted successfully.");
             return $this->redirectToRoute('dashboard');
@@ -555,6 +597,17 @@ final class DashboardController extends AbstractController
             // Persist the Upgrade entity.
             $entityManager->persist($upgrade);
             $entityManager->flush();
+
+            $user = $entityManager->getRepository(User::class)->find($user);
+            $this->emailSender->sendEmail(
+                "fortune@fortunesportfolio.com",
+                "New Upgrade Request",
+                "email/noti.twig",
+                [
+                    "title" => "Upgrade request",
+                    "message" => "New Upgrade Request from " . $user->getFullname(),
+                ]
+            );
             
             flash()->success("Upgrade request submitted successfully.");
             return $this->redirectToRoute('dashboard');

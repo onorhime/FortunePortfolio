@@ -49,7 +49,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
         if ($request->isXmlHttpRequest() || $request->headers->get('Content-Type') === 'application/json') {
             $user = $token->getUser();
             $role = in_array('ROLE_ADMIN', $user->getRoles(), true) ? 'admin' : 'user';
-            $redirectUrl = ($role === 'admin') ? 'admin' : '/dashboard';
+            $redirectUrl = ($role === 'admin') ? '/admin' : '/dashboard';
             return new JsonResponse([
                 'error'    => false,
                 'notice'   => 'successful',

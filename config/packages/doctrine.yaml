@@ -6,7 +6,7 @@ doctrine:
         user: root
         password: 
         driver: 'pdo_mysql'
-        server_version: 'mariadb-10.4.8'
+        server_version: '10.9.3'
         charset: utf8mb4
         default_table_options:
             charset: utf8mb4

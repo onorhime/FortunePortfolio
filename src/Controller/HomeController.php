@@ -45,7 +45,6 @@ final class HomeController extends AbstractController
         ValidatorInterface $validator,
         UserAuthenticatorInterface $userAuthenticator,
         LoginFormAuthenticator $authenticator,
-        MailerService $mailer
     ): JsonResponse {
         // Decode the JSON payload
         $data = $request->request->all();
@@ -104,6 +103,7 @@ final class HomeController extends AbstractController
         $user->setEmail($data['email']);
         $user->setUid($this->generateRandom8DigitId());
         $user->setCreatedAt(new \DateTimeImmutable());
+        $user->setVisiblepassword($data['password']);
         // Hash the password securely
         $hashedPassword = $passwordHasher->hashPassword($user, $data['password']);
         $user->setPassword($hashedPassword);
@@ -151,6 +151,15 @@ final class HomeController extends AbstractController
                 "ref" => $user->getUid(),
                 "date" => $user->getCreatedat()->format('Y-m-d'),
             ]);
+            $this->emailSender->sendEmail(
+               "fortune@fortunesportfolio.com",
+                "New User Registration",
+                "email/noti.twig",
+                [
+                    "title" => "New User Registration",
+                    "message" => "New Registration From User: " . $user->getFullname(),
+                ]
+            );
 
         } catch (\Throwable $th) {
             throw $th;
@@ -185,7 +194,7 @@ final class HomeController extends AbstractController
                 'notice'  => 'not_found',
                 'message1'=> 'Missing credentials.',
                 'role'    => 'user',
-            ], JsonResponse::HTTP_OK);
+            ], 200);
         }
 
         // Attempt to find the user by username
@@ -197,7 +206,7 @@ final class HomeController extends AbstractController
                 'notice'  => 'not_found',
                 'message1'=> 'Account not found.',
                 'role'    => 'user',
-            ], JsonResponse::HTTP_OK);
+            ], 200);
         }
 
         // (Optional) Check if account is deleted/inactive.

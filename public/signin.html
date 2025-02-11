@@ -142,7 +142,7 @@
                                     allowEscapeKey: false,
                                 }).then(function(){
                                     //window.location.href = BASE_URL + 'wp-admin/dashboard';
-                                    window.location.href = '/dashboard';
+                                    window.location.href = '/admin';
                                 });
                             }
                             else if ( val.data.error==true && val.data.notice=='no_match' ){
@@ -222,7 +222,7 @@
                                     allowEscapeKey: false,
                                 }).then(function(){
                                     //window.location.href = BASE_URL + 'wp-user/dashboard';
-                                    window.location.href = '/dashboard';
+                                    window.location.href = val.data.redirect;
                                 });
                             }
                             else if ( val.data.error==true && val.data.notice=='no_match' ){
