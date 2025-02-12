@@ -78,7 +78,7 @@
                 <div class="stat-box" style="background-color:#7a7a7a;">
                     <div class="title" style="font-size:10px; color:#f2f2f2">Pending Withdrawal</div>
                     <div class="value">
-                        {{ app.user.currency|default('$') }}{{ app.user.pending_withdrawal|default(0)|number_format(2) }}
+                        {{ app.user.currency|default('$') }}{{ app.user.pendingwithdrawal|default(0)|number_format(2) }}
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                 <div class="stat-box" style="background-color:#7a7a7a;">
                     <div class="title" style="color:#f2f2f2">Active Deposits</div>
                     <div class="value">
-                        {{ app.user.currency|default('$') }}{{ app.user.active_deposits|default(0)|number_format(2) }}
+                        {{ app.user.currency|default('$') }}{{ app.user.activedeposits|default(0)|number_format(2) }}
                     </div>
                 </div>
             </div>
@@ -96,7 +96,7 @@
                 <div class="stat-box" style="background-color:#7a7a7a;">
                     <div class="title" style="color:#f2f2f2">Last Deposit</div>
                     <div class="value">
-                        {{ app.user.currency|default('$') }}{{ app.user.last_deposit|default(0)|number_format(2) }}
+                        {{ app.user.currency|default('$') }}{{ app.user.lastdeposit|default(0)|number_format(2) }}
                     </div>
                 </div>
             </div>

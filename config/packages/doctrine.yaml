@@ -6,7 +6,7 @@ doctrine:
         user: root
         password: 
         driver: 'pdo_mysql'
-        server_version: '10.9.3'
+        server_version: '10.9.3-MariaDB'
         charset: utf8mb4
         default_table_options:
             charset: utf8mb4
