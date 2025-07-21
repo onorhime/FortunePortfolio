@@ -420,6 +420,79 @@ class AdminController extends AbstractController
         ]);
     }
    
+
+        #[Route('/kyc', name: 'kyc')]
+    public function upgradeList(
+        ManagerRegistry $doctrine,
+        Request $request,
+        MailerService $emailSender // or whichever mailer you use
+    ): Response {
+        // Fetch all Upgrade records with status = "pending".
+        $pendingKyc = $doctrine->getRepository(User::class)
+            ->findBy(['verificationStatus' => 'PENDING']);
+
+        $em = $doctrine->getManager();
+
+        // Approve an upgrade request
+        if ($request->request->get('approve') !== null) {
+            $id = $request->request->get('id');
+            $user = $doctrine->getRepository(User::class)->find($id);
+
+            if (!$user) {
+                $this->addFlash('error', 'User not found.');
+                return $this->redirectToRoute('kyc');
+            }
+
+            // Mark as complete and update date/time
+            $user->setVerificationStatus('COMPLETE')
+                  ->setUpdatedAt(new DateTime($request->request->get('date')));
+
+            $em->persist($user);
+            $em->flush();
+
+            // Optionally send an email notification
+            $emailSender->sendEmail(
+                $user->getEmail(),
+                "Account Verification Approved",
+                "email/noti.twig",
+                [
+                    "title" => "Verification Approved",
+                    "message" => $user->getFullname() . ", your account verification has been approved successfully.",
+                ]
+            );
+
+            $this->addFlash('success', "Verification was successfully approved.");
+            return $this->redirectToRoute('kyc');
+        }
+
+        // Decline an upgrade request
+        // if ($request->request->get('delete') !== null) {
+        //     $upgradeId = $request->request->get('id');
+        //     $upgrade = $doctrine->getRepository(Upgrade::class)->find($upgradeId);
+
+        //     if (!$upgrade) {
+        //         $this->addFlash('error', 'Upgrade request not found.');
+        //         return $this->redirectToRoute('upgradelist');
+        //     }
+
+        //     $upgrade->setStatus('failed')
+        //             ->setUpdatedAt(new DateTime($request->request->get('date')));
+
+        //     // Optionally revert user changes if you made any on "approve".
+        //     $em->persist($upgrade);
+        //     $em->flush();
+
+        //     $this->addFlash('error', "Upgrade request was declined.");
+        //     return $this->redirectToRoute('admin');
+        // }
+
+        return $this->render('admin/kyc.html.twig', [
+            'upgrades' => $pendingKyc,
+        ]);
+    }
+   
+
+
     #[Route('/signallist', name: 'signallist')]
     public function signalList(
         ManagerRegistry $doctrine,
