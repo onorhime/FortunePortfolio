@@ -421,8 +421,8 @@ class AdminController extends AbstractController
     }
    
 
-        #[Route('/kyc', name: 'kyc')]
-    public function upgradeList(
+    #[Route('/kyc', name: 'kyc')]
+    public function kyc(
         ManagerRegistry $doctrine,
         Request $request,
         MailerService $emailSender // or whichever mailer you use
