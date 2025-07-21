@@ -46,11 +46,9 @@
                                                 <tr>
                                                     <td>{{ user.fullname : 'N/A' }}</td>
                                                    
-                                                    <td>{{ user.verificationStatus }}</td>
+                                                    <td>{{ user.verificationstatus }}</td>
                                                     <form action="" method="post">
-                                                        <td>
-                                                            <input type="date" name="date">
-                                                        </td>
+                                                        
                                                         <td>
                                                             <input type="text" name="id" value="{{ user.id }}" hidden>
                                                             <input type="submit" class="btn btn-primary btn-lg btn-block" name="approve" value="Approve">
